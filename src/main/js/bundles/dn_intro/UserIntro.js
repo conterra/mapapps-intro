@@ -55,9 +55,9 @@ define([
             tour.steps = this._steps = properties.steps;
             var appCtx = this._appCtx;
             if (appCtx._applicationRootNode.addClassName !== undefined) {
-                appCtx._applicationRootNode.addClassName("dn_introjs_initializing");
+                appCtx._applicationRootNode.addClassName("dn_intro_initializing");
             } else {
-                appCtx._applicationRootNode.className = appCtx._applicationRootNode.className + " dn_introjs_initializing";
+                appCtx._applicationRootNode.className = appCtx._applicationRootNode.className + " dn_intro_initializing";
             }
             d_array.forEach(properties.steps, function (step) {
                 if (step.toolId) {
@@ -70,12 +70,12 @@ define([
             }, this);
             ct_async(function () {
                 if (appCtx._applicationRootNode.removeClassName !== undefined) {
-                    appCtx._applicationRootNode.removeClassName("dn_introjs_initializing");
+                    appCtx._applicationRootNode.removeClassName("dn_intro_initializing");
                 } else {
-                    appCtx._applicationRootNode.className = appCtx._applicationRootNode.className.replace("dn_introjs_initializing", "");
+                    appCtx._applicationRootNode.className = appCtx._applicationRootNode.className.replace("dn_intro_initializing", "");
                 }
             }, this, 1000);
-            hopscotch.startTour(tour);
+            hopscotch.startTour(tour, 0);
             hopscotch.listen("next", d_lang.hitch(this, this.onStep));
             hopscotch.listen("prev", d_lang.hitch(this, this.onStep));
         },

@@ -21,7 +21,12 @@ define({
         toolName: "Intro Tool",
         toolTooltip: "Intro Tool",
         start: "Start Intro",
-        hint: "Don't show the intro again on next start-up"
+        hint: "Don't show the intro again on next start-up",
+        next: "next",
+        back: "back",
+        done: "done",
+        skip: "skip",
+        closeTooltip: "close intro"
     },
     "de": true
 });

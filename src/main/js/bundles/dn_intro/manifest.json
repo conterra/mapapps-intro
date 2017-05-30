@@ -52,7 +52,7 @@
         },
         {
           "name": "_startIntroOnStartupChecker",
-          "providing": "dn_introjs.StartIntroOnStartupChecker",
+          "providing": "dn_intro.StartIntroOnStartupChecker",
           "cardinality": "0..1"
         }
       ]
@@ -121,11 +121,11 @@
         "skipIfNoElement": true,
         "nextOnTargetClick": false,
         "i18n": {
-          "nextBtn": "${intro.next}",
-          "prevBtn": "${intro.back}",
-          "doneBtn": "${intro.skip}",
-          "skipBtn": "${intro.done}",
-          "closeTooltip": "${intro.closeTooltip}"
+          "nextBtn": "${next}",
+          "prevBtn": "${back}",
+          "doneBtn": "${done}",
+          "skipBtn": "${skip}",
+          "closeTooltip": "${closeTooltip}"
         },
         "steps": []
       },
