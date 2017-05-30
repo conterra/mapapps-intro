@@ -1,0 +1,149 @@
+{
+  "Bundle-SymbolicName": "dn_intro",
+  "Bundle-Version": "1.0.0-SNAPSHOT",
+  "Bundle-Name": "${bundleName}",
+  "Bundle-Description": "${bundleDescription}",
+  "Bundle-Vendor": "con terra GmbH",
+  "Product-Name": "devnet-mapapps-intro",
+  "Bundle-StartLevel": 51,
+  "Bundle-DocURL": "https://github.com/conterra/mapapps-intro/blob/master/README.md",
+  "Config-Bundle-Location": "/config",
+  "Require-Bundle": [
+    {
+      "name": "hopscotch"
+    }
+  ],
+  "CSS-Themes-Extension": [
+    {
+      "name": "*",
+      "files": [
+        "./css/intro.css"
+      ]
+    }
+  ],
+  "layout-widgets": [
+    {
+      "role": "introWidget",
+      "window": {
+        "title": "${windowTitle}",
+        "marginBox": {
+          "w": 260,
+          "h": 140
+        },
+        "dockTool": "introTool",
+        "closable": true,
+        "minimizeOnClose": true,
+        "resizable": false
+      }
+    }
+  ],
+  "Components": [
+    {
+      "name": "IntroStarter",
+      "references": [
+        {
+          "name": "_tool",
+          "providing": "ct.tools.Tool",
+          "filter": "(id=introTool)"
+        },
+        {
+          "name": "_userIntro",
+          "providing": "dn_intro.UserIntro"
+        },
+        {
+          "name": "_startIntroOnStartupChecker",
+          "providing": "dn_introjs.StartIntroOnStartupChecker",
+          "cardinality": "0..1"
+        }
+      ]
+    },
+    {
+      "name": "IntroWidgetFactory",
+      "provides": [
+        "dijit.Widget",
+        "ct.framework.api.EventHandler"
+      ],
+      "properties": {
+        "widgetRole": "introWidget"
+      },
+      "instanceFactory": true,
+      "immediate": true,
+      "references": [
+        {
+          "name": "_userIntro",
+          "providing": "dn_intro.UserIntro"
+        },
+        {
+          "name": "_tool",
+          "providing": "ct.tools.Tool",
+          "filter": "(id=introTool)"
+        }
+      ]
+    },
+    {
+      "name": "${toolName}",
+      "impl": "ct/tools/Tool",
+      "provides": [
+        "ct.tools.Tool"
+      ],
+      "propertiesConstructor": true,
+      "properties": {
+        "id": "introTool",
+        "toolRole": "toolset",
+        "title": "${toolName}",
+        "tooltip": "${toolTooltip}",
+        "togglable": true,
+        "iconClass": "icon-add-symbol"
+      }
+    },
+    {
+      "name": "UserIntro",
+      "propertiesConstructor": true,
+      "immediate": true,
+      "provides": [
+        "ct.framework.api.EventHandler",
+        "dn_intro.UserIntro"
+      ],
+      "properties": {
+        // start options
+        "startIntroOnStartup": true,
+        "enableCookie": true,
+        // intro options
+        "bubbleWidth": 280,
+        "bubblePadding": 15,
+        "smoothScroll": true,
+        "scrollDuration": 1000,
+        "scrollTopMargin": 200,
+        "showCloseButton": true,
+        "showPrevButton": true,
+        "showNextButton": true,
+        "arrowWidth": 20,
+        "skipIfNoElement": true,
+        "nextOnTargetClick": false,
+        "i18n": {
+          "nextBtn": "${intro.next}",
+          "prevBtn": "${intro.back}",
+          "doneBtn": "${intro.skip}",
+          "skipBtn": "${intro.done}",
+          "closeTooltip": "${intro.closeTooltip}"
+        },
+        "steps": []
+      },
+      "references": [
+        {
+          "name": "_eventService",
+          "providing": "ct.framework.api.EventService"
+        },
+        {
+          "name": "_appCtx",
+          "providing": "ct.framework.api.ApplicationContext"
+        },
+        {
+          "name": "_tools",
+          "providing": "ct.tools.Tool",
+          "cardinality": "0..n"
+        }
+      ]
+    }
+  ]
+}
