@@ -139,29 +139,70 @@ define({
             type: "Type"
         },
         intro: {
-            familiarise: "This introduction has the aim to familiarise you with the elements and functionality of map.apps.",
-            mapview: "These buttons allow you to control the mapview.",
-            basemap: "You can change the basemap by selecting an entry of this dropdown list.",
-            theme: "Change the map.apps theme.",
-            language: "Choose another language.",
-            functions: "Additional functionality is available here.",
-            mapflow: "This button opens the mapflow. It allows you to change the map content.",
-            mapflowTool: "Simply select any map content.",
-            legend: "The legend shows the layer symbology.",
-            omnisearch: "Search here and configure the search message.",
-            featureinfo: "Click on the map to query additional information.",
-            followme: "Here you are able to work toghether with other user.",
-            gallery: "Choose another basemap in the gallery.",
-            galleryTool: "Simply lick on any basemap",
-            routing: "Here you can calculate a route.",
-            okButton: "Ok",
-            closeButton: "Close",
-            mapScaling: "mapScaling",
-            mapLoading: "mapLoading",
+            familiarise: {
+                title: "Welcome",
+                content: "This introduction has the aim to familiarise you with the elements and functionality of map.apps."
+            },
+            mapview: {
+                title: "Mapview",
+                content: "These buttons allow you to control the mapview."
+            },
+            basemap: {
+                title: "Basemap",
+                content: "You can change the basemap by selecting an entry of this dropdown list."
+            },
+            theme: {
+                title: "Theme",
+                content: "Change the map.apps theme."
+            },
+            language: {
+                title: "Language",
+                content: "Choose another language."
+            },
+            functions: {
+                title: "Additional functionality",
+                content: "Additional functionality is available here."
+            },
+            mapflow: {
+                title: "Map content",
+                content: "This button opens the mapflow. It allows you to change the map content."
+            },
+            mapflowTool: {
+                title: "Map content",
+                content: "Simply select any map content."
+            },
+            legend: {
+                title: "Legend",
+                content: "The legend shows the layer symbology."
+            },
+            omnisearch: {
+                title: "Omisearch",
+                content: "Search here and configure the search message."
+            },
+            featureinfo: {
+                title: "Featureinfo",
+                content: "Click on the map to query additional information."
+            },
+            followme: {
+                title: "FollowMe",
+                content: "Here you are able to work toghether with other user."
+            },
+            gallery: {
+                title: "Gallery",
+                content: "Choose another basemap in the gallery."
+            },
+            galleryTool: {
+                title: "Gallery",
+                content: "Simply click on any basemap"
+            },
+            routing: {
+                title: "Routing",
+                content: "Here you can calculate a route."
+            },
             next: "next",
             back: "back",
-            skip: "skip",
             done: "done",
+            skip: "skip",
             closeTooltip: "close intro"
         }
     },

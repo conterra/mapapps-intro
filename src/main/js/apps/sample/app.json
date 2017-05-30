@@ -73,11 +73,9 @@
     ]
   },
   "bundles": {
-    "dn_introhopscotch": {
+    "dn_intro": {
       "UserIntro": {
         "startIntroOnStartup": true,
-        "enableCookie": true,
-        // tour options
         "bubbleWidth": 280,
         "bubblePadding": 15,
         "smoothScroll": true,
@@ -92,83 +90,108 @@
         "i18n": {
           "nextBtn": "${intro.next}",
           "prevBtn": "${intro.back}",
-          "doneBtn": "${intro.skip}",
-          "skipBtn": "${intro.done}",
+          "doneBtn": "${intro.done}",
+          "skipBtn": "${intro.skip}",
           "closeTooltip": "${intro.closeTooltip}"
         },
         "steps": [
           {
-            "content": "${intro.familiarise}"
+            "target": ".mainMap",
+            "title": "${intro.familiarise.title}",
+            "content": "${intro.familiarise.content}",
+            "placement": "top",
+            "xOffset": "center",
+            "yOffset": "center",
+            "arrowOffset": "center"
           },
           {
             "target": ".mapview_tools",
-            "content": "${intro.mapview}",
+            "title": "${intro.mapview.title}",
+            "content": "${intro.mapview.content}",
             "placement": "left"
           },
           {
             "target": ".basemapToggler",
-            "content": "${intro.basemap}",
+            "title": "${intro.basemap.title}",
+            "content": "${intro.basemap.content}",
             "placement": "bottom"
           },
           {
             "target": ".omnisearch",
-            "content": "${intro.omnisearch}",
+            "title": "${intro.omnisearch.title}",
+            "content": "${intro.omnisearch.content}",
             "placement": "right"
           },
           {
             "target": ".ctWDYWBtn",
-            "content": "${intro.functions}",
+            "title": "${intro.functions.title}",
+            "content": "${intro.functions.content}",
             "placement": "right"
           },
           {
             "target": ".ctTool_basemapgalleryToggleTool",
-            "content": "${intro.gallery}",
+            "title": "${intro.gallery.title}",
+            "content": "${intro.gallery.content}",
             "placement": "top"
           },
           {
             "target": ".ctBasemapGallery",
-            "content": "${intro.galleryTool}",
+            "title": "${intro.galleryTool.title}",
+            "content": "${intro.galleryTool.content}",
             "placement": "top",
             "toolId": "basemapgalleryToggleTool"
           },
           {
             "target": ".ctTool_followmeToggleTool",
-            "content": "${intro.followme}",
+            "title": "${intro.followme.title}",
+            "content": "${intro.followme.content}",
             "placement": "top"
           },
           {
             "target": ".ctTool_mapflowToggleTool",
-            "content": "${intro.mapflow}",
+            "title": "${intro.mapflow.title}",
+            "content": "${intro.mapflow.content}",
             "placement": "top"
           },
           {
             "target": ".ctMapFlow",
-            "content": "${intro.mapflowTool}",
+            "title": "${intro.mapflowTool.title}",
+            "content": "${intro.mapflowTool.content}",
             "placement": "top",
             "toolId": "mapflowToggleTool"
           },
           {
             "target": ".ctTool_routingToggleTool",
-            "content": "${intro.routing}",
+            "title": "${intro.routing.title}",
+            "content": "${intro.routing.content}",
             "placement": "top"
           },
           {
             "target": ".ctTool_legendToggleTool",
-            "content": "${intro.legend}",
+            "title": "${intro.legend.title}",
+            "content": "${intro.legend.content}",
             "placement": "top"
           },
           {
             "target": ".themeSelector",
-            "content": "${intro.theme}",
+            "title": "${intro.theme.title}",
+            "content": "${intro.theme.content}",
             "placement": "bottom"
           },
           {
             "target": ".languageToggler",
-            "content": "${intro.language}",
-            "placement": "bottom"
+            "title": "${intro.language.title}",
+            "content": "${intro.language.content}",
+            "placement": "left"
           },
           {
-            "content": "${intro.featureinfo}"
+            "target": ".mainMap",
+            "title": "${intro.featureinfo.title}",
+            "content": "${intro.featureinfo.content}",
+            "placement": "top",
+            "xOffset": "center",
+            "yOffset": "center",
+            "arrowOffset": "center"
           }
         ]
       }

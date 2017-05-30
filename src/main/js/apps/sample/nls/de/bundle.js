@@ -85,26 +85,26 @@ define({
             regions: {
                 title: "Biogeographische Regionen",
                 description: "Der Biogeographische Reogionen-Datensatz beinhaltet die offiziellen Abgrenzungen, welche Einsatz in der Flora-Fauna-Habitat-Richtlinie (92/43/EWG) sowie im EMERALD Network, welches im Rahmen der Konvention zur Erhaltung wild lebender Pflanzen und Tiere und ihrer Lebensr\u00E4ume (Berner Abkommen) entstand, finden.",
-                    layers: {
-                        0: "EU27 Biogeographische Regionen 2011",
-                        1: "EU27 Biogeographische Regionen 2008",
-                        2: "EU27 Biogeographische Regionen 2005",
-                        3: "EU27 Biogeographische Regionen 2011 Grenzen"
-                    }
+                layers: {
+                    0: "EU27 Biogeographische Regionen 2011",
+                    1: "EU27 Biogeographische Regionen 2008",
+                    2: "EU27 Biogeographische Regionen 2005",
+                    3: "EU27 Biogeographische Regionen 2011 Grenzen"
+                }
             },
             natura2000: {
                 title: "Natura 2000 Schutzgebiete",
-                    description: "Natura 2000 ist das Hauptinstrument der Europ\u00E4ischen Union zum Bewahren der Biodiversit\u00E4t. Es ist ein \u00F6kologisches Netzwerk von gesch\u00FCtzten Regionen und wurde zum Schutz von seltenen Arten und Habitaten ins Leben gerufen. Natura 2000 basiert auf der Vogelschutzrichtlinie von 1979 sowie auf der FFH-Richtlinie von 1992. Es beinhaltet Schutzma\u00DFnahmen f\u00FCr viele \u00D6kosysteme und sichert die Gesundheit und Robustheit von Europas Umwelt und Natur.",
-                    layers: {
-                        1: "Fl\u00E4chen nach der FFH-Richtlinie",
-                        2: "Ma\u00DFstab kleiner als 1:10.000.000",
-                        3: "Ma\u00DFstab zwischen 1:100.000 und 1:10.000.000",
-                        4: "Ma\u00DFstab gr\u00F6\u00DFer als 1:100.000",
-                        5: "Vogelschutzgebiete",
-                        6: "Ma\u00DFstab kleiner als 1:10,000,000",
-                        7: "Ma\u00DFstab zwischen 1:100,000 und 1:10,000,000",
-                        8: "Ma\u00DFstab gr\u00F6\u00DFer als 1:100,000"
-                    }
+                description: "Natura 2000 ist das Hauptinstrument der Europ\u00E4ischen Union zum Bewahren der Biodiversit\u00E4t. Es ist ein \u00F6kologisches Netzwerk von gesch\u00FCtzten Regionen und wurde zum Schutz von seltenen Arten und Habitaten ins Leben gerufen. Natura 2000 basiert auf der Vogelschutzrichtlinie von 1979 sowie auf der FFH-Richtlinie von 1992. Es beinhaltet Schutzma\u00DFnahmen f\u00FCr viele \u00D6kosysteme und sichert die Gesundheit und Robustheit von Europas Umwelt und Natur.",
+                layers: {
+                    1: "Fl\u00E4chen nach der FFH-Richtlinie",
+                    2: "Ma\u00DFstab kleiner als 1:10.000.000",
+                    3: "Ma\u00DFstab zwischen 1:100.000 und 1:10.000.000",
+                    4: "Ma\u00DFstab gr\u00F6\u00DFer als 1:100.000",
+                    5: "Vogelschutzgebiete",
+                    6: "Ma\u00DFstab kleiner als 1:10,000,000",
+                    7: "Ma\u00DFstab zwischen 1:100,000 und 1:10,000,000",
+                    8: "Ma\u00DFstab gr\u00F6\u00DFer als 1:100,000"
+                }
             }
         }
     },
@@ -138,29 +138,70 @@ define({
         type: "Typ"
     },
     intro: {
-        familiarise: "Diese Einf\u00fchrung dient dazu Sie mit den Elementen und Funktionalit\u00e4ten von map.apps vertraut zu machen.",
-        mapview: "Mit diesen Tasten kontrollieren Sie die Kartenansicht.",
-        basemap: "Wechseln Sie hier die Hintergrundkarte.",
-        theme: "Hier k\u00f6nnen Sie das aktuelle Farbschema wechseln.",
-        language: "Eine andere Sprache k\u00f6nnen Sie hier ausw\u00e4hlen.",
-        functions: "Hier finden Sie weitere Funktionen.",
-        mapflow: "W\u00e4hlen Sie hier Ihre Kartenthemen.",
-        mapflowTool: "Aktivieren Sie dazu einfach das gewünschte Kartenthema.",
-        legend: "Die Legende zeigt Ihnen die Symbolisierung der dargestellten Karteninhalte.",
-        omnisearch: "Geben Sie hier Ihren Suchbegriff ein und passen Sie die Suchmethode an.",
-        featureinfo: "Durch Klick in die Karte k\u00f6nnen Sie weitere Informationen abfragen.",
-        followme: "Hier k\u00f6nnen Sie mit anderen Nutzern zusammenarbeiten.",
-        gallery: "In der Gallerie können Sie andere Hintergrundkarten ausw\u00e4hlen.",
-        galleryTool: "Klicken Sie dazu einfach auf die gew\u00FCnschte Karte.",
-        routing: "Hier können Sie eine Route berechnen.",
-        okButton: "Ok",
-        closeButton: "Schliessen",
-        mapScaling: "mapScaling",
-        mapLoading: "mapLoading",
+        familiarise: {
+            title: "Willkommen",
+            content: "Diese Einf\u00fchrung dient dazu Sie mit den Elementen und Funktionalit\u00e4ten von map.apps vertraut zu machen."
+        },
+        mapview: {
+            title: "Kartenansicht",
+            content: "Mit diesen Tasten kontrollieren Sie die Kartenansicht."
+        },
+        basemap: {
+            title: "Hintergrundkarte",
+            content: "Wechseln Sie hier die Hintergrundkarte."
+        },
+        theme: {
+            title: "Farbschema",
+            content: "Hier k\u00f6nnen Sie das aktuelle Farbschema wechseln."
+        },
+        language: {
+            title: "Sprache",
+            content: "Eine andere Sprache k\u00f6nnen Sie hier ausw\u00e4hlen."
+        },
+        functions: {
+            title: "Weitere Funktionen",
+            content: "Hier finden Sie weitere Funktionen."
+        },
+        mapflow: {
+            title: "Kartenthemen",
+            content: "W\u00e4hlen Sie hier Ihre Kartenthemen."
+        },
+        mapflowTool: {
+            title: "Kartenthemen",
+            content: "Aktivieren Sie dazu einfach das gewünschte Kartenthema."
+        },
+        legend: {
+            title: "Legende",
+            content: "Die Legende zeigt Ihnen die Symbolisierung der dargestellten Karteninhalte."
+        },
+        omnisearch: {
+            title: "Omisearch",
+            content: "Geben Sie hier Ihren Suchbegriff ein und passen Sie die Suchmethode an."
+        },
+        featureinfo: {
+            title: "Featureinfo",
+            content: "Durch Klick in die Karte k\u00f6nnen Sie weitere Informationen abfragen."
+        },
+        followme: {
+            title: "FollowMe",
+            content: "Hier k\u00f6nnen Sie mit anderen Nutzern zusammenarbeiten."
+        },
+        gallery: {
+            title: "Gallerie",
+            content: "In der Gallerie können Sie andere Hintergrundkarten ausw\u00e4hlen."
+        },
+        galleryTool: {
+            title: "Gallerie",
+            content: "Klicken Sie dazu einfach auf die gew\u00FCnschte Karte."
+        },
+        routing: {
+            title: "Routing",
+            content: "Hier können Sie eine Route berechnen."
+        },
         next: "Weiter",
         back: "Zur\u00fcck",
-        skip: "\u00dcberspringen",
         done: "Beenden",
+        skip: "\u00dcberspringen",
         closeTooltip: "Intro beenden"
     }
 });
