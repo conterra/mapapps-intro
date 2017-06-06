@@ -127,19 +127,23 @@
             "target": ".basemapToggler",
             "placement": "bottom",
             "title": "${intro.basemap.title}",
-            "content": "${intro.basemap.content}"
+            "content": "${intro.basemap.content}",
+            "xOffset": -20,
+            "arrowOffset": 40
           },
           {
             "target": ".omnisearch",
             "placement": "right",
             "title": "${intro.omnisearch.title}",
-            "content": "${intro.omnisearch.content}"
+            "content": "${intro.omnisearch.content}",
+            "yOffset": -12
           },
           {
             "target": ".ctWDYWBtn",
             "placement": "right",
             "title": "${intro.functions.title}",
-            "content": "${intro.functions.content}"
+            "content": "${intro.functions.content}",
+            "yOffset": -15
           },
           {
             "target": ".ctTool_basemapgalleryToggleTool",
@@ -192,9 +196,11 @@
           },
           {
             "target": ".languageToggler",
-            "placement": "left",
+            "placement": "bottom",
             "title": "${intro.language.title}",
-            "content": "${intro.language.content}"
+            "content": "${intro.language.content}",
+            "xOffset": -220,
+            "arrowOffset": 260
           },
           {
             "target": ".mainMap",
