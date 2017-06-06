@@ -125,7 +125,8 @@
           "prevBtn": "${back}",
           "doneBtn": "${done}",
           "skipBtn": "${skip}",
-          "closeTooltip": "${closeTooltip}"
+          "closeTooltip": "${closeTooltip}",
+          "stepNums": []
         },
         "steps": []
       },

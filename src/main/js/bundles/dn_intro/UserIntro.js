@@ -49,7 +49,8 @@ define([
                     prevBtn: properties.i18n.prevBtn,
                     doneBtn: properties.i18n.doneBtn,
                     skipBtn: properties.i18n.skipBtn,
-                    closeTooltip: properties.i18n.closeTooltip
+                    closeTooltip: properties.i18n.closeTooltip,
+                    stepNums: properties.i18n.stepNums
                 }
             };
             tour.steps = this._steps = properties.steps;
