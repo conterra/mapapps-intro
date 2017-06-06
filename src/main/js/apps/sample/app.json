@@ -92,103 +92,115 @@
           "prevBtn": "${intro.back}",
           "doneBtn": "${intro.done}",
           "skipBtn": "${intro.skip}",
-          "closeTooltip": "${intro.closeTooltip}"
+          "closeTooltip": "${intro.closeTooltip}",
+          "stepNums": []
         },
         "steps": [
           {
             "target": ".mainMap",
+            "placement": "top",
             "title": "${intro.familiarise.title}",
             "content": "${intro.familiarise.content}",
-            "placement": "top",
+            "width": 280,
+            "padding": 15,
             "xOffset": "center",
             "yOffset": "center",
-            "arrowOffset": "center"
+            "arrowOffset": "center",
+            "delay": 0,
+            "zindex": 0,
+            "showNextButton": true,
+            "showPrevButton": true,
+            "showCTAButton": false,
+            "ctaLabel": "",
+            "multipage": false,
+            "showSkip": false,
+            "fixedElement": false,
+            "nextOnTargetClick": false
           },
           {
             "target": ".mapview_tools",
+            "placement": "left",
             "title": "${intro.mapview.title}",
-            "content": "${intro.mapview.content}",
-            "placement": "left"
+            "content": "${intro.mapview.content}"
           },
           {
             "target": ".basemapToggler",
+            "placement": "bottom",
             "title": "${intro.basemap.title}",
-            "content": "${intro.basemap.content}",
-            "placement": "bottom"
+            "content": "${intro.basemap.content}"
           },
           {
             "target": ".omnisearch",
+            "placement": "right",
             "title": "${intro.omnisearch.title}",
-            "content": "${intro.omnisearch.content}",
-            "placement": "right"
+            "content": "${intro.omnisearch.content}"
           },
           {
             "target": ".ctWDYWBtn",
+            "placement": "right",
             "title": "${intro.functions.title}",
-            "content": "${intro.functions.content}",
-            "placement": "right"
+            "content": "${intro.functions.content}"
           },
           {
             "target": ".ctTool_basemapgalleryToggleTool",
+            "placement": "top",
             "title": "${intro.gallery.title}",
-            "content": "${intro.gallery.content}",
-            "placement": "top"
+            "content": "${intro.gallery.content}"
           },
           {
             "target": ".ctBasemapGallery",
+            "placement": "top",
             "title": "${intro.galleryTool.title}",
             "content": "${intro.galleryTool.content}",
-            "placement": "top",
             "toolId": "basemapgalleryToggleTool"
           },
           {
             "target": ".ctTool_followmeToggleTool",
+            "placement": "top",
             "title": "${intro.followme.title}",
-            "content": "${intro.followme.content}",
-            "placement": "top"
+            "content": "${intro.followme.content}"
           },
           {
             "target": ".ctTool_mapflowToggleTool",
+            "placement": "top",
             "title": "${intro.mapflow.title}",
-            "content": "${intro.mapflow.content}",
-            "placement": "top"
+            "content": "${intro.mapflow.content}"
           },
           {
             "target": ".ctMapFlow",
-            "title": "${intro.mapflowTool.title}",
-            "content": "${intro.mapflowTool.content}",
             "placement": "top",
+            "title": "${intro.mapflowTool.title}",
             "toolId": "mapflowToggleTool"
           },
           {
             "target": ".ctTool_routingToggleTool",
+            "placement": "top",
             "title": "${intro.routing.title}",
-            "content": "${intro.routing.content}",
-            "placement": "top"
+            "content": "${intro.routing.content}"
           },
           {
             "target": ".ctTool_legendToggleTool",
+            "placement": "top",
             "title": "${intro.legend.title}",
-            "content": "${intro.legend.content}",
-            "placement": "top"
+            "content": "${intro.legend.content}"
           },
           {
             "target": ".themeSelector",
+            "placement": "bottom",
             "title": "${intro.theme.title}",
-            "content": "${intro.theme.content}",
-            "placement": "bottom"
+            "content": "${intro.theme.content}"
           },
           {
             "target": ".languageToggler",
+            "placement": "left",
             "title": "${intro.language.title}",
-            "content": "${intro.language.content}",
-            "placement": "left"
+            "content": "${intro.language.content}"
           },
           {
             "target": ".mainMap",
+            "placement": "top",
             "title": "${intro.featureinfo.title}",
             "content": "${intro.featureinfo.content}",
-            "placement": "top",
             "xOffset": "center",
             "yOffset": "center",
             "arrowOffset": "center"
