@@ -11,87 +11,80 @@
       "required": true
     },
     {
-      "type": "checkbox",
-      "field": "showStepNumbers",
-      "title": "${showStepNumbers.title}",
-      "tooltip": "${showStepNumbers.description}",
+      "type": "numberspinner",
+      "field": "bubbleWidth",
+      "title": "${bubbleWidth.title}",
+      "tooltip": "${bubbleWidth.description}",
+      "required": true
+    },
+    {
+      "type": "numberspinner",
+      "field": "bubblePadding",
+      "title": "${bubblePadding.title}",
+      "tooltip": "${bubblePadding.description}",
       "required": true
     },
     {
       "type": "checkbox",
-      "field": "showBullets",
-      "title": "${showBullets.title}",
-      "tooltip": "${showBullets.description}",
+      "field": "smoothScroll",
+      "title": "${smoothScroll.title}",
+      "tooltip": "${smoothScroll.description}",
+      "required": true
+    },
+    {
+      "type": "numberspinner",
+      "field": "scrollDuration",
+      "title": "${scrollDuration.title}",
+      "tooltip": "${scrollDuration.description}",
+      "required": true
+    },
+    {
+      "type": "numberspinner",
+      "field": "scrollTopMargin",
+      "title": "${scrollTopMargin.title}",
+      "tooltip": "${scrollTopMargin.description}",
       "required": true
     },
     {
       "type": "checkbox",
-      "field": "showProgress",
-      "title": "${showProgress.title}",
-      "tooltip": "${showProgress.description}",
+      "field": "showCloseButton",
+      "title": "${showCloseButton.title}",
+      "tooltip": "${showCloseButton.description}",
       "required": true
     },
     {
       "type": "checkbox",
-      "field": "showButtons",
-      "title": "${showButtons.title}",
-      "tooltip": "${showButtons.description}",
+      "field": "showPrevButton",
+      "title": "${showPrevButton.title}",
+      "tooltip": "${showPrevButton.description}",
       "required": true
     },
     {
       "type": "checkbox",
-      "field": "keyboardNavigation",
-      "title": "${keyboardNavigation.title}",
-      "tooltip": "${keyboardNavigation.description}",
+      "field": "showNextButton",
+      "title": "${showNextButton.title}",
+      "tooltip": "${showNextButton.description}",
+      "required": true
+    },
+    {
+      "type": "numberspinner",
+      "field": "arrowWidth",
+      "title": "${arrowWidth.title}",
+      "tooltip": "${arrowWidth.description}",
       "required": true
     },
     {
       "type": "checkbox",
-      "field": "exitOnEsc",
-      "title": "${exitOnEsc.title}",
-      "tooltip": "${exitOnEsc.description}",
+      "field": "skipIfNoElement",
+      "title": "${skipIfNoElement.title}",
+      "tooltip": "${skipIfNoElement.description}",
       "required": true
     },
     {
       "type": "checkbox",
-      "field": "exitOnOverlayClick",
-      "title": "${exitOnOverlayClick.title}",
-      "tooltip": "${exitOnOverlayClick.description}",
-      "required": true
-    },
-    {
-      "type": "checkbox",
-      "field": "disableInteraction",
-      "title": "${disableInteraction.title}",
-      "tooltip": "${disableInteraction.description}",
-      "required": true
-    },
-    {
-      "type": "textbox",
-      "field": "nextLabel",
-      "title": "${nextLabel.title}",
-      "tooltip": "${nextLabel.description}",
-      "required": true
-    },
-    {
-      "type": "textbox",
-      "field": "prevLabel",
-      "title": "${prevLabel.title}",
-      "tooltip": "${prevLabel.description}",
-      "required": true
-    },
-    {
-      "type": "textbox",
-      "field": "skipLabel",
-      "title": "${skipLabel.title}",
-      "tooltip": "${skipLabel.description}",
-      "required": true
-    },
-    {
-      "type": "textbox",
-      "field": "doneLabel",
-      "title": "${doneLabel.title}",
-      "tooltip": "${doneLabel.description}",
+      "field": "nextOnTargetClick",
+      "title": "${nextOnTargetClick.title}",
+      "tooltip": "${nextOnTargetClick.description}",
       "required": true
     },
     {

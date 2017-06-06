@@ -23,53 +23,49 @@ define({
             title: "Start intro on startup",
             description: "Start intro on startup"
         },
-        showStepNumbers: {
-            title: "Show steps number",
-            description: "Show steps number in the red circle or not"
+        bubbleWidth: {
+            title: "Bubble width",
+            description: "Bubble width"
         },
-        showBullets: {
-            title: "Show bullets",
-            description: "Show introduction bullets or not"
+        bubblePadding: {
+            title: "Bubble Padding",
+            description: "Bubble Padding"
         },
-        showProgress: {
-            title: "Show progress",
-            description: "Show introduction progress or not"
+        smoothScroll: {
+            title: "Scroll smoothly to the next step",
+            description: "Scroll smoothly to the next step"
         },
-        showButtons: {
-            title: "Show navigation buttons",
-            description: "Show introduction navigation buttons or not"
+        scrollDuration: {
+            title: "Scroll duration",
+            description: "Scroll duration"
         },
-        keyboardNavigation: {
-            title: "Keyboard Navigation",
-            description: "Navigating with keyboard or not"
+        scrollTopMargin: {
+            title: "Space between bubble and the top of the viewport when the page scrolls",
+            description: "Space between bubble and the top of the viewport when the page scrolls"
         },
-        exitOnEsc: {
-            title: "Exit on ESC",
-            description: "Exit introduction when pressing Escape button"
+        showCloseButton: {
+            title: "Show close button",
+            description: "Show close button"
         },
-        exitOnOverlayClick: {
-            title: "Exit on overlay click",
-            description: "Exit introduction when clicking on overlay layer"
+        showPrevButton: {
+            title: "Show previous button",
+            description: "Show previous button"
         },
-        disableInteraction: {
-            title: "Disable interaction",
-            description: "Disable an interaction inside element or not"
+        showNextButton: {
+            title: "Show next button",
+            description: "Show next button"
         },
-        nextLabel: {
-            title: "Next button label",
-            description: "Next button label"
+        arrowWidth: {
+            title: "Arrow width",
+            description: "Arrow width"
         },
-        prevLabel: {
-            title: "Previous button label",
-            description: "Previous button label"
+        skipIfNoElement: {
+            title: "If a specified target element is not found, skip to the next step",
+            description: "If a specified target element is not found, skip to the next step"
         },
-        skipLabel: {
-            title: "Skip button label",
-            description: "Skip button label"
-        },
-        doneLabel: {
-            title: "Done button label",
-            description: "Done button label"
+        nextOnTargetClick: {
+            title: "Go to next step if the user clicks on the target",
+            description: "Go to next step if the user clicks on the target"
         },
         steps: {
             title: "Steps definition",

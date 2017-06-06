@@ -22,53 +22,49 @@ define({
         title: "Intro beim App-Start starten",
         description: "Intro beim App-Start starten"
     },
-    showStepNumbers: {
-        title: "Schritt Nummern anzeigen",
-        description: "Zeigt die aktuelle Schritt-Nummer in einem roten Kreis an"
+    bubbleWidth: {
+        title: "Bubble width",
+        description: "Bubble width"
     },
-    showBullets: {
-        title: "Kugeln anzeigen",
-        description: "Zeigt den aktuellen Schritt anhand von Kugeln an"
+    bubblePadding: {
+        title: "Bubble Padding",
+        description: "Bubble Padding"
     },
-    showProgress: {
-        title: "Fortschrittsbalken anzeigen",
-        description: "Zeigt den aktuellen Schritt anhand eines Fortschrittbalkens an"
+    smoothScroll: {
+        title: "Weiches Scrollen zum n\u00e4chsten Schritt",
+        description: "Weiches Scrollen zum n\u00e4chsten Schritt"
     },
-    showButtons: {
-        title: "Navigations-Buttons anzeigen",
-        description: "Zeigt die Navigations-Buttons an"
+    scrollDuration: {
+        title: "Scroll Dauer",
+        description: "Scroll Dauer"
     },
-    keyboardNavigation: {
-        title: "Tastatur-Navigation",
-        description: "Navigating mit der Tastatur"
+    scrollTopMargin: {
+        title: "Abstand zwischen dem Bubble und dem Ansichtsfenster, wenn die Seite scrollt",
+        description: "Abstand zwischen dem Bubble und dem Ansichtsfenster, wenn die Seite scrollt"
     },
-    exitOnEsc: {
-        title: "Beenden mit ESC",
-        description: "Beendet die Einf\u00fchrung beim Dr\u00fccken der Escape-Taste"
+    showCloseButton: {
+        title: "Zeige Beenden-Knopf",
+        description: "Zeige Beenden-Knopf"
     },
-    exitOnOverlayClick: {
-        title: "Beenden bei Klick auf das Overlay",
-        description: "Beendet die Einf\u00fchrung beim Klick auf das Overlay"
+    showPrevButton: {
+        title: "Zeige Zur\u00fcck-Knopf",
+        description: "Zur\u00fcck-Knopf"
     },
-    disableInteraction: {
-        title: "Interaktion deaktivieren",
-        description: "Interaktion innerhalb eines Elementes deaktivieren"
+    showNextButton: {
+        title: "Zeige Weiter-Knopf",
+        description: "Zeige Weiter-Knopf"
     },
-    nextLabel: {
-        title: "Weiter-Beschriftung",
-        description: "Fertig-Beschriftung"
+    arrowWidth: {
+        title: "Pfeil-Breite",
+        description: "Pfeil-Breite"
     },
-    prevLabel: {
-        title: "Zur\u00fcck-Beschriftung",
-        description: "Fertig-Beschriftung"
+    skipIfNoElement: {
+        title: "Gehe weiter zum n\u00e4chsten Schritt, wenn kein Zielelement gefunden wurde",
+        description: "Gehe weiter zum n\u00e4chsten Schritt, wenn kein Zielelement gefunden wurde"
     },
-    skipLabel: {
-        title: "\u00dcberspringen-Beschriftung",
-        description: "Fertig-Beschriftung"
-    },
-    doneLabel: {
-        title: "Fertig-Beschriftung",
-        description: "Fertig-Beschriftung"
+    nextOnTargetClick: {
+        title: "Gehe zum n\u00e4chsten Schritt, wenn das Zielelement angeklickt wurde",
+        description: "Gehe zum n\u00e4chsten Schritt, wenn das Zielelement angeklickt wurde"
     },
     steps: {
         title: "Schritte definieren",
