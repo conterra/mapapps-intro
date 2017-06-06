@@ -23,3 +23,213 @@
     opacity: 0;
     visibility: hidden;
 }
+
+div.hopscotch-bubble .hopscotch-nav-button {
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+div.hopscotch-bubble .hopscotch-nav-button.next {
+    filter: none;
+    background-image: none;
+}
+
+div.hopscotch-bubble .hopscotch-nav-button.next:hover {
+    filter: none;
+    background-image: none;
+}
+
+div.hopscotch-bubble .hopscotch-nav-button.prev {
+    filter: none;
+    border-color: #8d8d8d;
+    color: #fff;
+    background: #8d8d8d none;
+}
+
+div.hopscotch-bubble .hopscotch-nav-button.prev:hover {
+    filter: none;
+    background: #8d8d8d none;
+}
+
+.everlasting div.hopscotch-bubble .hopscotch-nav-button.next {
+    border-color: #12A5F4;
+    color: #fff;
+    background: #12A5F4;
+}
+
+.everlasting div.hopscotch-bubble .hopscotch-nav-button.next:hover {
+    background: #2aaef5;
+}
+
+.everlasting div.hopscotch-bubble {
+    color: #fff;
+    background-color: #48484B;
+}
+
+.everlasting div.hopscotch-bubble h3 {
+    color: #fff;
+}
+
+.everlasting div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow {
+    border-bottom: 17px solid #48484B;
+}
+
+.everlasting div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-arrow {
+    border-top: 17px solid #48484B;
+}
+
+.everlasting div.hopscotch-bubble .hopscotch-bubble-arrow-container.left .hopscotch-bubble-arrow {
+    border-right: 17px solid #48484B;
+}
+
+.everlasting div.hopscotch-bubble .hopscotch-bubble-arrow-container.right .hopscotch-bubble-arrow {
+    border-left: 17px solid #48484B;
+}
+
+.autumn div.hopscotch-bubble .hopscotch-nav-button.next {
+    border-color: #2980B9;
+    color: #fff;
+    background: #2980B9;
+}
+
+.autumn div.hopscotch-bubble .hopscotch-nav-button.next:hover {
+    background: #439AD3;
+}
+
+.autumn div.hopscotch-bubble {
+    color: #000;
+    background-color: #F3F3F3;
+}
+
+.autumn div.hopscotch-bubble h3 {
+    color: #000;
+}
+
+.autumn div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow {
+    border-bottom: 17px solid #F3F3F3;
+}
+
+.autumn div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-arrow {
+    border-top: 17px solid #F3F3F3;
+}
+
+.autumn div.hopscotch-bubble .hopscotch-bubble-arrow-container.left .hopscotch-bubble-arrow {
+    border-right: 17px solid #F3F3F3;
+}
+
+.autumn div.hopscotch-bubble .hopscotch-bubble-arrow-container.right .hopscotch-bubble-arrow {
+    border-left: 17px solid #F3F3F3;
+}
+
+.spring div.hopscotch-bubble .hopscotch-nav-button.next {
+    border-color: #16A085;
+    color: #fff;
+    background: #16A085;
+}
+
+.spring div.hopscotch-bubble .hopscotch-nav-button.next:hover {
+    background: #30BA9F;
+}
+
+.spring div.hopscotch-bubble {
+    color: #000;
+    background-color: #F3F3F3;
+}
+
+.spring div.hopscotch-bubble h3 {
+    color: #000;
+}
+
+.spring div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow {
+    border-bottom: 17px solid #F3F3F3;
+}
+
+.spring div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-arrow {
+    border-top: 17px solid #F3F3F3;
+}
+
+.spring div.hopscotch-bubble .hopscotch-bubble-arrow-container.left .hopscotch-bubble-arrow {
+    border-right: 17px solid #F3F3F3;
+}
+
+.spring div.hopscotch-bubble .hopscotch-bubble-arrow-container.right .hopscotch-bubble-arrow {
+    border-left: 17px solid #F3F3F3;
+}
+
+.summer div.hopscotch-bubble .hopscotch-nav-button.next {
+    border-color: #8C0F1A;
+    color: #fff;
+    background: #8C0F1A;
+}
+
+.summer div.hopscotch-bubble .hopscotch-nav-button.next:hover {
+    background: #A62934;
+}
+
+.summer div.hopscotch-bubble {
+    color: #000;
+    background-color: #F3F3F3;
+}
+
+.summer div.hopscotch-bubble h3 {
+    color: #000;
+}
+
+.summer div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow {
+    border-bottom: 17px solid #F3F3F3;
+}
+
+.summer div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-arrow {
+    border-top: 17px solid #F3F3F3;
+}
+
+.summer div.hopscotch-bubble .hopscotch-bubble-arrow-container.left .hopscotch-bubble-arrow {
+    border-right: 17px solid #F3F3F3;
+}
+
+.summer div.hopscotch-bubble .hopscotch-bubble-arrow-container.right .hopscotch-bubble-arrow {
+    border-left: 17px solid #F3F3F3;
+}
+
+.winter div.hopscotch-bubble .hopscotch-nav-button.next {
+    border-color: #3C3C3C;
+    color: #fff;
+    background: #3C3C3C;
+}
+
+.winter div.hopscotch-bubble .hopscotch-nav-button.next:hover {
+    background: #565656;
+}
+
+.winter div.hopscotch-bubble {
+    color: #000;
+    background-color: #F3F3F3;
+}
+
+.winter div.hopscotch-bubble h3 {
+    color: #000;
+}
+
+.winter div.hopscotch-bubble .hopscotch-bubble-arrow-container.up .hopscotch-bubble-arrow {
+    border-bottom: 17px solid #F3F3F3;
+}
+
+.winter div.hopscotch-bubble .hopscotch-bubble-arrow-container.down .hopscotch-bubble-arrow {
+    border-top: 17px solid #F3F3F3;
+}
+
+.winter div.hopscotch-bubble .hopscotch-bubble-arrow-container.left .hopscotch-bubble-arrow {
+    border-right: 17px solid #F3F3F3;
+}
+
+.winter div.hopscotch-bubble .hopscotch-bubble-arrow-container.right .hopscotch-bubble-arrow {
+    border-left: 17px solid #F3F3F3;
+}
+
+
+
+
+
