@@ -99,74 +99,19 @@ Installation Guide
             },
             {
                 "target": ".mapview_tools",
-                "content": "${intro.mapview}",
-                "placement": "left"
+                "placement": "left",
+                "title": "${intro.mapview.title}",
+                "content": "${intro.mapview.content}"
             },
             {
                 "target": ".basemapToggler",
-                "content": "${intro.basemap}",
-                "placement": "bottom"
+                "placement": "bottom",
+                "title": "${intro.basemap.title}",
+                "content": "${intro.basemap.content}",
+                "xOffset": -20,
+                "arrowOffset": 40
             },
-            {
-                "target": ".omnisearch",
-                "content": "${intro.omnisearch}",
-                "placement": "right"
-            },
-            {
-                "target": ".ctWDYWBtn",
-                "content": "${intro.functions}",
-                "placement": "right"
-            },
-            {
-                "target": ".ctTool_basemapgalleryToggleTool",
-                "content": "${intro.gallery}",
-                "placement": "top"
-            },
-            {
-                "target": ".ctBasemapGallery",
-                "content": "${intro.galleryTool}",
-                "placement": "top",
-                "toolId": "basemapgalleryToggleTool"
-            },
-            {
-                "target": ".ctTool_followmeToggleTool",
-                "content": "${intro.followme}",
-                "placement": "top"
-            },
-            {
-                "target": ".ctTool_mapflowToggleTool",
-                "content": "${intro.mapflow}",
-                "placement": "top"
-            },
-            {
-                "target": ".ctMapFlow",
-                "content": "${intro.mapflowTool}",
-                "placement": "top",
-                "toolId": "mapflowToggleTool"
-            },
-            {
-                "target": ".ctTool_routingToggleTool",
-                "content": "${intro.routing}",
-                "placement": "top"
-            },
-            {
-                "target": ".ctTool_legendToggleTool",
-                "content": "${intro.legend}",
-                "placement": "top"
-            },
-            {
-                "target": ".themeSelector",
-                "content": "${intro.theme}",
-                "placement": "bottom"
-            },
-            {
-                "target": ".languageToggler",
-                "content": "${intro.language}",
-                "placement": "bottom"
-            },
-            {
-                "content": "${intro.featureinfo}"
-            }
+            ...
         ]
     }
 }
