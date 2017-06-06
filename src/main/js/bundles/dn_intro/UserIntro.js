@@ -47,7 +47,7 @@ define([
                 i18n: {
                     nextBtn: properties.i18n.nextBtn,
                     prevBtn: properties.i18n.prevBtn,
-                    doneBt: properties.i18n.doneBt,
+                    doneBtn: properties.i18n.doneBtn,
                     skipBtn: properties.i18n.skipBtn,
                     closeTooltip: properties.i18n.closeTooltip
                 }
