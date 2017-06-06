@@ -79,6 +79,23 @@ define([
             hopscotch.startTour(tour, 0);
             hopscotch.listen("next", d_lang.hitch(this, this.onStep));
             hopscotch.listen("prev", d_lang.hitch(this, this.onStep));
+
+            window.addEventListener("keydown", d_lang.hitch(hopscotch, this.onKeyDown), false);
+        },
+        onKeyDown: function (event) {
+            var key = event.which || event.keyCode;
+            switch (key) {
+                case 32:
+                    // space key pressed
+                    this.nextStep();
+                    break;
+                case 37:
+                    // left key pressed
+                    break;
+                case 39:
+                    // right key pressed
+                    break;
+            }
         },
         onStep: function () {
             var activeTool = this._activeTool;
