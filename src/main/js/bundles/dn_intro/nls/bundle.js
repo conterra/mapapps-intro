@@ -16,7 +16,7 @@
 define({
     root: {
         bundleName: "Intro Bundle",
-        bundleDescription: "Intro Bundle",
+        bundleDescription: "This bundle allows you to create your own step-by-step guide in map.apps based on the hopscotch framework.",
         windowTitle: "Welcome to map.apps!",
         toolName: "Intro Tool",
         toolTooltip: "Intro Tool",

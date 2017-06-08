@@ -15,7 +15,7 @@
  */
 define({
     bundleName: "Intro Bundle",
-    bundleDescription: "Intro Bundle",
+    bundleDescription: "Dieses Bundle erlaubt die Erstellung eigener Intros in map.apps. Es basiert auf dem hopscotch framework.",
     windowTitle: "Willkommen in map.apps!",
     toolName: "Intro Tool",
     toolTooltip: "Intro Tool",
