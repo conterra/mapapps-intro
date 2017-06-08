@@ -1,16 +1,16 @@
-# mapapps-introjs
+# mapapps-intro
 This bundle allows you to create your own step-by-step guide in map.apps.
 
 :heavy_exclamation_mark: desktop-only
 
 Sample App
 ------------------
-http://www.mapapps.de/mapapps/resources/apps/downloads_introjs/index.html
+http://www.mapapps.de/mapapps/resources/apps/downloads_intro/index.html
 
 Installation Guide
 ------------------
 
-1. First, you need to add the bundle "dn_introjs" to your app.
+1. First, you need to add the bundle "dn_intro" to your app.
 2. After that, change the intro properties in the app.json:
 
 ```
