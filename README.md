@@ -2,6 +2,8 @@
 This bundle allows you to create your own step-by-step guide in map.apps based on the hopscotch framework.
 https://github.com/linkedin/hopscotch
 
+:heavy_exclamation_mark: desktop-only
+
 Sample App
 ------------------
 http://www.mapapps.de/mapapps/resources/apps/downloads_intro/index.html

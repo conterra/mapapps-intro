@@ -7,6 +7,12 @@
   "Product-Name": "devnet-mapapps-intro",
   "Bundle-StartLevel": 51,
   "Bundle-DocURL": "https://github.com/conterra/mapapps-intro/blob/master/README.md",
+  "Bundle-ExcludedExecutionEnvironment": [
+    "mobile",
+    "Android",
+    "iPad",
+    "iPhone"
+  ],
   "Config-Bundle-Location": "/config",
   "Require-Bundle": [
     {
