@@ -225,7 +225,7 @@
           "omniSearchLabelAttr": "cc",
           "omniSearchSearchAttr": "cc",
           "idProperty": "OBJECTID",
-          "url": "http://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer/0",
+          "url": "https://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer/0",
           "useIn": [
             "omnisearch"
           ],
@@ -553,14 +553,14 @@
           "services": [
             {
               "id": "worldimage",
-              "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
               "type": "AGS_TILED",
               "title": "${map.base.aerial.title}",
               "description": "${map.base.aerial.description}"
             },
             {
               "id": "worldtopo",
-              "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
               "type": "AGS_TILED",
               "title": "${map.base.topo.title}",
               "description": "${map.base.topo.description}"
@@ -568,13 +568,13 @@
             {
               "id": "streets",
               "description": "${map.base.streets.description}",
-              "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
               "type": "AGS_TILED",
               "title": "${map.base.streets.title}"
             },
             {
               "id": "bathingwater",
-              "url": "http://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer",
+              "url": "https://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer",
               "type": "AGS_DYNAMIC",
               "title": "${map.operational.bathingwater.title}",
               "description": "${map.operational.bathingwater.description}",
@@ -630,7 +630,7 @@
             },
             {
               "id": "regions",
-              "url": "http://bio.discomap.eea.europa.eu/arcgis/rest/services/BioRegions/Biogeographicalregions_Dyna_WM/MapServer",
+              "url": "https://bio.discomap.eea.europa.eu/arcgis/rest/services/BioRegions/Biogeographicalregions_Dyna_WM/MapServer",
               "type": "AGS_DYNAMIC",
               "title": "${map.operational.regions.title}",
               "description": "${map.operational.regions.description}",
@@ -659,7 +659,7 @@
             },
             {
               "id": "natura000",
-              "url": "http://discomap.eea.europa.eu/arcgis/rest/services/Bio/Natura2000_Dyna_WM/MapServer",
+              "url": "https://discomap.eea.europa.eu/arcgis/rest/services/Bio/Natura2000_Dyna_WM/MapServer",
               "type": "AGS_DYNAMIC",
               "title": "${map.operational.natura2000.title}",
               "description": "${map.operational.natura2000.description}",
