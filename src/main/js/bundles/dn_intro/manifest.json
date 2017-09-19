@@ -80,11 +80,27 @@
           "providing": "dn_intro.UserIntro"
         },
         {
-          "name": "_tool",
+          "name": "_introTool",
           "providing": "ct.tools.Tool",
           "filter": "(id=introTool)"
         }
       ]
+    },
+    {
+      "name": "${introToolName}",
+      "impl": "ct/tools/Tool",
+      "provides": [
+        "ct.tools.Tool"
+      ],
+      "propertiesConstructor": true,
+      "properties": {
+        "id": "introTool",
+        "toolRole": "toolset",
+        "title": "${introToolTitle}",
+        "tooltip": "${introToolTooltip}",
+        "togglable": true,
+        "iconClass": "icon-add-symbol"
+      }
     },
     {
       "name": "${toolName}",
@@ -94,13 +110,20 @@
       ],
       "propertiesConstructor": true,
       "properties": {
-        "id": "introTool",
+        "id": "introImmediateTool",
         "toolRole": "toolset",
-        "title": "${toolName}",
-        "tooltip": "${toolTooltip}",
-        "togglable": true,
+        "title": "${introImmediateToolTitle}",
+        "tooltip": "${introImmediateToolTooltip}",
+        "togglable": false,
+        "clickHandler": "startIntro",
         "iconClass": "icon-add-symbol"
-      }
+      },
+      "references": [
+        {
+          "name": "handlerScope",
+          "providing": "dn_intro.UserIntro"
+        }
+      ]
     },
     {
       "name": "UserIntro",

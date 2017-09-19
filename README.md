@@ -6,7 +6,7 @@ https://github.com/linkedin/hopscotch
 
 Sample App
 ------------------
-http://www.mapapps.de/mapapps/resources/apps/downloads_intro/index.html
+https://demos.conterra.de/mapapps/resources/apps/downloads_intro/index.html
 
 Installation Guide
 ------------------
@@ -117,6 +117,11 @@ Installation Guide
     }
 }
 ```
+
+There are to tools that provides different functions:
+* introTool: shows a widget that allows the user to start the intro and hide it on next startup.
+* introImmediateTool: starts the intro immediately.
+
 
 Development Guide
 ------------------

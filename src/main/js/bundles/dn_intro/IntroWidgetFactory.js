@@ -65,7 +65,7 @@ define([
         },
         start: function () {
             this._userIntro.startIntro();
-            this._tool.set("active", false);
+            this._introTool.set("active", false);
         },
         disableIntro: function () {
             var cookieKey = "ShowIntroduction";
