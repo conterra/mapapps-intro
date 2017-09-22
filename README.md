@@ -7,6 +7,7 @@ https://github.com/linkedin/hopscotch
 Sample App
 ------------------
 https://demos.conterra.de/mapapps/resources/apps/downloads_intro/index.html
+https://demos.conterra.de/mapapps/resources/apps/downloads_intro_4x/index.html
 
 Installation Guide
 ------------------
