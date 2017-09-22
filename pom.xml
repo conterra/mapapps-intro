@@ -73,7 +73,7 @@
             <artifactId>ct-jsregistry-embedded</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- use intern-geezer as test lib -->
+        <!-- use intern as test lib -->
         <dependency>
             <groupId>de.conterra.jsrt</groupId>
             <artifactId>ct-jsrt-test-intern</artifactId>
@@ -275,6 +275,7 @@
             <plugin>
                 <groupId>de.conterra.maven</groupId>
                 <artifactId>setproperties-maven-plugin</artifactId>
+                <version>1.0.2</version>
                 <executions>
                     <execution>
                         <goals>
@@ -286,7 +287,7 @@
                     <!-- add here properties which are used in plugin configuration resolution -->
                     <properties>
                         <!-- deployment of map.apps installation -->
-                        <mapapps.remote.base />
+                        <mapapps.remote.base/>
                     </properties>
                 </configuration>
             </plugin>
@@ -386,7 +387,7 @@
                                     <!-- remove bundleLocations from app.json -->
                                     <token>\s*"bundleLocations"\s*:\s*\[\s*"localbundles"\s*,\s*"bundles"\s*\]\s*,\s*
                                     </token>
-                                    <value />
+                                    <value></value>
                                 </replacement>
                             </replacements>
                         </configuration>
@@ -522,8 +523,8 @@
         <apprt.version>${mapapps.version}</apprt.version>
 
         <!-- java lib versions -->
-        <ct.jsregistry.version>1.1.1</ct.jsregistry.version>
-        <ct.jsrt-test.version>1.0.9</ct.jsrt-test.version>
+        <ct.jsregistry.version>1.1.2</ct.jsregistry.version>
+        <ct.jsrt-test.version>1.1.1</ct.jsrt-test.version>
 
         <!-- the default app, replaced in the *.html files to switch app names-->
         <default.app.name>sample</default.app.name>
@@ -543,10 +544,10 @@
     <profiles>
         <profile>
             <id>run-js-tests</id>
-            <!-- 
+            <!--
                 Execute:
-                
-                mvn package -P run-js-tests -Dmapapps.remote.base=... 
+
+                mvn package -P run-js-tests -Dmapapps.remote.base=...
             -->
             <build>
                 <plugins>
@@ -800,7 +801,7 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>optimize css</id>
+                                <id>optimize CSS</id>
                                 <goals>
                                     <goal>optimizeCSS</goal>
                                 </goals>
