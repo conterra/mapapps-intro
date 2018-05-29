@@ -4,6 +4,8 @@ https://github.com/linkedin/hopscotch
 
 :heavy_exclamation_mark: desktop-only
 
+![Screenshot App](https://github.com/conterra/mapapps-intro/blob/master/screenshot.JPG)
+
 Sample App
 ------------------
 https://demos.conterra.de/mapapps/resources/apps/downloads_intro/index.html
