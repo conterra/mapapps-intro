@@ -87,7 +87,7 @@
       ]
     },
     {
-      "name": "${introToolName}",
+      "name": "IntroTool",
       "impl": "ct/tools/Tool",
       "provides": [
         "ct.tools.Tool"
@@ -99,11 +99,12 @@
         "title": "${introToolTitle}",
         "tooltip": "${introToolTooltip}",
         "togglable": true,
+        "groups": "introTools",
         "iconClass": "icon-add-symbol"
       }
     },
     {
-      "name": "${toolName}",
+      "name": "IntroImmediateTool",
       "impl": "ct/tools/Tool",
       "provides": [
         "ct.tools.Tool"
