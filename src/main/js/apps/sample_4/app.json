@@ -95,7 +95,8 @@
             "target": ".mapview_tools",
             "placement": "left",
             "title": "${intro.mapviewTools.title}",
-            "content": "${intro.mapviewTools.content}"
+            "content": "${intro.mapviewTools.content}",
+            "toolId": "my_toolset"
           },
           {
             "target": ".omnisearch",
@@ -696,6 +697,20 @@
             "container": "ignore",
             "windowType": "container",
             "cssClass": "muted"
+          },
+          {
+            "id": "my_toolset",
+            "tools": [
+              "printingToggleTool"
+            ],
+            "container": "map",
+            "position": {
+              "rel_t": 300,
+              "rel_r": 20
+            },
+            "registerTool": true,
+            "togglable": true,
+            "windowType": "dropdown"
           }
         ]
       }
