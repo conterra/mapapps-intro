@@ -179,8 +179,10 @@
     },
     "banner": {
       "BannerWidget": {
+        "label": "Developer Network",
+        "imagePosition": "above",
         "image": "resource('${app}:/images/logo_conterra.png')",
-        "imageWidth": 120,
+        "imageWidth": 200,
         "link": "https://www.conterra.de"
       }
     },
