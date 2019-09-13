@@ -33,8 +33,8 @@
       "window": {
         "title": "${windowTitle}",
         "marginBox": {
-          "w": 340,
-          "h": 160
+          "w": 400,
+          "h": 180
         },
         "dockTool": "introTool",
         "closable": true,
