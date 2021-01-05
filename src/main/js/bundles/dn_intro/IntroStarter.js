@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2021 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,35 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define([
-    "dojo/_base/declare",
-    "dojo/cookie"
-], function (declare,
-             d_cookie) {
-    return declare([], {
-        activate: function () {
-            this.inherited(arguments);
-            var userIntro = this._userIntro;
-            var properties = userIntro._properties;
-            var startIntroOnStartup = properties.startIntroOnStartup;
-            var enableCookie = properties.enableCookie;
-            if (startIntroOnStartup) {
-                if (enableCookie) {
-                    var cookieKey = "ShowIntroduction";
-                    var value = d_cookie(cookieKey);
-                    if (value === "false") {
-                        // do nothing
-                    } else {
-                        this._tool.set("active", true);
-                    }
+import d_cookie from "dojo/cookie";
+
+export default class IntroStarter {
+
+    activate() {
+        const userIntro = this._userIntro;
+        const properties = userIntro._properties;
+        const startIntroOnStartup = properties.startIntroOnStartup;
+        const enableCookie = properties.enableCookie;
+        if (startIntroOnStartup) {
+            if (enableCookie) {
+                const cookieKey = "ShowIntroduction";
+                const value = d_cookie(cookieKey);
+                if (value === "false") {
+                    // do nothing
                 } else {
-                    var startIntro = this._startIntroOnStartupChecker && this._startIntroOnStartupChecker.getStartIntroOnStartupValue();
-                    if (startIntro) {
-                        this._tool.set("active", true);
-                    }
+                    this._tool.set("active", true);
+                }
+            } else {
+                const startIntro = this._startIntroOnStartupChecker && this._startIntroOnStartupChecker.getStartIntroOnStartupValue();
+                if (startIntro) {
+                    this._tool.set("active", true);
                 }
             }
         }
-    });
-});
-		
+    }
+
+}

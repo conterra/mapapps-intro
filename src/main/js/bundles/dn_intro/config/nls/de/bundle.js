@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2021 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define({
+module.exports = {
     bundleName: "Intro Konfiguration",
     bundleDescription: "Konfigurationsbundle f\u00fcr das Intro Bundle",
     windowTitle: "Intro Konfiguration",
@@ -70,4 +70,4 @@ define({
         title: "Schritte definieren",
         description: "Schritte mit JSON definieren"
     }
-});
+}

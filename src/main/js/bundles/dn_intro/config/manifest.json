@@ -1,83 +1,84 @@
 {
-  "Bundle-SymbolicName": "dn_intro-config",
-  "Bundle-Version": "1.0.3-SNAPSHOT",
-  "Bundle-Name": "${bundleName}",
-  "Bundle-Description": "${bundleDescription}",
-  "Bundle-Vendor": "con terra GmbH",
-  "Require-Bundle": [
-    {
-      "name": "dataform"
+    "name": "dn_intro-config",
+    "version": "2.0.0-SNAPSHOT",
+    "title": "${bundleName}",
+    "description": "${bundleDescription}",
+    "vendor": "con terra GmbH",
+    "dependencies": {
+        "dataform": "^4.0.0",
+        "wizard": "^4.0.0"
     },
-    {
-      "name": "wizard"
-    }
-  ],
-  "Components": [
-    {
-      "name": "BuilderEntry",
-      "impl": "ct/Stateful",
-      "provides": [
-        "wizard.MenuEntry"
-      ],
-      "propertiesConstructor": true,
-      "properties": {
-        "menuNode": {
-          "priority": 0,
-          "title": "${windowTitle}",
-          "widget": "introBuilderWidget",
-          "iconUrl": "resource('styles/images/bundleIcon.png')"
-        }
-      }
-    },
-    {
-      "name": "BuilderWidget",
-      "impl": "wizard/DataFormBuilderWidgetFactory",
-      "provides": [
-        "dijit.wizard.Widget"
-      ],
-      "immediate": true,
-      "instanceFactory": true,
-      "properties": {
-        "dataformFile": "resource('./DataForm.json')",
-        "bid": "dn_intro",
-        "pid": "dn_intro-UserIntro",
-        "id": "introBuilderWidget",
-        "defaultProperties": {
-          "startIntroOnStartup": true,
-          "enableCookie": true,
-          "bubbleWidth": 280,
-          "bubblePadding": 15,
-          "smoothScroll": true,
-          "scrollDuration": 1000,
-          "scrollTopMargin": 200,
-          "showCloseButton": true,
-          "showPrevButton": true,
-          "showNextButton": true,
-          "arrowWidth": 20,
-          "skipIfNoElement": true,
-          "nextOnTargetClick": false,
-          "i18n": {
-            "nextBtn": "${next}",
-            "prevBtn": "${back}",
-            "doneBtn": "${done}",
-            "skipBtn": "${skip}",
-            "closeTooltip": "${closeTooltip}",
-            "stepNums": []
-          },
-          "steps": []
-        },
-        "description": "${description}"
-      },
-      "references": [
+    "productName": "devnet-mapapps-intro",
+    "layer": "module",
+    "i18n": [
+        "bundle"
+    ],
+    "components": [
         {
-          "name": "_configAdminService",
-          "providing": "ct.framework.api.ConfigurationAdmin"
+            "name": "BuilderEntry",
+            "impl": "ct/Stateful",
+            "provides": [
+                "wizard.MenuEntry"
+            ],
+            "propertiesConstructor": true,
+            "properties": {
+                "menuNode": {
+                    "priority": 0,
+                    "title": "${windowTitle}",
+                    "widget": "introBuilderWidget",
+                    "iconUrl": "resource('styles/images/bundleIcon.png')"
+                }
+            }
         },
         {
-          "name": "_dataformService",
-          "providing": "dataform.DataFormService"
+            "name": "BuilderWidget",
+            "impl": "wizard/DataFormBuilderWidgetFactory",
+            "provides": [
+                "dijit.wizard.Widget"
+            ],
+            "immediate": true,
+            "instanceFactory": true,
+            "properties": {
+                "dataformFile": "resource('./DataForm.json')",
+                "bid": "dn_intro",
+                "pid": "dn_intro-UserIntro",
+                "id": "introBuilderWidget",
+                "defaultProperties": {
+                    "startIntroOnStartup": true,
+                    "enableCookie": true,
+                    "bubbleWidth": 280,
+                    "bubblePadding": 15,
+                    "smoothScroll": true,
+                    "scrollDuration": 1000,
+                    "scrollTopMargin": 200,
+                    "showCloseButton": true,
+                    "showPrevButton": true,
+                    "showNextButton": true,
+                    "arrowWidth": 20,
+                    "skipIfNoElement": true,
+                    "nextOnTargetClick": false,
+                    "i18n": {
+                        "nextBtn": "${next}",
+                        "prevBtn": "${back}",
+                        "doneBtn": "${done}",
+                        "skipBtn": "${skip}",
+                        "closeTooltip": "${closeTooltip}",
+                        "stepNums": []
+                    },
+                    "steps": []
+                },
+                "description": "${description}"
+            },
+            "references": [
+                {
+                    "name": "_configAdminService",
+                    "providing": "ct.framework.api.ConfigurationAdmin"
+                },
+                {
+                    "name": "_dataformService",
+                    "providing": "dataform.DataFormService"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2021 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,142 +13,98 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define({
-    apptitle: "map.apps - Intro Sample",
+module.exports = {
+    apptitle: "map.apps 4 Demo",
     custominfo: {
         imprint: {
             title: "Impressum",
             tooltip: "Zeige Impressum",
-            content: "<p>F\u00FCgen Sie hier Ihr Impressum ein.</p>"
-        }
-    },
-    agssearch: {
-        countries: {
-            title: "L\u00E4nder in Europa (Suche auf ArcGIS for Server Map Service)",
-            description: "Suche nach L\u00E4ndern in Europa",
-            placeHolder: "Land..."
-        }
-    },
-    basemaptoggler: {
-        ui: {
-            labelTitle: "Hintergrund"
-        }
-    },
-    bookmarks: {
-        ui: {
-            toolTitle: "R\u00E4umliche Lesezeichen setzen",
-            clearButton: "Alle Lesezeichen l\u00F6schen",
-            deleteMessage: "Wollen Sie wirklich alle Lesezeichen l\u00F6schen?",
-            deleteTitle: "Sind Sie sicher?",
-            deleteWarning: "Diese Aktion kann nicht r\u00FCckg\u00E4ngig gemacht werden!"
-        },
-        predefined: {
-            europe: "Europa",
-            germany: "Deutschland"
-        }
-    },
-    contentviewer: {
-        regions: {
-            title: "EU27 Biografische Regionen 2011",
-            search: "Suche nach weiteren Informationen!"
+            content: "<p>Verantwortlich f\u00fcr diese Seite ist:<br/><b>con terra</b> - Gesellschaft f\u00FCr Angewandte Informationstechnologie mbH<br /><br />Martin-Luther-King-Weg 24<br />48155 M\u00FCnster<br />Deutschland<br /><br />Ansprechpartner: Reinhard Abke<br /><br />Telefon +49 89 207 005 2200<br />Telefax +49 89 207 005 2111<br />info@conterra.de<br /><a href='http://www.conterra.de' target='_blank'>http://www.conterra.de</a><br /><br />Vertretungsberechtigte Gesch\u00e4ftsf\u00fchrer der con terra:<br />Karl Wiesmann, Uwe K\u00F6nig<br /><br />UstId-Nr.: DE 162264061<br />Handelsregister: HRB 4149, Amtsgericht M\u00FCnster</p>"
         }
     },
     map: {
-        glasspane: {
-            settlements: {
-                tel: "Telefon",
-                link: "Homepage aufrufen"
+        koeln1: {
+            title: "Basisdaten",
+            districts: {
+                title: "Stadtviertel",
+                text: "Das k\u00F6lner Stadtviertel <b>{STV_NAME}</b>."
+            },
+            boroughs: {
+                title: "Stadtteile",
+                text: "Der Stadtteil <b>{NAME}</b> liegt im k\u00F6lner Stadtbezirk {STADTBEZIR}."
+            },
+            precints: {
+                title: "Stadtbezirke",
+                text: "Der k\u00F6lner Stadtbezirk <b>{NAME}</b>."
             }
         },
-        base: {
-            topo: {
-                title: "Topographische Karte",
-                description: "Eine topographische Weltkarte"
+        koeln2: {
+            title: "Bildung und Kultur",
+            libraries: {
+                title: "Bibliotheken"
             },
-            aerial: {
-                title: "Luftbild",
-                description: "Luftbildaufnahmen der gesamten Welt"
+            museums: {
+                title: "Museen",
+                text: "Das Museum <b>{NAME_LANG}</b> liegt im k\u00F6lner Stadtteil {STADTTEIL}."
             },
-            streets: {
-                title: "Stra\u00DFen",
-                description: "Eine detaillierte Stra\u00DFenkarte"
+            schools: {
+                title: "Schulen",
+                text: ""
             }
         },
-        operational: {
-            bathingwater: {
-                title: "Badegew\u00E4sser",
-                description: "<div style=''><div><p><span>Diese Karte zeigt Messpunkte und Daten f\u00FCr Badegew\u00E4sserqualit\u00E4t von 2004 bis 2014. F\u00FCr Ma\u00DFst\u00E4be 1:5.000.001 und kleiner sind die Daten auf L\u00E4nderebene aggregiert. Hier werden Diagramme mit den Prozentwerten f\u00FCr K\u00FCsten- und Binnengew\u00E4sser zusammen angezeigt. Zahlen zu den Badegew\u00E4ssern einer bestimmten Kategorie werden in einem Pop-Up Fenster angezeigt. F\u00FCr die Ma\u00DFst\u00E4be 1:5.000.000 bis 1:700.001 werden die einzelnen Messpunkte dargestellt. Diese sind entsprechend ihrer Klassifizierung eingef\u00E4rbt. Die Symbolgr\u00F6\u00DFe h\u00E4ngt vom Kartenma\u00DFstab ab (in detaillierteren Ma\u00DFst\u00E4ben sind die Symbole gr\u00F6\u00DFer). F\u00FCr die Ma\u00DFst\u00E4be 1:700.000 und gr\u00F6\u00DFer werden quadratische Symbole dargestellt. Alle Symbole (Diagramme, Punkte und Quadrate) sind gem\u00E4\u00DF des erreichten Qualit\u00E4tsstatus gef\u00E4rbt. Historische Daten werden in einem Pop-Up Fenster dargestellt, welches mit einem Klick auf einen Messpunkt f\u00FCr Badegew\u00E4sserqualit\u00E4t ge\u00F6ffnet werden kann. Beurteilungen werden auf Grundlage der Direktive 2006/7/EG (Klassifikation nach Kategorien Ausgezeichnet, Gut, Ausreichend...) und auf Grundlage der Direktive 76/160/EWG (Klassifikation nach Kategorien CG, CI, NC...) vorgenommen. \u00DCberwachungskriterien wie das Entnehmen einer Vorsaisonsprobe, einem Minimum von vier Proben pro Saison sowie mindestens einer Probe pro Monat m\u00FCssen von allen Badegew\u00E4ssern erf\u00FCllt werden. Wenn diese Regeln befolgt werden, wird das Gew\u00E4sser als 'ausreichend beprobt' bezeichnet. Falls mindestens ein \u00DCberwachungskriterium nicht erf\u00FCllt worden ist, wird das Wasser als 'unzureichend beprobt' bezeichnet. In solchen F\u00E4llen kann die Badegew\u00E4sserqualit\u00E4t immer noch erhoben werden, wenn mindestens vier Proben pro Badesaison (drei Proben, falls die Badesaison nicht l\u00E4nger als acht Wochen andauert oder die Region speziellen geographischen Gegebenheiten ausgesetzt ist) verf\u00FCgbar sind und ann\u00E4hernd gleichverteilt \u00FCber die Saison entnommen worden sind. Die Badegew\u00E4sserqualit\u00E4t kann erhoben werden, wenn Daten von vier aufeinanderfolgenden Badesaisons verf\u00FCgbar sind. Badegew\u00E4sser werden nach einer der Badegew\u00E4sserqualit\u00E4tsklassen klassifiziert (Ausgezeichnet, Gut, Ausreichend oder Mangelhaft). Falls Datens\u00E4tze \u00FCber iEnterokokken sowie E.coli noch nicht f\u00FCr vier aufeinanderfolgende Badesaisons verf\u00FCgbar sind, so wird die Badegew\u00E4sserqualit\u00E4t auf Grundlage der Daten des aktuellen Jahres ermittelt. In diesem Fall wird die Badegew\u00E4sserqualit\u00E4t mit Hilfe von \u00DCbergangsregelungen ermittelt.</span><span> </span><span> Badegew\u00E4sser werden nach folgenden </span><span> Qualtit\u00E4tskategorien klassifiziert: </span><span>CG, CI, NC</span><span>.</span></p></div></div>",
-                layers: {
-                    title: "Badegew\u00E4sserqualit\u00E4t"
-                }
+        koeln3: {
+            title: "Freizeit",
+            sights: {
+                title: "Sehensw\u00FCrdigkeiten",
+                titleSingle: "Sehensw\u00FCrdigkeit",
+                text: "Die Sehensw\u00FCrdigkeit <b>{NAME_LANG}</b> liegt im k\u00F6lner Stadtteil {STADTTEIL}."
             },
-            regions: {
-                title: "Biogeographische Regionen",
-                description: "Der Biogeographische Reogionen-Datensatz beinhaltet die offiziellen Abgrenzungen, welche Einsatz in der Flora-Fauna-Habitat-Richtlinie (92/43/EWG) sowie im EMERALD Network, welches im Rahmen der Konvention zur Erhaltung wild lebender Pflanzen und Tiere und ihrer Lebensr\u00E4ume (Berner Abkommen) entstand, finden.",
-                layers: {
-                    0: "EU27 Biogeographische Regionen 2011",
-                    1: "EU27 Biogeographische Regionen 2008",
-                    2: "EU27 Biogeographische Regionen 2005",
-                    3: "EU27 Biogeographische Regionen 2011 Grenzen"
-                }
+            playgrounds: {
+                title: "Spiel- und Sportpl\u00E4tze",
+                text: "<b>{Spielplatzname}</b> liegt im k\u00F6lner Stadtteil {Stadtteil}. Die folgende Ausstattung steht zur Verf\u00FCgung:",
+                baskets: "Basketballk\u00F6rbe",
+                goals: "Fussballtore",
+                tables: "Tischtennis Tische",
+                walls: "Torwand",
+                skate: "Skaten",
+                misc: "Sonstiges"
             },
-            natura2000: {
-                title: "Natura 2000 Schutzgebiete",
-                description: "Natura 2000 ist das Hauptinstrument der Europ\u00E4ischen Union zum Bewahren der Biodiversit\u00E4t. Es ist ein \u00F6kologisches Netzwerk von gesch\u00FCtzten Regionen und wurde zum Schutz von seltenen Arten und Habitaten ins Leben gerufen. Natura 2000 basiert auf der Vogelschutzrichtlinie von 1979 sowie auf der FFH-Richtlinie von 1992. Es beinhaltet Schutzma\u00DFnahmen f\u00FCr viele \u00D6kosysteme und sichert die Gesundheit und Robustheit von Europas Umwelt und Natur.",
-                layers: {
-                    1: "Fl\u00E4chen nach der FFH-Richtlinie",
-                    2: "Ma\u00DFstab kleiner als 1:10.000.000",
-                    3: "Ma\u00DFstab zwischen 1:100.000 und 1:10.000.000",
-                    4: "Ma\u00DFstab gr\u00F6\u00DFer als 1:100.000",
-                    5: "Vogelschutzgebiete",
-                    6: "Ma\u00DFstab kleiner als 1:10,000,000",
-                    7: "Ma\u00DFstab zwischen 1:100,000 und 1:10,000,000",
-                    8: "Ma\u00DFstab gr\u00F6\u00DFer als 1:100,000"
-                }
+            places: {
+                title: "Veranstaltungsorte",
+                titleSingle: "Veranstaltungsort",
+                text: "<b>{NAME_LANG}</b> ist ein {expression/carrier} Veranstaltungsort."
             }
+        },
+        basemaps: {
+            street: "Stra\u00DFenkarte",
+            topo: "Topographische Karte",
+            hybrid: "Luftbild (hybrid)"
         }
     },
-    resultcenter: {
-        fields: {
-            title: "Titel"
-        }
+    search: {
+        title: "Adressen"
     },
-    templates: {
-        templates: {
-            seasons: {
-                mapflow: {
-                    title: "Karteninhalt"
-                }
-            }
-        }
-    },
-    toolsets: {
-        whatdoyouwant: "Was m\u00f6chten Sie tun?",
-        redliningTools: "Zeichnen",
-        redliningToolsTooltip: "Zeichen- und Editier-Werkzeuge",
-        navigationTools: "Navigationswerkzeuge nutzen",
-        navigationToolsTooltip: "Werkzeuge zur Kartennavigation",
-        mapviewTools: "Kartenwerkzeuge",
-        mapviewToolsTooltip: "Kartenwerkzeuge"
-    },
-    fields: {
-        id: "ID",
-        title: "Titel",
-        adapter: "Dienst",
-        type: "Typ"
+    common: {
+        number: "Nummer",
+        area: "Fl\u00E4che [ha]",
+        totalArea: "Anteil an Gesamtfl\u00E4che [%]",
+        name: "Name",
+        provider: "Tr\u00E4ger",
+        address: "Adresse",
+        furtherinfo: "Weitere Informationen",
+        precint: "Stadtbezirk",
+        district: "Stadtviertel",
+        private: "private",
+        municipal: "st\u00E4dtischer"
     },
     intro: {
         familiarise: {
             title: "Willkommen",
             content: "Diese Einf\u00fchrung dient dazu Sie mit den Elementen und Funktionalit\u00e4ten von map.apps vertraut zu machen."
         },
-        mapview: {
-            title: "Kartenansicht",
-            content: "Mit diesen Tasten kontrollieren Sie die Kartenansicht."
-        },
-        basemap: {
-            title: "Hintergrundkarte",
-            content: "Wechseln Sie hier die Hintergrundkarte."
+        mapviewTools: {
+            title: "Karten-Tools",
+            content: "Mit diesen Tasten k\u00f6nnen sie weitere Funktionen aufrufen."
         },
         theme: {
             title: "Farbschema",
@@ -157,10 +113,6 @@ define({
         language: {
             title: "Sprache",
             content: "Eine andere Sprache k\u00f6nnen Sie hier ausw\u00e4hlen."
-        },
-        functions: {
-            title: "Weitere Funktionen",
-            content: "Hier finden Sie weitere Funktionen."
         },
         mapflow: {
             title: "Kartenthemen",
@@ -182,26 +134,10 @@ define({
             title: "Featureinfo",
             content: "Durch Klick in die Karte k\u00f6nnen Sie weitere Informationen abfragen."
         },
-        followme: {
-            title: "FollowMe",
-            content: "Hier k\u00f6nnen Sie mit anderen Nutzern zusammenarbeiten."
-        },
-        gallery: {
-            title: "Gallerie",
-            content: "In der Gallerie können Sie andere Hintergrundkarten ausw\u00e4hlen."
-        },
-        galleryTool: {
-            title: "Gallerie",
-            content: "Klicken Sie dazu einfach auf die gew\u00FCnschte Karte."
-        },
-        routing: {
-            title: "Routing",
-            content: "Hier können Sie eine Route berechnen."
-        },
         next: "Weiter",
         back: "Zur\u00fcck",
         done: "Beenden",
         skip: "\u00dcberspringen",
         closeTooltip: "Intro beenden"
     }
-});
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2021 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define(["dojo/i18n!./nls/bundle"],
-    function (i18n) {
-        return {
-            i18n: i18n
-        }
-    }
-);
+import i18n from "dojo/i18n!./nls/bundle";

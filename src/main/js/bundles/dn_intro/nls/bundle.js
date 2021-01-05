@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2021 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,24 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define({
+module.exports = {
     root: {
         bundleName: "Intro Bundle",
         bundleDescription: "This bundle allows you to create your own step-by-step guide in map.apps based on the hopscotch framework.",
-        windowTitle: "Welcome to map.apps!",
-        introToolName: "Intro Tool",
-        introToolTitle: "Start Intro",
-        introToolTooltip: "Start Intro",
-        introImmediateToolName: "Immediate Intro Tool",
-        introImmediateToolTitle: "Start Intro",
-        introImmediateToolTooltip: "Start Intro",
-        start: "Start Intro",
-        hint: "Don't show the intro again on next start-up",
-        next: "next",
-        back: "back",
-        done: "done",
-        skip: "skip",
-        closeTooltip: "close intro"
+        ui: {
+            windowTitle: "Welcome to map.apps!",
+            start: "Start Intro",
+            hint: "Don't show the intro again on next start-up",
+            next: "next",
+            back: "back",
+            done: "done",
+            skip: "skip",
+            closeTooltip: "close intro"
+        },
+        introTool: {
+            title: "Start Intro",
+            tooltip: "Start Intro"
+        },
+        introImmediateTool: {
+            title: "Start Intro",
+            tooltip: "Start Intro"
+        }
     },
-    "de": true
-});
+    de: true
+}

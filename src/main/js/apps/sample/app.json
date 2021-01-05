@@ -1,1195 +1,758 @@
 {
-  "properties": {
-    "title": "${apptitle}",
-    "amdPackages": "apprt@^3.3.0"
-  },
-  "load": {
-    "bundleLocations": [
-      "localbundles",
-      "bundles"
-    ],
-    "allowedBundles": [
-      "console@^3.3.0",
-      "custominfo@^3.3.0",
-      "filesaver@^3.3.0",
-      "languagetoggler@^3.3.0",
-      "mobileview@^3.3.0",
-      "notifier@^3.3.0",
-      "parametermanager@^3.3.0",
-      "qrcode@^3.3.0",
-      "remotechannels@^3.3.0",
-      "splashscreen@^3.3.0",
-      "system@^3.3.0",
-      "templatelayout@^3.3.0",
-      "templates@^3.3.0",
-      "themes@^3.3.0",
-      "toolrules@^3.3.0",
-      "toolset@^3.3.0",
-      "banner@^3.3.0",
-      "basemapgallery@^3.3.0",
-      "basemaptoggler@^3.3.0",
-      "contentviewer@^3.3.0",
-      "followme@^3.3.0",
-      "infoviewer@^3.3.0",
-      "map@^3.3.0",
-      "mapdesk@^3.3.0",
-      "webmap@^3.3.0",
-      "agsprinting@^3.3.0",
-      "bookmarks@^3.3.0",
-      "coordinatefinder@^3.3.0",
-      "coordinateviewer@^3.3.0",
-      "legend@^3.3.0",
-      "locateme@^3.3.0",
-      "magnifier@^3.3.0",
-      "maptip@^3.3.0",
-      "measurement@^3.3.0",
-      "navigationtoolset@^3.3.0",
-      "overviewmap@^3.3.0",
-      "redlining@^3.3.0",
-      "routing@^3.3.0",
-      "scalebar@^3.3.0",
-      "undoredo@^3.3.0",
-      "reportstore@^3.3.0",
-      "reporttool@^3.3.0",
-      "agssearch@^3.3.0",
-      "geonames@^3.3.0",
-      "locator@^3.3.0",
-      "omnisearch@^3.3.0",
-      "featureinfo@^3.3.0",
-      "resultcenter@^3.3.0",
-      "selection@^3.3.0",
-      "mapflow@^3.3.0",
-      "mobiletoc@^3.3.0",
-      "dn_intro"
-    ],
-    "require": [
-      "${app}.app"
-    ],
-    "i18n": [
-      "bundle"
-    ],
-    "styles": [
-      "${app}:app.css"
-    ]
-  },
-  "bundles": {
-    "dn_intro": {
-      "UserIntro": {
-        "startIntroOnStartup": true,
-        "bubbleWidth": 280,
-        "bubblePadding": 15,
-        "smoothScroll": true,
-        "scrollDuration": 1000,
-        "scrollTopMargin": 200,
-        "showCloseButton": true,
-        "showPrevButton": true,
-        "showNextButton": true,
-        "arrowWidth": 20,
-        "skipIfNoElement": true,
-        "nextOnTargetClick": false,
-        "i18n": {
-          "nextBtn": "${intro.next}",
-          "prevBtn": "${intro.back}",
-          "doneBtn": "${intro.done}",
-          "skipBtn": "${intro.skip}",
-          "closeTooltip": "${intro.closeTooltip}",
-          "stepNums": []
-        },
-        "steps": [
-          {
-            "target": ".mainMap",
-            "placement": "top",
-            "title": "${intro.familiarise.title}",
-            "content": "${intro.familiarise.content}",
-            "width": 280,
-            "padding": 15,
-            "xOffset": "center",
-            "yOffset": "center",
-            "arrowOffset": "center",
-            "delay": 0,
-            "zindex": 0,
-            "showNextButton": true,
-            "showPrevButton": true,
-            "showCTAButton": false,
-            "ctaLabel": "",
-            "multipage": false,
-            "showSkip": false,
-            "fixedElement": false,
-            "nextOnTargetClick": false
-          },
-          {
-            "target": ".mapview_tools",
-            "placement": "left",
-            "title": "${intro.mapview.title}",
-            "content": "${intro.mapview.content}"
-          },
-          {
-            "target": ".basemapToggler",
-            "placement": "bottom",
-            "title": "${intro.basemap.title}",
-            "content": "${intro.basemap.content}",
-            "xOffset": -20,
-            "arrowOffset": 40
-          },
-          {
-            "target": ".omnisearch",
-            "placement": "right",
-            "title": "${intro.omnisearch.title}",
-            "content": "${intro.omnisearch.content}",
-            "yOffset": -12
-          },
-          {
-            "target": ".ctWDYWBtn",
-            "placement": "right",
-            "title": "${intro.functions.title}",
-            "content": "${intro.functions.content}",
-            "yOffset": -15
-          },
-          {
-            "target": ".ctTool_basemapgalleryToggleTool",
-            "placement": "top",
-            "title": "${intro.gallery.title}",
-            "content": "${intro.gallery.content}"
-          },
-          {
-            "target": ".ctBasemapGallery",
-            "placement": "top",
-            "title": "${intro.galleryTool.title}",
-            "content": "${intro.galleryTool.content}",
-            "toolId": "basemapgalleryToggleTool"
-          },
-          {
-            "target": ".ctTool_followmeToggleTool",
-            "placement": "top",
-            "title": "${intro.followme.title}",
-            "content": "${intro.followme.content}"
-          },
-          {
-            "target": ".ctTool_mapflowToggleTool",
-            "placement": "top",
-            "title": "${intro.mapflow.title}",
-            "content": "${intro.mapflow.content}"
-          },
-          {
-            "target": ".ctMapFlow",
-            "placement": "top",
-            "title": "${intro.mapflowTool.title}",
-            "toolId": "mapflowToggleTool"
-          },
-          {
-            "target": ".ctTool_routingToggleTool",
-            "placement": "top",
-            "title": "${intro.routing.title}",
-            "content": "${intro.routing.content}"
-          },
-          {
-            "target": ".ctTool_legendToggleTool",
-            "placement": "top",
-            "title": "${intro.legend.title}",
-            "content": "${intro.legend.content}"
-          },
-          {
-            "target": ".themeSelector",
-            "placement": "bottom",
-            "title": "${intro.theme.title}",
-            "content": "${intro.theme.content}"
-          },
-          {
-            "target": ".languageToggler",
-            "placement": "bottom",
-            "title": "${intro.language.title}",
-            "content": "${intro.language.content}",
-            "xOffset": -220,
-            "arrowOffset": 260
-          },
-          {
-            "target": ".mainMap",
-            "placement": "top",
-            "title": "${intro.featureinfo.title}",
-            "content": "${intro.featureinfo.content}",
-            "xOffset": "center",
-            "yOffset": "center",
-            "arrowOffset": "center"
-          }
+    "properties": {
+        "title": "${apptitle}",
+        "amdPackages": "apprt@^4.x"
+    },
+    "load": {
+        "bundleLocations": [
+            "localbundles",
+            "bundles"
+        ],
+        "allowedBundles": [
+            "system@^4.x",
+            "agssearch@^4.x",
+            "appsoverview@^4.x",
+            "banner@^4.x",
+            "basemaptoggler@^4.x",
+            "console@^4.x",
+            "coordinateviewer@^4.x",
+            "custominfo@^4.x",
+            "languagetoggler@^4.x",
+            "legend@^4.x",
+            "mapflow@^4.x",
+            "notifier@^4.x",
+            "omnisearch@^4.x",
+            "parametermanager@^4.x",
+            "printing@^4.x",
+            "splashscreen@^4.x",
+            "templatelayout@^4.x",
+            "template-seasons@^4.x",
+            "theme-everlasting@^4.x",
+            "theme-winter@^4.x",
+            "theme-spring@^4.x",
+            "theme-summer@^4.x",
+            "theme-autumn@^4.x",
+            "map-init@^4.x",
+            "map-preload-2D@^4.x",
+            "map-preload-3D@^4.x",
+            "toolset@^4.x",
+            "viewmodeswitcher@^4.x",
+            "dn_intro",
+            "wizard"
+        ],
+        "require": [
+            "${app}/app"
+        ],
+        "i18n": [
+            "bundle"
         ]
-      }
     },
-    "agssearch": {
-      "AutoStoreRegistration": {
-        "componentEnabled": true
-      },
-      "AGSStore": [
-        {
-          "title": "${agssearch.countries.title}",
-          "description": "${agssearch.countries.description}",
-          "omniSearchLabelAttr": "cc",
-          "omniSearchSearchAttr": "cc",
-          "idProperty": "OBJECTID",
-          "url": "https://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer/0",
-          "useIn": [
-            "omnisearch"
-          ],
-          "filterOptions": {
-            "suggestContains": true
-          },
-          "omniSearchTypingDelay": 500,
-          "omniSearchPageSize": 20,
-          "omniSearchDefaultLabel": "${agssearch.countries.placeHolder}",
-          "fetchIdProperty": true,
-          "id": "bathingwater_1"
-        }
-      ]
-    },
-    "banner": {
-      "BannerWidget": {
-        "label": "Developer Network",
-        "imagePosition": "above",
-        "image": "resource('${app}:/images/logo_conterra.png')",
-        "imageWidth": 200,
-        "link": "https://www.conterra.de"
-      }
-    },
-    "basemapgallery": {
-      "Gallery": {
-        "showOwnMaps": false
-      }
-    },
-    "basemaptoggler": {
-      "DropDownBasemapToggler": {
-        "showLabel": true
-      }
-    },
-    "bookmarks": {
-      "BookmarksFactory": {
-        "storageName": "Mapapps_mapmarks",
-        "bookmarksOpts": {
-          "editable": true
-        },
-        "predefinedBookmarks": [
-          {
-            "extent": {
-              "spatialReference": {
-                "wkid": 3857
-              },
-              "xmax": 1.0576968521053234E7,
-              "xmin": -8208195.550306687,
-              "ymax": 1.2931705115558533E7,
-              "ymin": 2648784.574413076
-            },
-            "name": "${bookmarks.predefined.europe}"
-          },
-          {
-            "extent": {
-              "spatialReference": {
-                "wkid": 3857
-              },
-              "xmax": 2357847.7436069767,
-              "xmin": 9702.234686995856,
-              "ymax": 7299468.689048652,
-              "ymin": 6014103.621405475
-            },
-            "name": "${bookmarks.predefined.germany}"
-          },
-          {
-            "extent": {
-              "spatialReference": {
-                "wkid": 3857
-              },
-              "xmax": 1564928.2306908383,
-              "xmin": 1418169.1363834972,
-              "ymax": 6932972.247678364,
-              "ymin": 6852636.9309507515
-            },
-            "name": "Berlin"
-          }
-        ]
-      }
-    },
-    "contentviewer": {
-      "ContentRegistration": {
-        "contentRules": [
-          {
-            "info": {
-              "valueNotFoundString": "-",
-              "type": "CustomTemplate",
-              "title": "{short_name}",
-              "showDetailsButton": true,
-              "skipProperties": [],
-              "template": "<br/><h1>{name}</h1><div><hr /><a href=\"http://www.google.de/search?q={name}\" target=\"_blank\">${introviewer.regions.search}</a></div>"
-            },
-            "windowSize": {
-              "w": 280,
-              "h": 280
-            },
-            "matches": {
-              "context": {
-                "mapModelNodeId": "regions/0"
-              }
-            },
-            "title": "${introviewer.regions.title}",
-            "detail": {
-              "title": "{name}",
-              "type": "Grid",
-              "valueNotFoundString": "-",
-              "allowedProperties": [
-                "OBJECTID",
-                "Shape",
-                "PK_UID",
-                "short_name",
-                "pre_2012",
-                "code",
-                "name",
-                "Shape_Length",
-                "Shape_Area",
-                "Region"
-              ]
-            },
-            "type": "Grid"
-          }
-        ]
-      }
-    },
-    "custominfo": {
-      "CustomInfoToggleTool": [
-        {
-          "widgetSettings": {
-            "content": "${custominfo.imprint.content}",
-            "window": {
-              "marginBox": {
-                "w": 300,
-                "h": 400
-              },
-              "draggable": true,
-              "closable": true,
-              "modal": false,
-              "maximizable": false,
-              "resizable": true,
-              "title": "${custominfo.imprint.title}"
-            }
-          },
-          "type": "IMPRINT",
-          "toolClass": "ctInfo",
-          "title": "${custominfo.imprint.title}",
-          "tooltip": "${custominfo.imprint.tooltip}",
-          "iconClass": "icon-custom-info-imprint",
-          "togglable": true,
-          "id": "IMPRINT_Imprint_1385994559598_CustomInfoTool"
-        }
-      ]
-    },
-    "featureinfo": {
-      "FeatureInfoController": {
-        "clickTolerance": 15
-      }
-    },
-    "geonames": {
-      "PostalCodeSearchStore": {
-        "componentEnabled": true
-      }
-    },
-    "languagetoggler": {
-      "LanguageToggler": {
-        "languageNames": {
-          "en": "English",
-          "de": "Deutsch"
-        },
-        "languageTemplate": "${name}"
-      }
-    },
-    "locateme": {
-      "LocateMe": {
-        "showPositionLogs": true
-      }
-    },
-    "map": {
-      "MapModelFactory": {
-        "_configData": {
-          "maps": [
-            {
-              "id": "default",
-              "glass_pane": [
-                {
-                  "id": "settlements",
-                  "enabled": true,
-                  "maptip": {
-                    "content": "<p><b>{name2}<br />{name3}</b></p><p>{street}<br />{plz_city}</p>",
-                    "dimensions": {
-                      "width": 180,
-                      "height": 110
-                    }
-                  },
-                  "infoTemplate": {
-                    "title": "${name}",
-                    "content": "<p><b>${name2}<br />${name3}</b></p><p>${street}<br />${plz_city}</p><p>${map.glasspane.settlements.tel} ${tel}<br /><a href='mailto:${email}'>${email}</a></p><p><a href='${link}' target='_blank'>${map.glasspane.settlements.link}</a></p>",
-                    "dimensions": {
-                      "width": 250,
-                      "height": 250
-                    }
-                  },
-                  "graphics": [
+    "bundles": {
+        "dn_intro": {
+            "UserIntro": {
+                "startIntroOnStartup": true,
+                "bubbleWidth": 280,
+                "bubblePadding": 15,
+                "smoothScroll": true,
+                "scrollDuration": 1000,
+                "scrollTopMargin": 200,
+                "showCloseButton": true,
+                "showPrevButton": true,
+                "showNextButton": true,
+                "arrowWidth": 20,
+                "skipIfNoElement": true,
+                "nextOnTargetClick": false,
+                "i18n": {
+                    "nextBtn": "${intro.next}",
+                    "prevBtn": "${intro.back}",
+                    "doneBtn": "${intro.done}",
+                    "skipBtn": "${intro.skip}",
+                    "closeTooltip": "${intro.closeTooltip}",
+                    "stepNums": []
+                },
+                "steps": [
                     {
-                      "geometry": {
-                        "x": 851833,
-                        "y": 6788378,
-                        "spatialReference": {
-                          "wkid": 3857
-                        }
-                      },
-                      "attributes": {
-                        "name": "con terra",
-                        "name2": "con terra GmbH",
-                        "name3": "",
-                        "street": "Martin-Luther-King-Weg 24",
-                        "plz_city": "DE-48155 Muenster",
-                        "tel": "+49 89 207 005 2200",
-                        "email": "info@conterra.de",
-                        "link": "http://www.conterra.de/"
-                      },
-                      "symbol": {
-                        "color": [
-                          221,
-                          0,
-                          85,
-                          230
-                        ],
-                        "size": 12,
-                        "angle": 0,
-                        "xoffset": 0,
-                        "yoffset": 0,
-                        "type": "esriSMS",
-                        "style": "esriSMSSquare",
-                        "outline": {
-                          "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                          ],
-                          "width": 0,
-                          "type": "esriSLS",
-                          "style": "esriSLSSolid"
-                        }
-                      }
+                        "target": ".mainMap",
+                        "placement": "top",
+                        "title": "${intro.familiarise.title}",
+                        "content": "${intro.familiarise.content}",
+                        "width": 280,
+                        "padding": 15,
+                        "xOffset": "center",
+                        "yOffset": "center",
+                        "arrowOffset": "center",
+                        "delay": 0,
+                        "zindex": 0,
+                        "showNextButton": true,
+                        "showPrevButton": true,
+                        "showCTAButton": false,
+                        "ctaLabel": "",
+                        "multipage": false,
+                        "showSkip": false,
+                        "fixedElement": false,
+                        "nextOnTargetClick": false
+                    },
+                    {
+                        "target": ".mapview_tools",
+                        "placement": "left",
+                        "title": "${intro.mapviewTools.title}",
+                        "content": "${intro.mapviewTools.content}",
+                        "toolId": "my_toolset"
+                    },
+                    {
+                        "target": ".omnisearch",
+                        "placement": "right",
+                        "title": "${intro.omnisearch.title}",
+                        "content": "${intro.omnisearch.content}",
+                        "yOffset": -12
+                    },
+                    {
+                        "target": ".ctTool_mapflowToggleTool",
+                        "placement": "top",
+                        "title": "${intro.mapflow.title}",
+                        "content": "${intro.mapflow.content}"
+                    },
+                    {
+                        "target": ".ctMapFlow",
+                        "placement": "top",
+                        "title": "${intro.mapflowTool.title}",
+                        "toolId": "mapflowToggleTool"
+                    },
+                    {
+                        "target": ".ctTool_legendToggleTool",
+                        "placement": "top",
+                        "title": "${intro.legend.title}",
+                        "content": "${intro.legend.content}"
+                    },
+                    {
+                        "target": ".esri-legend__service",
+                        "placement": "top",
+                        "title": "${intro.legend.title}",
+                        "content": "${intro.legend.content}",
+                        "toolId": "legendToggleTool"
+                    },
+                    {
+                        "target": ".themeSelector",
+                        "placement": "bottom",
+                        "title": "${intro.theme.title}",
+                        "content": "${intro.theme.content}"
+                    },
+                    {
+                        "target": ".languageToggler",
+                        "placement": "bottom",
+                        "title": "${intro.language.title}",
+                        "content": "${intro.language.content}",
+                        "xOffset": -220,
+                        "arrowOffset": 260
+                    },
+                    {
+                        "target": ".mainMap",
+                        "placement": "top",
+                        "title": "${intro.featureinfo.title}",
+                        "content": "${intro.featureinfo.content}",
+                        "xOffset": "center",
+                        "yOffset": "center",
+                        "arrowOffset": "center"
                     }
-                  ]
-                }
-              ],
-              "operationalLayer": [
-                {
-                  "id": "bathingwater",
-                  "title": "${map.operational.bathingwater.title}",
-                  "enabled": false,
-                  "service": "bathingwater",
-                  "category": {
-                    "title": "${map.operational.bathingwater.title}",
-                    "description": "${map.operational.bathingwater.description}",
-                    "imgUrl": "${app}:images/mapCover2.png"
-                  },
-                  "layers": [
-                    "*"
-                  ],
-                  "opacity": 1
-                },
-                {
-                  "id": "natura2000",
-                  "title": "${map.operational.natura2000.title}",
-                  "enabled": false,
-                  "service": "natura000",
-                  "category": {
-                    "title": "${map.operational.natura2000.title}",
-                    "description": "${map.operational.natura2000.description}",
-                    "imgUrl": "${app}:images/mapCover3.png"
-                  },
-                  "layers": [
-                    "*"
-                  ],
-                  "opacity": 1
-                },
-                {
-                  "id": "regions",
-                  "title": "${map.operational.regions.title}",
-                  "enabled": false,
-                  "service": "regions",
-                  "category": {
-                    "title": "${map.operational.regions.title}",
-                    "description": "${map.operational.regions.description}",
-                    "imgUrl": "${app}:images/mapCover1.png"
-                  },
-                  "layers": [
-                    "*"
-                  ],
-                  "opacity": 0.5
-                }
-              ],
-              "baseLayer": [
-                {
-                  "enabled": false,
-                  "service": "worldimage"
-                },
-                {
-                  "enabled": true,
-                  "service": "worldtopo"
-                },
-                {
-                  "enabled": false,
-                  "service": "streets"
-                }
-              ]
+                ]
             }
-          ]
-        }
-      },
-      "MapState": {
-        "initialExtent": {
-          "xmin": -896965.2750203621,
-          "xmax": 3212289.3655896215,
-          "ymin": 5170567.199262223,
-          "ymax": 8086181.206171212,
-          "wkid": 3857
-        }
-      },
-      "MappingResourceRegistryFactory": {
-        "_knownServices": {
-          "services": [
-            {
-              "id": "worldimage",
-              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-              "type": "AGS_TILED",
-              "title": "${map.base.aerial.title}",
-              "description": "${map.base.aerial.description}"
-            },
-            {
-              "id": "worldtopo",
-              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
-              "type": "AGS_TILED",
-              "title": "${map.base.topo.title}",
-              "description": "${map.base.topo.description}"
-            },
-            {
-              "id": "streets",
-              "description": "${map.base.streets.description}",
-              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
-              "type": "AGS_TILED",
-              "title": "${map.base.streets.title}"
-            },
-            {
-              "id": "bathingwater",
-              "url": "https://water.discomap.eea.europa.eu/arcgis/rest/services/BathingWater/BathingWater_Dyna_WM/MapServer",
-              "type": "AGS_DYNAMIC",
-              "title": "${map.operational.bathingwater.title}",
-              "description": "${map.operational.bathingwater.description}",
-              "layers": [
-                {
-                  "id": "0",
-                  "title": "${map.operational.bathingwater.layers.title}",
-                  "maxScale": 30000001,
-                  "enabled": true
-                },
-                {
-                  "id": "1",
-                  "title": "${map.operational.bathingwater.layers.title}",
-                  "maxScale": 5000001,
-                  "minScale": 30000000,
-                  "enabled": true
-                },
-                {
-                  "id": "2",
-                  "title": "${map.operational.bathingwater.layers.title}",
-                  "maxScale": 3000001,
-                  "minScale": 5000000,
-                  "enabled": true
-                },
-                {
-                  "id": "3",
-                  "title": "${map.operational.bathingwater.layers.title}",
-                  "maxScale": 700001,
-                  "minScale": 3000000,
-                  "enabled": true
-                },
-                {
-                  "id": "4",
-                  "title": "${map.operational.bathingwater.layers.title}",
-                  "maxScale": 500001,
-                  "minScale": 700000,
-                  "enabled": true
-                },
-                {
-                  "id": "5",
-                  "title": "${map.operational.bathingwater.layers.title}",
-                  "maxScale": 200001,
-                  "minScale": 500000,
-                  "enabled": true
-                },
-                {
-                  "id": "6",
-                  "title": "${map.operational.bathingwater.layers.title}",
-                  "minScale": 200000,
-                  "enabled": true
-                }
-              ]
-            },
-            {
-              "id": "regions",
-              "url": "https://bio.discomap.eea.europa.eu/arcgis/rest/services/BioRegions/Biogeographicalregions_Dyna_WM/MapServer",
-              "type": "AGS_DYNAMIC",
-              "title": "${map.operational.regions.title}",
-              "description": "${map.operational.regions.description}",
-              "layers": [
-                {
-                  "id": "0",
-                  "title": "${map.operational.regions.layers.0}",
-                  "enabled": true
-                },
-                {
-                  "id": "1",
-                  "title": "${map.operational.regions.layers.1}",
-                  "enabled": false
-                },
-                {
-                  "id": "2",
-                  "title": "${map.operational.regions.layers.2}",
-                  "enabled": false
-                },
-                {
-                  "id": "3",
-                  "title": "${map.operational.regions.layers.3}",
-                  "enabled": false
-                }
-              ]
-            },
-            {
-              "id": "natura000",
-              "url": "https://discomap.eea.europa.eu/arcgis/rest/services/Bio/Natura2000_Dyna_WM/MapServer",
-              "type": "AGS_DYNAMIC",
-              "title": "${map.operational.natura2000.title}",
-              "description": "${map.operational.natura2000.description}",
-              "layers": [
-                {
-                  "id": "1",
-                  "title": "${map.operational.natura2000.layers.1}",
-                  "enabled": true
-                },
-                {
-                  "id": "2",
-                  "title": "${map.operational.natura2000.layers.2}",
-                  "parentId": "1",
-                  "maxScale": 10000000,
-                  "enabled": true
-                },
-                {
-                  "id": "3",
-                  "title": "${map.operational.natura2000.layers.3}",
-                  "parentId": "1",
-                  "maxScale": 300000,
-                  "minScale": 9999999,
-                  "enabled": true
-                },
-                {
-                  "id": "4",
-                  "title": "${map.operational.natura2000.layers.4}",
-                  "parentId": "1",
-                  "minScale": 299999,
-                  "enabled": true
-                },
-                {
-                  "id": "5",
-                  "title": "${map.operational.natura2000.layers.5}",
-                  "enabled": true
-                },
-                {
-                  "id": "6",
-                  "title": "${map.operational.natura2000.layers.6}",
-                  "parentId": "5",
-                  "maxScale": 10000000,
-                  "enabled": true
-                },
-                {
-                  "id": "7",
-                  "title": "${map.operational.natura2000.layers.7}",
-                  "parentId": "5",
-                  "maxScale": 300000,
-                  "minScale": 9999999,
-                  "enabled": true
-                },
-                {
-                  "id": "8",
-                  "title": "${map.operational.natura2000.layers.8}",
-                  "parentId": "5",
-                  "minScale": 299999,
-                  "enabled": true
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "MapWidgetFactory": {
-        "esriMapOpts": {
-          "slider": false,
-          "nav": false,
-          "logo": true,
-          "sliderStyle": "small",
-          "doubleClickZoom": true,
-          "clickRecenter": true,
-          "pan": true,
-          "rubberBandZoom": true,
-          "keyboardNavigation": true,
-          "scrollWheelZoom": true,
-          "sliderPosition": "bottom-right",
-          "displayGraphicsOnPan": true,
-          "fadeOnZoom": true,
-          "showAttribution": true,
-          "sliderOrientation": "vertical",
-          "sliderLabels": [
-            ""
-          ],
-          "navigationMode": "css-transforms"
-        }
-      }
-    },
-    "mapflow": {
-      "MapFlow": {
-        "nodeDepth": 5,
-        "autoFlipActiveCover": true,
-        "autoActivate": true
-      }
-    },
-    "omnisearch": {
-      "OmniSearchFactory": {
-        "comboBoxOpts": {
-          "selectFirstResultOnEnter": false
-        }
-      }
-    },
-    "overviewmap": {
-      "OverviewMap": {
-        "serviceDefinition": {
-          "service": "worldtopo",
-          "layers": [
-            "*"
-          ]
-        }
-      }
-    },
-    "resultcenter": {
-      "ActionController": {
-        "zoomToFeatures": true,
-        "zoomToSelected": true,
-        "centerSelected": true,
-        "zoomAfterDeletion": true
-      },
-      "DataView": {
-        "DGRID": {
-          "checkboxSelection": true,
-          "columns": [
-            {
-              "matches": {
-                "identifier": true,
-                "type": "number"
-              },
-              "title": "ID"
-            },
-            {
-              "matches": {
-                "name": "NAME"
-              },
-              "title": "${resultcenter.fields.title}",
-              "width": 32
-            },
-            {
-              "matches": {
-                "name": {
-                  "$in": [
-                    "AREA",
-                    "PERIMETER"
-                  ]
-                }
-              },
-              "skip": true
-            },
-            {
-              "matches": {
-                "name": {
-                  "$exists": true
-                }
-              }
-            }
-          ]
         },
-        "ICON": {
-          "iconFields": [
-            "adapter"
-          ]
-        }
-      },
-      "FeatureMapVisualizer": {
-        "useDataViewPaging": false
-      },
-      "TriggerShowResultCenterCommand": {
-        "showToolOnData": true,
-        "autoOpen": true,
-        "hideToolOnEmpty": true,
-        "autoClose": true
-      }
-    },
-    "selection": {
-      "SelectionAction": {
-        "autoDeactivateTool": true
-      }
-    },
-    "templates": {
-      "TemplateModel": {
-        "_selectedTemplate": "seasons",
-        "_templates": [
-          {
-            "name": "seasons",
-            "widgets": [
-              {
-                "widgetRole": "printDialogAGSPrinting",
-                "window": {
-                  "marginBox": {
-                    "l": 20,
-                    "t": 140,
-                    "w": 327,
-                    "h": 210
-                  }
+        "agssearch": {
+            "AGSStore": [
+                {
+                    "id": "store01",
+                    "title": "${search.title}",
+                    "url": "https://services.conterra.de/arcgis/rest/services/common/koeln_adressen/MapServer/0",
+                    "omniSearchSearchAttr": "ADRESSE",
+                    "omniSearchDefaultLabel": "${common.address}",
+                    "enablePagination": true,
+                    "omniSearchPageSize": 10
                 }
-              },
-              {
-                "widgetRole": "coordFinder",
-                "window": {
-                  "marginBox": {
-                    "h": 130,
-                    "l": 20,
-                    "t": 140
-                  }
+            ],
+            "AutoStoreRegistration": {
+                "componentEnabled": true
+            }
+        },
+        "appsoverview": {
+            "RedirectToApp": {
+                "openWindow": false
+            }
+        },
+        "banner": {
+            "BannerWidget": {
+                "label": "Developer Network",
+                "imagePosition": "above",
+                "image": "resource('${app}:/images/logo_conterra.png')",
+                "imageWidth": 200,
+                "link": "https://www.conterra.de"
+            }
+        },
+        "basemaptoggler": {
+            "Config": {
+                "itemStyles": {
+                    "esri_street": "icon-thumbnail",
+                    "esri_topo": "icon-thumbnail",
+                    "esri_hybrid": "icon-thumbnail"
                 }
-              },
-              {
-                "widgetRole": "parametrizedURL",
-                "window": {
-                  "marginBox": {
-                    "w": 385,
-                    "h": 300,
-                    "l": 20,
-                    "t": 140
-                  }
+            }
+        },
+        "coordinateviewer": {
+            "Config": {
+                "decimalPlaces": 3,
+                "showScale": true,
+                "showCoordinates": true,
+                "degreeFormat": true,
+                "transformSrs": true,
+                "targetSrs": "WGS84"
+            }
+        },
+        "custominfo": {
+            "CustomInfoToggleTool": [
+                {
+                    "widgetSettings": {
+                        "content": "${custominfo.imprint.content}",
+                        "window": {
+                            "marginBox": {
+                                "w": 320,
+                                "h": 500
+                            },
+                            "draggable": true,
+                            "closable": true,
+                            "modal": true,
+                            "maximizable": false,
+                            "resizable": true,
+                            "title": "${custominfo.imprint.title}"
+                        }
+                    },
+                    "type": "IMPRINT",
+                    "toolClass": "ctInfo",
+                    "title": "${custominfo.imprint.title}",
+                    "tooltip": "${custominfo.imprint.tooltip}",
+                    "iconClass": "icon-custom-info-imprint",
+                    "togglable": true,
+                    "id": "IMPRINT_Imprint_CustomInfoTool"
+                },
+                {
+                    "widgetSettings": {
+                        "content": "${custominfo.imprint.content}",
+                        "window": {
+                            "marginBox": {
+                                "w": "100%",
+                                "h": "100%"
+                            },
+                            "draggable": false,
+                            "closable": true,
+                            "maximizable": false,
+                            "resizable": false,
+                            "title": "${custominfo.imprint.title}"
+                        }
+                    },
+                    "type": "IMPRINT",
+                    "toolClass": "ctInfo",
+                    "title": "${custominfo.imprint.title}",
+                    "tooltip": "${custominfo.imprint.tooltip}",
+                    "iconClass": "icon-custom-info-imprint",
+                    "togglable": true,
+                    "id": "IMPRINT_Imprint_CustomInfoTool_mobile"
                 }
-              },
-              {
-                "widgetRole": "bookmarkstoolbar",
-                "window": {
-                  "marginBox": {
-                    "w": 327,
-                    "h": 250,
-                    "l": 20,
-                    "t": 145
-                  }
-                }
-              },
-              {
-                "widgetRole": "measurementtoolbar",
-                "window": {
-                  "marginBox": {
-                    "w": 327,
-                    "h": 165,
-                    "l": 20,
-                    "t": 140
-                  }
-                }
-              },
-              {
-                "widgetRole": "magnifier",
-                "window": {
-                  "marginBox": {
-                    "w": 255,
-                    "h": 180,
-                    "r": 90,
-                    "b": 99
-                  }
-                }
-              },
-              {
-                "widgetRole": "overviewMap",
-                "window": {
-                  "marginBox": {
-                    "w": 255,
-                    "h": 180,
-                    "r": 90,
-                    "b": 99
-                  }
-                }
-              },
-              {
-                "widgetRole": "storeListDataView",
-                "window": {
-                  "marginBox": {
-                    "w": 550,
-                    "h": 300,
-                    "l": 20,
-                    "t": 145
-                  }
-                }
-              }
             ]
-          }
-        ]
-      }
-    },
-    "themes": {
-      "ThemeModel": {
-        "_selectedTheme": "everlasting",
-        "_themes": [
-          {
-            "name": "everlasting"
-          },
-          {
-            "name": "spring"
-          },
-          {
-            "name": "summer"
-          },
-          {
-            "name": "autumn"
-          },
-          {
-            "name": "winter"
-          }
-        ]
-      },
-      "ThemeSelector": {
-        "componentEnabled": true
-      }
-    },
-    "toolrules": {
-      "ToolActiveStateManager": {
-        "activateOnStartToolIds": [
-        ]
-      },
-      "ToolRuleManager": {
-        "_rules": {
-          "agsprinttool": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape",
-                "tablet_portrait",
-                "tablet_landscape"
-              ]
+        },
+        "map-init": {
+            "Config": {
+                "basemaps": [
+                    {
+                        "id": "esri_street",
+                        "title": "${map.basemaps.street}",
+                        "thumbnailUrl": "resource('${app}:/images/streets.png')",
+                        "basemap": "streets-relief-vector",
+                        "selected": true
+                    },
+                    {
+                        "id": "esri_hybrid",
+                        "title": "${map.basemaps.hybrid}",
+                        "thumbnailUrl": "resource('${app}:/images/hybrid.png')",
+                        "basemap": "hybrid"
+                    },
+                    {
+                        "id": "esri_topo",
+                        "title": "${map.basemaps.topo}",
+                        "thumbnailUrl": "resource('${app}:/images/topo.png')",
+                        "basemap": {
+                            "type": "GROUP",
+                            "layers": [
+                                {
+                                    "id": "esri_topo1",
+                                    "type": "AGS_TILED",
+                                    "url": "https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer"
+                                },
+                                {
+                                    "id": "esri_topo2",
+                                    "type": "AGS_VECTORTILE",
+                                    "url": "http://www.arcgis.com/sharing/rest/content/items/6f65bc1351b7411588a8cb43fe23dad7/resources/styles/root.json"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "map": {
+                    "layers": [
+                        {
+                            "id": "koeln1",
+                            "title": "${map.koeln1.title}",
+                            "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
+                            "coverImage": "resource('${app}:/images/mapflow_gi.png')",
+                            "type": "AGS_DYNAMIC",
+                            "visible": false,
+                            "sublayers": [
+                                {
+                                    "title": "${map.koeln1.districts.title}",
+                                    "id": 11,
+                                    "opacity": 0.5,
+                                    "popupTemplate": {
+                                        "title": "{STV_NAME}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln1.districts.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "STV_NR",
+                                                        "label": "${common.number}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln1.boroughs.title}",
+                                    "id": 10,
+                                    "opacity": 0.5,
+                                    "popupTemplate": {
+                                        "title": "{NAME}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln1.boroughs.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "expression/area",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    },
+                                                    {
+                                                        "fieldName": "expression/area-rel",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    },
+                                                    {
+                                                        "fieldName": "NUMMER",
+                                                        "label": "${common.number}"
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "expressionInfos": [
+                                            {
+                                                "name": "area",
+                                                "title": "${common.area}",
+                                                "expression": "$feature.FLAECHE / 10000"
+                                            },
+                                            {
+                                                "name": "area-rel",
+                                                "title": "${common.totalArea}",
+                                                "expression": "Round(($feature.FLAECHE / 405020000)*100,2)"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln1.precints.title}",
+                                    "id": 9,
+                                    "opacity": 0.5,
+                                    "popupTemplate": {
+                                        "title": "{NAME}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln1.precints.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "expression/area",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    },
+                                                    {
+                                                        "fieldName": "expression/area-rel",
+                                                        "format": {
+                                                            "places": 2,
+                                                            "digitSeparator": true
+                                                        }
+                                                    },
+                                                    {
+                                                        "fieldName": "NUMMER",
+                                                        "label": "${common.number}"
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "expressionInfos": [
+                                            {
+                                                "name": "area",
+                                                "title": "${common.area}",
+                                                "expression": "$feature.FLAECHE / 10000"
+                                            },
+                                            {
+                                                "name": "area-rel",
+                                                "title": "${common.totalArea}",
+                                                "expression": "Round(($feature.FLAECHE / 405020000)*100,2)"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "koeln2",
+                            "title": "${map.koeln2.title}",
+                            "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
+                            "coverImage": "resource('${app}:/images/mapflow_education.png')",
+                            "type": "AGS_DYNAMIC",
+                            "visible": false,
+                            "sublayers": [
+                                {
+                                    "title": "${map.koeln2.libraries.title}",
+                                    "id": 7,
+                                    "popupTemplate": {
+                                        "title": "{NAME}",
+                                        "content": [
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "NAME_LANG",
+                                                        "label": "${common.name}"
+                                                    },
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "TRAEGER",
+                                                        "label": "${common.provider}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln2.museums.title}",
+                                    "id": 6,
+                                    "popupTemplate": {
+                                        "title": "Museum",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln2.museums.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "STADTBEZIR",
+                                                        "label": "${common.precint}"
+                                                    },
+                                                    {
+                                                        "fieldName": "HYPERLINK",
+                                                        "label": "${common.furtherinfo}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln2.schools.title}",
+                                    "id": 5,
+                                    "popupTemplate": {
+                                        "title": "{NAME}",
+                                        "content": [
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "SCHULNAME",
+                                                        "label": "${common.name}"
+                                                    },
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "TRAEGER",
+                                                        "label": "${common.provider}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "koeln3",
+                            "title": "${map.koeln3.title}",
+                            "url": "https://services.conterra.de/arcgis/rest/services/common/koeln/MapServer",
+                            "coverImage": "resource('${app}:/images/mapflow_leisure.png')",
+                            "type": "AGS_DYNAMIC",
+                            "visible": true,
+                            "sublayers": [
+                                {
+                                    "title": "${map.koeln3.sights.title}",
+                                    "id": 3,
+                                    "popupTemplate": {
+                                        "title": "${map.koeln3.sights.titleSingle}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln3.sights.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "STADTBEZIRK",
+                                                        "label": "${common.precint}"
+                                                    },
+                                                    {
+                                                        "fieldName": "HYPERLINK",
+                                                        "label": "${common.furtherinfo}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln3.playgrounds.title}",
+                                    "id": 2,
+                                    "visible": false,
+                                    "popupTemplate": {
+                                        "title": "{Typ}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln3.playgrounds.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "Basketballk\u00F6rbe",
+                                                        "label": "${map.koeln3.playgrounds.baskets}"
+                                                    },
+                                                    {
+                                                        "fieldName": "Fussballtore",
+                                                        "label": "${map.koeln3.playgrounds.goals}"
+                                                    },
+                                                    {
+                                                        "fieldName": "Tischtennis_Tische",
+                                                        "label": "${map.koeln3.playgrounds.tables}"
+                                                    },
+                                                    {
+                                                        "fieldName": "Torwand",
+                                                        "label": "${map.koeln3.playgrounds.walls}"
+                                                    },
+                                                    {
+                                                        "fieldName": "Skaten",
+                                                        "label": "${map.koeln3.playgrounds.skate}"
+                                                    },
+                                                    {
+                                                        "fieldName": "Sonstiges",
+                                                        "label": "${map.koeln3.playgrounds.misc}"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "title": "${map.koeln3.places.title}",
+                                    "id": 1,
+                                    "popupTemplate": {
+                                        "title": "${map.koeln3.places.titleSingle}",
+                                        "content": [
+                                            {
+                                                "type": "text",
+                                                "text": "${map.koeln3.places.text}"
+                                            },
+                                            {
+                                                "type": "fields",
+                                                "fieldInfos": [
+                                                    {
+                                                        "fieldName": "ADRESSE",
+                                                        "label": "${common.address}"
+                                                    },
+                                                    {
+                                                        "fieldName": "STADTVIERT",
+                                                        "label": "${common.district}"
+                                                    },
+                                                    {
+                                                        "fieldName": "HYPERLINK",
+                                                        "label": "${common.furtherinfo}"
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "expressionInfos": [
+                                            {
+                                                "name": "carrier",
+                                                "expression": "IIf($feature.TRAEGER == \"Privat\", \"${common.private}\", \"${common.municipal}\")"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "ground": {
+                        "url": "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",
+                        "type": "AGS_ELEVATION"
+                    }
+                },
+                "view": {
+                    "viewmode": "2D",
+                    "extent": {
+                        "xmin": 753914,
+                        "ymin": 6590000,
+                        "xmax": 797273,
+                        "ymax": 6635000,
+                        "spatialReference": 3857
+                    }
+                }
             }
-          },
-          "urlEncoder": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape"
-              ]
+        },
+        "mapflow": {
+            "MapFlow": {
+                "singleSelectionMode": false,
+                "autoFlipActiveCover": true
             }
-          },
-          "measurementtool": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape"
-              ]
+        },
+        "themes": {
+            "ThemeModel": {
+                "_selectedTheme": "everlasting"
+            },
+            "ThemeSelector": {
+                "componentEnabled": true
             }
-          },
-          "redlining_tools": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape"
-              ]
+        },
+        "templates": {
+            "TemplateModel": {
+                "_templates": [
+                    {
+                        "name": "seasons",
+                        "widgets": []
+                    }
+                ]
             }
-          },
-          "navigation_tools": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape"
-              ]
+        },
+        "toolset": {
+            "ToolsetManager": {
+                "toolsets": [
+                    {
+                        "id": "mapview_tools",
+                        "tools": [
+                            "introImmediateTool",
+                            "printingToggleTool",
+                            "urlEncoder",
+                            "appsOverviewToggleTool",
+                            "viewmodeSwitcherTool",
+                            "IMPRINT_Imprint_CustomInfoTool",
+                            "IMPRINT_Imprint_CustomInfoTool_mobile"
+                        ],
+                        "registerWidget": {
+                            "widgetRole": "mapview_tools"
+                        },
+                        "container": "ignore",
+                        "windowType": "container",
+                        "cssClass": "muted"
+                    },
+                    {
+                        "id": "my_toolset",
+                        "tools": [
+                            "printingToggleTool"
+                        ],
+                        "container": "map",
+                        "position": {
+                            "rel_t": 300,
+                            "rel_r": 20
+                        },
+                        "registerTool": true,
+                        "togglable": true,
+                        "windowType": "dropdown"
+                    }
+                ]
             }
-          },
-          "coordinateFinderTool": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape"
-              ]
+        },
+        "toolrules": {
+            "ToolRuleManager": {
+                "_rules": {
+                    "viewmodeSwitcherTool": {
+                        "ruleSuccessProperty": "visibility",
+                        "not": {
+                            "subLayoutNames": [
+                                "mobile_portrait",
+                                "mobile_landscape",
+                                "tablet_portrait",
+                                "tablet_landscape"
+                            ]
+                        }
+                    },
+                    "IMPRINT_Imprint_CustomInfoTool": {
+                        "ruleSuccessProperty": "visibility",
+                        "not": {
+                            "subLayoutNames": [
+                                "mobile_portrait",
+                                "mobile_landscape",
+                                "tablet_portrait",
+                                "tablet_landscape"
+                            ]
+                        }
+                    },
+                    "IMPRINT_Imprint_CustomInfoTool_mobile": {
+                        "ruleSuccessProperty": "visibility",
+                        "not": {
+                            "subLayoutNames": [
+                                "desktop"
+                            ]
+                        }
+                    }
+                }
             }
-          },
-          "bookmarkstool": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape"
-              ]
-            }
-          },
-          "magnifier": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape",
-                "tablet_portrait",
-                "tablet_landscape"
-              ]
-            }
-          },
-          "overviewmap": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape"
-              ]
-            }
-          },
-          "storeListDialogToggleTool": {
-            "ruleSuccessProperty": "visibility",
-            "not": {
-              "subLayoutNames": [
-                "mobile_portrait",
-                "mobile_landscape",
-                "tablet_portrait",
-                "tablet_landscape"
-              ]
-            }
-          },
-          "reportTool": {
-            "datasourceIdInResultcenter": [
-              "bathingwater/0",
-              "bathingwater/1",
-              "bathingwater/2",
-              "bathingwater/3",
-              "bathingwater/4",
-              "bathingwater/5",
-              "bathingwater/6"
-            ],
-            "ruleSuccessProperty": "visibility"
-          }
         }
-      }
-    },
-    "toolset": {
-      "ToolsetManager": {
-        "toolsets": [
-          {
-            "id": "dropdown1",
-            "cssClass": "ctWDYWBtn ctPrimaryInput",
-            "title": "${toolsets.whatdoyouwant}",
-            "tools": [
-              "agsprinttool",
-              "urlEncoder",
-              "measurementtool",
-              "redlining_tools",
-              "storeListDialogToggleTool",
-              "navigation_tools",
-              "coordinateFinderTool",
-              "bookmarkstool",
-              "introTool",
-              "introImmediateTool"
-            ],
-            "container": "map",
-            "position": {
-              "rel_t": 72,
-              "rel_l": 20
-            },
-            "windowType": "dropdown"
-          },
-          {
-            "id": "redlining_tools",
-            "title": "${toolsets.redliningTools}",
-            "tooltip": "${toolsets.redliningToolsTooltip}",
-            "tools": [
-              "drawpointtool",
-              "drawlinetool",
-              "drawpolylinetool",
-              "drawfreehandpolylinetool",
-              "drawpolygontool",
-              "drawfreehandpolygontool",
-              "drawellipsetool",
-              "drawarrowtool",
-              "drawTextTool",
-              "drawSymbolTool",
-              "*EditTool",
-              "redliningSymbolPropertiesTool",
-              "undoTool",
-              "redoTool",
-              "drawerasealltool"
-            ],
-            "container": "map",
-            "position": {
-              "rel_t": 110,
-              "rel_l": 20
-            },
-            "max_horizontal": 2,
-            "registerTool": {
-              "groups": [
-                "dropdown1"
-              ]
-            },
-            "deactivateToolsOnHide": true,
-            "window": {
-              "closable": true
-            }
-          },
-          {
-            "id": "navigation_tools",
-            "title": "${toolsets.navigationTools}",
-            "tooltip": "${toolsets.navigationToolsTooltip}",
-            "tools": [
-              "initialExtentTool",
-              "zoomInTool",
-              "zoomOutTool",
-              "panTool",
-              "zoomToNextExtentTool",
-              "zoomToPrevExtentTool",
-              "zoomToFullExtentTool"
-            ],
-            "container": "map",
-            "position": {
-              "rel_t": 110,
-              "rel_l": 20
-            },
-            "registerTool": {
-              "groups": [
-                "dropdown1"
-              ]
-            },
-            "deactivateToolsOnHide": true,
-            "window": {
-              "closable": true
-            }
-          },
-          {
-            "id": "mapview_tools",
-            "title": "${toolsets.mapviewTools}",
-            "tooltip": "${toolsets.mapviewToolsTooltip}",
-            "tools": [
-              "zoomInClickTool",
-              "zoomOutClickTool",
-              "locateme",
-              "magnifier",
-              "overviewmap",
-              "*CustomInfoTool"
-            ],
-            "container": "map",
-            "max_horizontal": 1,
-            "windowType": "css_positioned",
-            "cssClass": "notitle muted mapview_tools",
-            "deactivateToolsOnHide": true
-          }
-        ]
-      }
     }
-  }
 }
