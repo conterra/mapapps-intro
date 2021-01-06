@@ -77,6 +77,10 @@ export default class UserIntro {
         window.addEventListener("keydown", d_lang.hitch(hopscotch, this.onKeyDown), false);
     }
 
+    stopIntro() {
+        hopscotch.endTour();
+    }
+
     onKeyDown(event) {
         const key = event.which || event.keyCode;
         switch (key) {

@@ -57,7 +57,7 @@ export default class IntroWidgetFactory {
     }
 
     start() {
-        this._userIntro.startIntro();
+        this._introImmediateTool.set("active", true);
         this._introTool.set("active", false);
     }
 

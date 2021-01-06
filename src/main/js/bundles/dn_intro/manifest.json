@@ -84,6 +84,11 @@
                     "name": "_introTool",
                     "providing": "ct.tools.Tool",
                     "filter": "(id=introTool)"
+                },
+                {
+                    "name": "_introImmediateTool",
+                    "providing": "ct.tools.Tool",
+                    "filter": "(id=introImmediateTool)"
                 }
             ]
         },
@@ -116,8 +121,9 @@
                 "toolRole": "toolset",
                 "title": "${introImmediateTool.title}",
                 "tooltip": "${introImmediateTool.tooltip}",
-                "togglable": false,
-                "clickHandler": "startIntro",
+                "togglable": true,
+                "activateHandler": "startIntro",
+                "deactivateHandler": "stopIntro",
                 "iconClass": "icon-info-2"
             },
             "references": [
