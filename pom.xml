@@ -19,8 +19,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.conterra.devnet</groupId>
-    <artifactId>mapapps-selection-actions</artifactId>
-    <version>1.10.1-SNAPSHOT</version>
+    <artifactId>mapapps-intro</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <repositories>
         <repository>
@@ -522,9 +522,10 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:git:https://github.com/conterra/mapapps-selection-actions.git</connection>
-        <developerConnection>scm:git:https://github.com/conterra/mapapps-selection-actions.git</developerConnection>
-        <url>https://github.com/conterra/mapapps-selection-actions</url>
+        <connection>scm:git:https://github.com/conterra/mapapps-intro.git</connection>
+        <developerConnection>scm:git:https://github.com/conterra/mapapps-intro.git
+        </developerConnection>
+        <url>https://github.com/conterra/mapapps-intro</url>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
