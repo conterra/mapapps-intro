@@ -46,30 +46,38 @@ export default class UserIntro {
             }
         };
         tour.steps = this._steps = properties.steps;
-        const appCtx = this._appCtx;
-        if (appCtx._applicationRootNode.addClassName !== undefined) {
-            appCtx._applicationRootNode.addClassName("dn_intro_initializing");
-        } else {
-            appCtx._applicationRootNode.className = appCtx._applicationRootNode.className + " dn_intro_initializing";
-        }
-        d_array.forEach(properties.steps, function (step) {
-            if (step.toolId) {
-                const tool = this.getTool(step.toolId);
-                if (tool) {
-                    tool.set("active", true);
-                    ct_async(function () {
-                        tool.set("active", false);
-                    }, this, 500);
-                }
-            }
-        }, this);
-        ct_async(function () {
-            if (appCtx._applicationRootNode.removeClassName !== undefined) {
-                appCtx._applicationRootNode.removeClassName("dn_intro_initializing");
+
+        const hasTools = properties.steps.some((step) => {
+            return step.toolId;
+        });
+
+        if(hasTools) {
+            const appCtx = this._appCtx;
+            if (appCtx._applicationRootNode.addClassName !== undefined) {
+                appCtx._applicationRootNode.addClassName("dn_intro_initializing");
             } else {
-                appCtx._applicationRootNode.className = appCtx._applicationRootNode.className.replace("dn_intro_initializing", "");
+                appCtx._applicationRootNode.className = appCtx._applicationRootNode.className + " dn_intro_initializing";
             }
-        }, this, 1000);
+            d_array.forEach(properties.steps, function (step) {
+                if (step.toolId) {
+                    const tool = this.getTool(step.toolId);
+                    if (tool) {
+                        tool.set("active", true);
+                        ct_async(function () {
+                            tool.set("active", false);
+                        }, this, 500);
+                    }
+                }
+            }, this);
+            ct_async(function () {
+                if (appCtx._applicationRootNode.removeClassName !== undefined) {
+                    appCtx._applicationRootNode.removeClassName("dn_intro_initializing");
+                } else {
+                    appCtx._applicationRootNode.className = appCtx._applicationRootNode.className.replace("dn_intro_initializing", "");
+                }
+            }, this, 1000);
+        }
+
         hopscotch.startTour(tour, 0);
         hopscotch.listen("next", d_lang.hitch(this, this.onStep));
         hopscotch.listen("prev", d_lang.hitch(this, this.onStep));
