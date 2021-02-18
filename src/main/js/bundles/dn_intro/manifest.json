@@ -181,6 +181,12 @@
                     "name": "_tools",
                     "providing": "ct.tools.Tool",
                     "cardinality": "0..n"
+                },
+                {
+                    "name": "_introImmediateTool",
+                    "providing": "ct.tools.Tool",
+                    "filter": "(id=introImmediateTool)",
+                    "cardinality": "0..1"
                 }
             ]
         }

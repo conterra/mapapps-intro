@@ -73,6 +73,7 @@ export default class UserIntro {
         hopscotch.startTour(tour, 0);
         hopscotch.listen("next", d_lang.hitch(this, this.onStep));
         hopscotch.listen("prev", d_lang.hitch(this, this.onStep));
+        hopscotch.listen("end", d_lang.hitch(this, this.onEnd));
 
         window.addEventListener("keydown", d_lang.hitch(hopscotch, this.onKeyDown), false);
     }
@@ -109,6 +110,10 @@ export default class UserIntro {
             const tool = this._activeTool = this.getTool(currStep.toolId);
             tool.set("active", true);
         }
+    }
+
+    onEnd() {
+        this._introImmediateTool.set("active", false);
     }
 
     getTool(toolId) {
