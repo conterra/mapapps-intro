@@ -122,6 +122,7 @@
                 "title": "${introImmediateTool.title}",
                 "tooltip": "${introImmediateTool.tooltip}",
                 "togglable": true,
+                "noGroup": true,
                 "activateHandler": "startIntro",
                 "deactivateHandler": "stopIntro",
                 "iconClass": "icon-info-2"
