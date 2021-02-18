@@ -114,11 +114,11 @@ module.exports = {
                 title: "Language",
                 content: "Choose another language."
             },
-            mapflow: {
+            toc: {
                 title: "Map content",
-                content: "This button opens the mapflow. It allows you to change the map content."
+                content: "This button opens the TOC. It allows you to change the map content."
             },
-            mapflowTool: {
+            tocTool: {
                 title: "Map content",
                 content: "Simply select any map content."
             },

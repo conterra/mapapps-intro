@@ -114,13 +114,13 @@ module.exports = {
             title: "Sprache",
             content: "Eine andere Sprache k\u00f6nnen Sie hier ausw\u00e4hlen."
         },
-        mapflow: {
-            title: "Kartenthemen",
-            content: "W\u00e4hlen Sie hier Ihre Kartenthemen."
+        toc: {
+            title: "Karteninhalt",
+            content: "W\u00e4hlen Sie hier Ihre Karteninhalte."
         },
-        mapflowTool: {
-            title: "Kartenthemen",
-            content: "Aktivieren Sie dazu einfach das gewünschte Kartenthema."
+        tocTool: {
+            title: "Karteninhalt",
+            content: "Aktivieren Sie dazu einfach den gewünschten Karteninhalt."
         },
         legend: {
             title: "Legende",

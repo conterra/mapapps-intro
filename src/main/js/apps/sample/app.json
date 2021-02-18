@@ -36,6 +36,7 @@
             "map-preload-3D@^4.x",
             "toolset@^4.x",
             "viewmodeswitcher@^4.x",
+            "toc@^4.x",
             "dn_intro",
             "wizard"
         ],
@@ -106,16 +107,16 @@
                         "yOffset": -12
                     },
                     {
-                        "target": ".ctTool_mapflowToggleTool",
+                        "target": ".ctTool_tocToggleTool",
                         "placement": "top",
-                        "title": "${intro.mapflow.title}",
-                        "content": "${intro.mapflow.content}"
+                        "title": "${intro.toc.title}",
+                        "content": "${intro.toc.content}"
                     },
                     {
-                        "target": ".ctMapFlow",
+                        "target": ".tocWidget",
                         "placement": "top",
-                        "title": "${intro.mapflowTool.title}",
-                        "toolId": "mapflowToggleTool"
+                        "title": "${intro.tocTool.title}",
+                        "toolId": "tocToggleTool"
                     },
                     {
                         "target": ".ctTool_legendToggleTool",
@@ -653,12 +654,6 @@
                         "spatialReference": 3857
                     }
                 }
-            }
-        },
-        "mapflow": {
-            "MapFlow": {
-                "singleSelectionMode": false,
-                "autoFlipActiveCover": true
             }
         },
         "themes": {
