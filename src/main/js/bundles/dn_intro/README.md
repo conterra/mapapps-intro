@@ -10,7 +10,7 @@ framework. https://github.com/linkedin/hopscotch
 1. First, you need to add the bundle "dn_intro" to your app.
 2. After that, change the intro properties in the app.json:
 
-```json
+```js
 "dn_intro": {
     "UserIntro": {
         // Enable / Disable intro-start on startup
