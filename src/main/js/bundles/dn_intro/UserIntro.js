@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 import d_lang from "dojo/_base/lang";
-import d_array from "dojo/_base/array";
-import ct_async from "ct/async";
+import async from "apprt-core/async";
 import ct_array from "ct/array";
 import hopscotch from "hopscotch";
 
@@ -51,31 +50,31 @@ export default class UserIntro {
             return step.toolId;
         });
 
-        if(hasTools) {
+        if (hasTools) {
             const appCtx = this._appCtx;
             if (appCtx._applicationRootNode.addClassName !== undefined) {
                 appCtx._applicationRootNode.addClassName("dn_intro_initializing");
             } else {
                 appCtx._applicationRootNode.className = appCtx._applicationRootNode.className + " dn_intro_initializing";
             }
-            d_array.forEach(properties.steps, function (step) {
+            properties.steps.forEach((step) => {
                 if (step.toolId) {
                     const tool = this.getTool(step.toolId);
                     if (tool) {
                         tool.set("active", true);
-                        ct_async(function () {
+                        async(() => {
                             tool.set("active", false);
-                        }, this, 500);
+                        }, 500);
                     }
                 }
-            }, this);
-            ct_async(function () {
+            });
+            async(() => {
                 if (appCtx._applicationRootNode.removeClassName !== undefined) {
                     appCtx._applicationRootNode.removeClassName("dn_intro_initializing");
                 } else {
                     appCtx._applicationRootNode.className = appCtx._applicationRootNode.className.replace("dn_intro_initializing", "");
                 }
-            }, this, 1000);
+            }, 1000);
         }
 
         hopscotch.startTour(tour, 0);
@@ -116,7 +115,7 @@ export default class UserIntro {
         const currStep = steps[currStepNum];
         if (currStep.toolId) {
             const tool = this._activeTool = this.getTool(currStep.toolId);
-            tool.set("active", true);
+            tool && tool.set("active", true);
         }
     }
 
