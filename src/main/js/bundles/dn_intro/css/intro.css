@@ -22,6 +22,7 @@
 .dn_intro_initializing .ctWindow * {
     opacity: 0;
     visibility: hidden;
+    display: none;
 }
 
 div.hopscotch-bubble .hopscotch-nav-button {
