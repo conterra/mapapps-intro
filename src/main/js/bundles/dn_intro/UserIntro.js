@@ -125,8 +125,6 @@ export default class UserIntro {
 
     getTool(toolId) {
         const tools = this._tools;
-        return ct_array.arraySearchFirst(tools, {
-            id: toolId
-        });
+        return tools.find(e => e.id === toolId);
     }
 }
