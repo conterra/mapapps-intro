@@ -18,7 +18,8 @@
         "hopscotch": "0.3.1",
         "apprt-vue": "^4.0.0",
         "apprt-binding": "^4.0.0",
-        "apprt-vuetify": "^4.0.0"
+        "apprt-vuetify": "^4.0.0",
+        "map-widget": "^4.0.0"
     },
     "CSS-Themes-Extension": [
         {
@@ -187,6 +188,10 @@
                     "providing": "ct.tools.Tool",
                     "filter": "(id=introImmediateTool)",
                     "cardinality": "0..1"
+                },
+                {
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel"
                 }
             ]
         }

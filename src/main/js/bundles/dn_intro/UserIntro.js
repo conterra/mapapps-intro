@@ -15,12 +15,24 @@
  */
 import d_lang from "dojo/_base/lang";
 import async from "apprt-core/async";
-import ct_array from "ct/array";
 import hopscotch from "hopscotch";
 
 export default class UserIntro {
 
     startIntro() {
+        this._getView().then((view) => {
+            if (view.ready) {
+                this._startTour();
+            } else {
+                const watcher = view.watch("ready", (ready) => {
+                    ready && this._startTour();
+                    watcher.remove();
+                });
+            }
+        });
+    }
+
+    _startTour() {
         const properties = this._properties;
         const tour = {
             id: properties.id || "mapapps_intro",
@@ -126,5 +138,19 @@ export default class UserIntro {
     getTool(toolId) {
         const tools = this._tools;
         return tools.find(e => e.id === toolId);
+    }
+
+    _getView() {
+        const mapWidgetModel = this._mapWidgetModel;
+        // eslint-disable-next-line no-unused-vars
+        return new Promise((resolve, reject) => {
+            if (mapWidgetModel.view) {
+                resolve(mapWidgetModel.view);
+            } else {
+                mapWidgetModel.watch("view", ({value: view}) => {
+                    resolve(view);
+                });
+            }
+        });
     }
 }
