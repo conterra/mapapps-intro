@@ -93,6 +93,7 @@ export default class UserIntro {
         hopscotch.listen("next", d_lang.hitch(this, this.onStep));
         hopscotch.listen("prev", d_lang.hitch(this, this.onStep));
         hopscotch.listen("end", d_lang.hitch(this, this.onEnd));
+        hopscotch.listen("close", d_lang.hitch(this, this.onEnd)); 
 
         window.addEventListener("keydown", d_lang.hitch(hopscotch, this.onKeyDown), false);
     }
