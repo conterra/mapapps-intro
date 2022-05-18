@@ -20,7 +20,7 @@
             "languagetoggler@^4.x",
             "legend@^4.x",
             "notifier@^4.x",
-            "omnisearch@^4.x",
+            "search-ui@^4.x",
             "parametermanager@^4.x",
             "printing@^4.x",
             "splashscreen@^4.x",
@@ -100,10 +100,10 @@
                         "toolId": "my_toolset"
                     },
                     {
-                        "target": ".omnisearch",
+                        "target": ".ct-search-ui",
                         "placement": "right",
-                        "title": "${intro.omnisearch.title}",
-                        "content": "${intro.omnisearch.content}",
+                        "title": "${intro.search.title}",
+                        "content": "${intro.search.content}",
                         "yOffset": -12
                     },
                     {
@@ -163,10 +163,7 @@
                     "id": "store01",
                     "title": "${search.title}",
                     "url": "https://services.conterra.de/arcgis/rest/services/common/koeln_adressen/MapServer/0",
-                    "omniSearchSearchAttr": "ADRESSE",
-                    "omniSearchDefaultLabel": "${common.address}",
-                    "enablePagination": true,
-                    "omniSearchPageSize": 10
+                    "searchAttribute": "ADRESSE"
                 }
             ],
             "AutoStoreRegistration": {

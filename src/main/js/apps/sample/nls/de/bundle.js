@@ -126,8 +126,8 @@ module.exports = {
             title: "Legende",
             content: "Die Legende zeigt Ihnen die Symbolisierung der dargestellten Karteninhalte."
         },
-        omnisearch: {
-            title: "Omnisearch",
+        search: {
+            title: "Suche",
             content: "Geben Sie hier Ihren Suchbegriff ein und passen Sie die Suchmethode an."
         },
         featureinfo: {

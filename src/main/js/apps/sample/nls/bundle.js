@@ -126,8 +126,8 @@ module.exports = {
                 title: "Legend",
                 content: "The legend shows the layer symbology."
             },
-            omnisearch: {
-                title: "Omnisearch",
+            search: {
+                title: "Search",
                 content: "Search here and configure the search message."
             },
             featureinfo: {
