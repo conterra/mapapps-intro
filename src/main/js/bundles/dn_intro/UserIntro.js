@@ -47,6 +47,7 @@ export default class UserIntro {
             arrowWidth: properties.arrowWidth,
             skipIfNoElement: properties.skipIfNoElement,
             nextOnTargetClick: properties.nextOnTargetClick,
+            nextOnSpace: properties.nextOnSpace,
             i18n: {
                 nextBtn: properties.i18n.nextBtn,
                 prevBtn: properties.i18n.prevBtn,
@@ -93,7 +94,7 @@ export default class UserIntro {
         hopscotch.listen("next", d_lang.hitch(this, this.onStep));
         hopscotch.listen("prev", d_lang.hitch(this, this.onStep));
         hopscotch.listen("end", d_lang.hitch(this, this.onEnd));
-        hopscotch.listen("close", d_lang.hitch(this, this.onEnd)); 
+        hopscotch.listen("close", d_lang.hitch(this, this.onEnd));
 
         window.addEventListener("keydown", d_lang.hitch(hopscotch, this.onKeyDown), false);
     }
@@ -104,16 +105,26 @@ export default class UserIntro {
 
     onKeyDown(event) {
         const key = event.which || event.keyCode;
+        const tour = this.getCurrTour();
+
+
         switch (key) {
             case 32:
                 // space key pressed
-                this.nextStep();
+                if(tour.nextOnSpace){
+                    this.nextStep();
+                }
+
                 break;
             case 37:
                 // left key pressed
                 break;
             case 39:
                 // right key pressed
+                if(!tour.nextOnSpace){
+                    this.nextStep();
+                }
+
                 break;
         }
     }
