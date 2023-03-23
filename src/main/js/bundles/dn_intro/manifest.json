@@ -159,7 +159,7 @@
                 "arrowWidth": 20,
                 "skipIfNoElement": true,
                 "nextOnTargetClick": false,
-                "nextOnSpace": false,
+                "arrowKeysNavigation": false,
                 "i18n": {
                     "nextBtn": "${next}",
                     "prevBtn": "${back}",

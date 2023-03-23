@@ -37,6 +37,8 @@ framework. https://github.com/linkedin/hopscotch
         "skipIfNoElement": true,
         // Should we advance to the next step when the user clicks on the target? Default: false.
         "nextOnTargetClick": false,
+        // Should we advance to the next or previous step by using the arrow key. If false, we will go to the next step by pressing the space bar. Please inform the users about this behavior during the introduction.
+        "arrowKeysNavigation": false,
         // For i18n purposes. Allows you to change the text of button labels and step numbers.
         "i18n": {
             // Label for next button

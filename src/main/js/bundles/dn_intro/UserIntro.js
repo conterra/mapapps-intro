@@ -47,7 +47,7 @@ export default class UserIntro {
             arrowWidth: properties.arrowWidth,
             skipIfNoElement: properties.skipIfNoElement,
             nextOnTargetClick: properties.nextOnTargetClick,
-            nextOnSpace: properties.nextOnSpace,
+            arrowKeysNavigation: properties.arrowKeysNavigation,
             i18n: {
                 nextBtn: properties.i18n.nextBtn,
                 prevBtn: properties.i18n.prevBtn,
@@ -111,20 +111,22 @@ export default class UserIntro {
         switch (key) {
             case 32:
                 // space key pressed
-                if(tour.nextOnSpace){
+                if(!tour.arrowKeysNavigation){
                     this.nextStep();
                 }
 
                 break;
             case 37:
                 // left key pressed
+                if(tour.arrowKeysNavigation){
+                    this.prevStep();
+                }
                 break;
             case 39:
                 // right key pressed
-                if(!tour.nextOnSpace){
+                if(tour.arrowKeysNavigation){
                     this.nextStep();
                 }
-
                 break;
         }
     }
