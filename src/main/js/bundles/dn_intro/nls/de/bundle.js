@@ -34,4 +34,4 @@ module.exports = {
         title: "Intro starten",
         tooltip: "Intro starten"
     }
-}
+};

@@ -70,4 +70,4 @@ module.exports = {
         title: "Schritte definieren",
         description: "Schritte mit JSON definieren"
     }
-}
+};
