@@ -2,8 +2,5 @@
     "extends": "eslint-config-ct-prodeng",
     "plugins": [
         "vue"
-    ],
-    "exclude" : [
-        "src/main/js/bundles/hopscotch"
     ]
 }
