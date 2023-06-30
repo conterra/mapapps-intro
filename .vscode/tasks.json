@@ -2,24 +2,46 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Run Jetty Server",
+            "label": "Initialize",
+            "detail": "Initialize map.apps for Developers project",
             "type": "shell",
-            "command": "mvn clean jetty:run -Pwatch-all",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "Run stand-alone Jetty Server",
-            "type": "shell",
-            "command": "mvn clean jetty:run -P'watch-all,include-mapapps-deps'",
+            "command": "mvn initialize",
             "group": "build"
         },
         {
-            "label": "Install",
+            "label": "Run",
+            "detail": "Run map.apps for Developers development server",
             "type": "shell",
-            "command": "mvn clean install -Pcompress",
+            "command": "mvn",
+            "args": ["compile", "-Denv=dev", "'-Dlocal.configfile=./build.properties'", "-Pinclude-mapapps-deps"],
+            "group": "build",
+            "isBackground": true
+        },
+        {
+            "label": "Run (Remote project mode)",
+            "detail": "Run map.apps for Developers development server in 'remote project' mode",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["compile", "-Denv=dev", "'-Dlocal.configfile=./build.properties'"],
+            "group": "build",
+            "isBackground": true
+        },
+        {
+            "label": "Compress",
+            "detail": "Prepare bundles and apps for deployment on a map.apps instance",
+            "type": "shell",
+            "command": "mvn",
+            "args": ["install", "-Pcompress"],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "mvn clean",
             "group": "build"
         }
     ]

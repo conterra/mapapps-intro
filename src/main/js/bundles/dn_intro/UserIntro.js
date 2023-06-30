@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 con terra GmbH (info@conterra.de)
+ * Copyright (C) 2023 con terra GmbH (info@conterra.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,9 +58,7 @@ export default class UserIntro {
         };
         tour.steps = this._steps = properties.steps;
 
-        const hasTools = properties.steps.some((step) => {
-            return step.toolId;
-        });
+        const hasTools = properties.steps.some((step) => step.toolId);
 
         if (hasTools) {
             const appCtx = this._appCtx;
@@ -93,7 +91,7 @@ export default class UserIntro {
         hopscotch.listen("next", d_lang.hitch(this, this.onStep));
         hopscotch.listen("prev", d_lang.hitch(this, this.onStep));
         hopscotch.listen("end", d_lang.hitch(this, this.onEnd));
-        hopscotch.listen("close", d_lang.hitch(this, this.onEnd)); 
+        hopscotch.listen("close", d_lang.hitch(this, this.onEnd));
 
         window.addEventListener("keydown", d_lang.hitch(hopscotch, this.onKeyDown), false);
     }
