@@ -11,12 +11,5 @@
         "noEmit": true,
         "skipLibCheck": true,
         "esModuleInterop": true
-    },
-    "lint": [
-        {
-            "exclude": [
-                "src/main/js/bundles/hopscotch"
-            ]
-        }
-    ]
+    }
 }
