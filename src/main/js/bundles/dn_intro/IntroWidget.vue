@@ -19,21 +19,24 @@
     <v-container
         grid-list-md
         text-xs-center
-        class="pa-1">
+        class="pa-1"
+    >
         <v-btn
             ripple
             color="primary"
-            @click="$emit('start-intro')">
+            @click="$emit('start-intro')"
+        >
             {{ i18n.start }}
         </v-btn>
         <v-checkbox
             v-if="startIntroOnStartup"
-            :label="i18n.hint"
             v-model="checkBox"
-            @change="$emit('checkbox-changed', checkBox)"
             class="pa-2"
             color="primary"
-            hide-details/>
+            :label="i18n.hint"
+            hide-details
+            @change="$emit('checkbox-changed', checkBox)"
+        />
     </v-container>
 </template>
 <script>

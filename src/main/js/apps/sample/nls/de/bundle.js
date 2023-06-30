@@ -140,4 +140,4 @@ module.exports = {
         skip: "\u00dcberspringen",
         closeTooltip: "Intro beenden"
     }
-}
+};

@@ -142,4 +142,4 @@ module.exports = {
         }
     },
     de: true
-}
+};
