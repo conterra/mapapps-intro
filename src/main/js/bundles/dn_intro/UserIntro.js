@@ -47,6 +47,7 @@ export default class UserIntro {
             arrowWidth: properties.arrowWidth,
             skipIfNoElement: properties.skipIfNoElement,
             nextOnTargetClick: properties.nextOnTargetClick,
+            arrowKeysNavigation: properties.arrowKeysNavigation,
             i18n: {
                 nextBtn: properties.i18n.nextBtn,
                 prevBtn: properties.i18n.prevBtn,
@@ -102,16 +103,28 @@ export default class UserIntro {
 
     onKeyDown(event) {
         const key = event.which || event.keyCode;
+        const tour = this.getCurrTour();
+
+
         switch (key) {
             case 32:
                 // space key pressed
-                this.nextStep();
+                if(!tour.arrowKeysNavigation){
+                    this.nextStep();
+                }
+
                 break;
             case 37:
                 // left key pressed
+                if(tour.arrowKeysNavigation){
+                    this.prevStep();
+                }
                 break;
             case 39:
                 // right key pressed
+                if(tour.arrowKeysNavigation){
+                    this.nextStep();
+                }
                 break;
         }
     }
