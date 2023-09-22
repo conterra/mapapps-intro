@@ -73,7 +73,7 @@
                 },
                 "steps": [
                     {
-                        "target": ".mainMap",
+                        "target": ".map_main",
                         "placement": "top",
                         "title": "${intro.familiarise.title}",
                         "content": "${intro.familiarise.content}",
@@ -147,7 +147,7 @@
                         "arrowOffset": 260
                     },
                     {
-                        "target": ".mainMap",
+                        "target": ".map_main",
                         "placement": "top",
                         "title": "${intro.featureinfo.title}",
                         "content": "${intro.featureinfo.content}",
