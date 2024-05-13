@@ -121,7 +121,8 @@ gulp.task("build",
         gulp.parallel(
             "js-transpile",
             "rollup-build",
-            "themes-compile"
+            "themes-compile",
+            "css-compress"
         )
     )
 );

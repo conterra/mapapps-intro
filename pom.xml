@@ -144,6 +144,14 @@
                     <configuration>
                         <nodeVersion>v20.9.0</nodeVersion>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>run-webpack</id>
+                            <goals>
+                                <goal>webpack</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>

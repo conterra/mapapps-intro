@@ -26,7 +26,8 @@
             "locator-store",
             "toc",
             "sample_helloworld",
-            "dn_intro"
+            "dn_intro",
+            "sample_toc_driver"
         ]
     },
     "bundles": {
@@ -90,6 +91,7 @@
                     {
                         "id": "mapview_tools",
                         "tools": [
+                            "tocTourTool",
                             "locateMeTool",
                             "zoomInTool",
                             "zoomOutTool",
