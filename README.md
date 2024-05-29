@@ -17,7 +17,7 @@ The bundle `driver` allows you to create a step-by-step introductory guide for a
 
 `mvn compile -P include-mapapps-deps,env-dev`
 
-## More Information
+## More information
 
 The project is based on the latest version of the [mapapps-4-developers Project](https://github.com/conterra/mapapps-4-developers).
 See the README.md file of that project for more information on how to run a local development server.
