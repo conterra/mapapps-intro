@@ -29,25 +29,28 @@
 /// limitations under the License.
 ///
 import {driver} from "driver";
+import StepFactory, {ExtendedDriveStep} from "./StepFactory";
+import {InjectedReference} from "apprt-core/InjectedReference";
+
 export default class Tour {
+    private stepDefinitions: ExtendedDriveStep[] = [];
+    private stepFactory: InjectedReference<StepFactory>;
 
-    _tools;
-
-    constructor(properties) {
+    constructor(properties: ConstructorParameters) {
         this.stepDefinitions = properties.steps;
     }
-    startTour() {
-        const driverObj = driver.driver({
+
+    startTour(): void {
+        const driverObj= driver.driver({
             showProgress: true
         });
         const stepDefinitions = this.stepDefinitions;
-        const steps = stepDefinitions.map(stepDefinition => this.stepFactory.createStep(driverObj, stepDefinition));
+        const steps = stepDefinitions.map(stepDefinition => this.stepFactory!.createStep(driverObj, stepDefinition));
         driverObj.setSteps(steps);
         driverObj.drive();
     }
+}
 
-    #getTool(toolId) {
-        return this._tools?.find(tool => tool.id === toolId);
-    }
-
+interface ConstructorParameters {
+    steps: ExtendedDriveStep[]
 }
