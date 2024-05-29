@@ -24,7 +24,7 @@
             "propertiesConstructor": true,
             "properties": {
                 "id": "tocTourTool",
-                "title": "start driver js tour for TOC",
+                "title": "Start driver.js tour for TOC",
                 "toolRole": "toolset",
                 "clickHandler": "startTour"
             },
