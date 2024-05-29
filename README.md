@@ -1,17 +1,17 @@
 # mapapps-intro
 
-This bundle allows you to create your own step-by-step guide in map.apps based on the hopscotch framework.
-https://github.com/linkedin/hopscotch
+The bundle `driver` allows you to create a step-by-step introductory guide for a map.apps app. It is based on the [driver.js](https://driverjs.com/) library.
 
 :heavy_exclamation_mark: desktop-only
 
 ![Screenshot App](https://github.com/conterra/mapapps-intro/blob/master/screenshot.JPG)
 
-## Sample App
+## Prerequisites
 
--   map.apps 4.15.0
--   All resources from `map.apps-VERSION/sdk/m2-repository` need to be copied manually to your local Maven repository (e.g. `%UserProfile%/.m2/repository` for Windows, `~/.m2/repository` for MacOS).
+- map.apps greater than version 4.15.0
+- To be able to build the project with Maven, all files from `map.apps-VERSION/sdk/m2-repository` need to be copied manually to your local Maven repository (e.g. `%UserProfile%/.m2/repository` for Windows, `~/.m2/repository` for MacOS).
 
 ## More Information
 
-The project is always based on the latest version of the [mapapps-4-developers Project](https://github.com/conterra/mapapps-4-developers).
+The project is based on the latest version of the [mapapps-4-developers Project](https://github.com/conterra/mapapps-4-developers).
+See the README.md file of that project for more information on how to run a local development server.
