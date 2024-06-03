@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 export default {
-    bundleName: "Hallo Welt",
-    bundleDescription: "Das Modul gibt Hallo aus.",
-    hello: "Hallo Welt"
+    bundleName: "DN Intro",
+    bundleDescription: "Erlaubt die Konfiguration von Einführungstouren für eine App."
 };

@@ -15,9 +15,8 @@
  */
 export default {
     root: {
-        bundleName: "Hello World",
-        bundleDescription: "This bundle prints Hello.",
-        hello: "Hello World"
+        bundleName: "DN Intro",
+        bundleDescription: "Can be used to create an introductory tour for apps"
     },
     de: true
 };
