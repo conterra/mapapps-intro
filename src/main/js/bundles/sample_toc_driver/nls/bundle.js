@@ -15,9 +15,8 @@
  */
 export default {
     root: {
-        bundleName: "Hello World",
-        bundleDescription: "This bundle prints Hello.",
-        hello: "Hello World"
+        bundleName: "TOC Intro Sample",
+        bundleDescription: "Demonstrates how to create a custom tour using the 'driver' bundle."
     },
     de: true
 };

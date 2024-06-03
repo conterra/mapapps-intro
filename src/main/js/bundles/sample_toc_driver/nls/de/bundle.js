@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 export default {
-    bundleName: "Hallo Welt",
-    bundleDescription: "Das Modul gibt Hallo aus.",
-    hello: "Hallo Welt"
+    bundleName: "TOC Intro Beispiel",
+    bundleDescription: "Beispiel für die Anwendung des 'driver' Bundles"
 };
