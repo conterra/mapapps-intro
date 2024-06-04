@@ -15,29 +15,28 @@
 ///
 
 import {driver} from "driver";
-import StepFactory, {MapappsToolDriveStep} from "./StepFactory";
+import StepFactory, {ToolDriveStep} from "./StepFactory";
 import {InjectedReference} from "apprt-core/InjectedReference";
+import {Config} from "driver.js";
 
 export default class Tour {
-    private stepDefinitions: MapappsToolDriveStep[] = [];
+    private tourConfig: TourConfig;
     private stepFactory: InjectedReference<StepFactory>;
 
-    constructor(properties: ConstructorParameters) {
-        this.stepDefinitions = properties.steps;
+    constructor(properties: TourConfig) {
+        this.tourConfig = properties;
     }
 
     startTour(): void {
-        const driverObj= driver.driver({
-            showProgress: true,
-            disableActiveInteraction: true // This avoids the tour from getting out of sync with the app due to user interactions on the tools.
-        });
-        const stepDefinitions = this.stepDefinitions;
-        const steps = stepDefinitions.map(stepDefinition => this.stepFactory!.createStep(driverObj, stepDefinition));
+        const driverObj= driver.driver(this.tourConfig);
+        const stepDefinitions = this.tourConfig.steps;
+        const steps: driver.DriveStep[] = stepDefinitions.map(stepDefinition =>
+            this.stepFactory!.createStep(driverObj, stepDefinition));
         driverObj.setSteps(steps);
         driverObj.drive();
     }
 }
 
-interface ConstructorParameters {
-    steps: MapappsToolDriveStep[]
-}
+interface TourConfig extends Config {
+    steps: ToolDriveStep[];
+};

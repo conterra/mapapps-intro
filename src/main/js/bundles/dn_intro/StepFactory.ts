@@ -20,35 +20,35 @@ import {InjectedReference} from "apprt-core/InjectedReference";
 export default class StepFactory {
     tools: InjectedReference<Tool[]>;
 
-    createStep(driverInstance: driver.Driver, step: MapappsToolDriveStep): driver.DriveStep {
-        const tool: Tool | undefined = step.toolId ? this.#getTool(step.toolId) : undefined;
+    createStep(driverInstance: driver.Driver, step: ToolDriveStep): driver.DriveStep {
+        const tool: Tool | undefined = step.toolAction?.toolId ? this.#getTool(step.toolAction?.toolId) : undefined;
 
-        if (tool != undefined && step.onNext == "activate" && step.popover) {
+        if (tool && step.toolAction?.onNext == "activate" && step.popover) {
             step.popover.onNextClick = () => {
                 tool.set("active", true);
                 driverInstance.moveNext();
             };
         }
-        if (tool != undefined && step.onNext == "deactivate" && step.popover) {
+        if (tool && step.toolAction?.onNext == "deactivate" && step.popover) {
             step.popover.onNextClick = () => {
                 tool.set("active", false);
                 driverInstance.moveNext();
             };
         }
-        if (tool != undefined && step.onPrev == "activate" && step.popover) {
+        if (tool && step.toolAction?.onPrev == "activate" && step.popover) {
             step.popover.onPrevClick = () => {
                 tool.set("active", true);
                 driverInstance.movePrevious();
             };
         }
-        if (tool != undefined && step.onPrev == "deactivate" && step.popover) {
+        if (tool && step.toolAction?.onPrev == "deactivate" && step.popover) {
             step.popover.onPrevClick = () => {
                 tool.set("active", false);
                 driverInstance.movePrevious();
             };
         }
 
-        if (step.onNext == "click" && step.popover) {
+        if (step.toolAction?.onNext == "click" && step.popover) {
             step.popover.onNextClick = (element: Element | undefined) => {
                 if (element instanceof HTMLElement) {
                     element.click();
@@ -56,7 +56,7 @@ export default class StepFactory {
                 driverInstance.moveNext();
             };
         }
-        if (step.onPrev == "click" && step.popover) {
+        if (step.toolAction?.onPrev == "click" && step.popover) {
             step.popover.onPrevClick = (element: Element | undefined) => {
                 if (element instanceof HTMLElement) {
                     element.click();
@@ -77,13 +77,22 @@ interface Tool {
     set(key: "active", enable: boolean): void;
 }
 
-export interface MapappsToolDriveStep extends driver.DriveStep {
-    toolId: string,
-    onNext: "activate" | "deactivate" | "click";
-    onPrev: "activate" | "deactivate" | "click";
+export interface ToolDriveStep extends driver.DriveStep {
+    toolAction?: ToolAction;
 }
 
-interface DriverOptions {
-    config: driver.Config;
-    state: driver.State;
+interface ToolAction {
+    /**
+     * The id of the tool to be activated/deactivated or clicked.
+     */
+    toolId: string,
+    /**
+     * The action to be performed on the tool when the next button is clicked.
+     */
+    onNext: "activate" | "deactivate" | "click";
+    /**
+     * The action to be performed on the tool when the previous button is clicked.
+     */
+    onPrev: "activate" | "deactivate" | "click";
+
 }

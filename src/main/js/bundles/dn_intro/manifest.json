@@ -43,7 +43,7 @@
                 "steps": [
                     {
                         "element": ".ctTool_tocToggleTool",
-                        "toolActions": {
+                        "toolAction": {
                             "toolId": "tocToggleTool",
                             "onNext": "activate"
                         },
@@ -54,7 +54,7 @@
                     },
                     {
                         "element": ".toc-window",
-                        "toolActions": {
+                        "toolAction": {
                             "toolId": "tocToggleTool",
                             "onPrev": "deactivate"
                         },
