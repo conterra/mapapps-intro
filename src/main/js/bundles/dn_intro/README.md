@@ -1,3 +1,3 @@
-# sample_toc_driver
+# dn_intro
 
-This bundle demonstrates how to create a custom tour using the `driver` bundle.
+Allows you to create a custom tour using driver.js.
