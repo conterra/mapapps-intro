@@ -29,14 +29,14 @@
             "references": [
                 {
                     "name": "handlerScope",
-                    "providing": "sample_toc_driver.Tour"
+                    "providing": "dn_intro.Tour"
                 }
             ]
         },
         {
             "name": "Tour",
             "provides": [
-                "sample_toc_driver.Tour"
+                "dn_intro.Tour"
             ],
             "propertiesConstructor": true,
             "properties": {
@@ -82,13 +82,13 @@
             "references": [
                 {
                     "name": "stepFactory",
-                    "providing": "sample_toc_driver.StepFactory"
+                    "providing": "dn_intro.StepFactory"
                 }
             ]
         },
         {
             "name": "StepFactory",
-            "provides": "sample_toc_driver.StepFactory",
+            "provides": "dn_intro.StepFactory",
             "references": [
                 {
                     "name": "tools",
