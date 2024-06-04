@@ -17,23 +17,56 @@
 import {driver} from "driver";
 import StepFactory, {ToolDriveStep} from "./StepFactory";
 import {InjectedReference} from "apprt-core/InjectedReference";
-import {Config} from "driver.js";
+import {Config, DriveStep, State} from "driver.js";
 
 export default class Tour {
     private tourConfig: TourConfig;
     private stepFactory: InjectedReference<StepFactory>;
+    private tour: driver.Driver;
+    private localStorageKeyName = "dn_intro_currentStep";
 
     constructor(properties: TourConfig) {
         this.tourConfig = properties;
+
+        this.tourConfig.onNextClick = (element: Element | undefined, step: DriveStep, options: {
+            config: Config;
+            state: State
+        }) => {
+            if (this.tour.hasNextStep() && options.state.activeIndex !== undefined) {
+                this.savePosition(options.state.activeIndex + 1);
+            } else {
+                this.clearSavedStepPosition();
+            }
+            this.tour.moveNext();
+        }
+
+        this.tour = driver.driver(this.tourConfig);
     }
 
     startTour(): void {
-        const driverObj= driver.driver(this.tourConfig);
+        const tour = this.tour;
         const stepDefinitions = this.tourConfig.steps;
         const steps: driver.DriveStep[] = stepDefinitions.map(stepDefinition =>
-            this.stepFactory!.createStep(driverObj, stepDefinition));
-        driverObj.setSteps(steps);
-        driverObj.drive();
+            this.stepFactory!.createStep(tour, stepDefinition));
+        tour.setSteps(steps);
+        tour.drive();
+
+        this.restoreSavedStepPosition(tour);
+    }
+
+    private savePosition(index: number): void {
+        localStorage.setItem(this.localStorageKeyName, index.toString());
+    }
+
+    private restoreSavedStepPosition(tour: driver.Driver): void {
+        const currentStep = localStorage.getItem(this.localStorageKeyName);
+        if (currentStep) {
+            tour.drive(parseInt(currentStep));
+        }
+    }
+
+    private clearSavedStepPosition(): void {
+        localStorage.removeItem(this.localStorageKeyName);
     }
 }
 

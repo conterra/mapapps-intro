@@ -20,7 +20,7 @@ import {InjectedReference} from "apprt-core/InjectedReference";
 export default class StepFactory {
     tools: InjectedReference<Tool[]>;
 
-    createStep(driverInstance: driver.Driver, step: ToolDriveStep): driver.DriveStep {
+    createStep(tour: driver.Driver, step: ToolDriveStep): driver.DriveStep {
         const toolAction = step.toolAction;
         if (!toolAction || !step.popover) {
             return step;
@@ -34,14 +34,14 @@ export default class StepFactory {
         if (toolAction.onNext) {
             step.popover.onNextClick = () => {
                 this.#applyToolAction(toolAction.onNext, tool);
-                driverInstance.moveNext();
+                tour.moveNext();
             };
         }
 
         if (toolAction.onPrev) {
             step.popover.onPrevClick = () => {
                 this.#applyToolAction(toolAction.onPrev, tool);
-                driverInstance.movePrevious();
+                tour.movePrevious();
             };
         }
 
