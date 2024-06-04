@@ -6,10 +6,10 @@
         ],
         "allowedBundles": [
             "banner",
+            "dn_intro",
             "map-init",
             "map-preload-2D",
             "notifier",
-            "sample_toc_driver",
             "splashscreen",
             "system",
             "theme-everlasting",

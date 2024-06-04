@@ -14,3 +14,5 @@
 /// limitations under the License.
 ///
 
+export {default as StepFactory} from "./StepFactory";
+export {default as Tour} from "./Tour";
