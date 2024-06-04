@@ -21,59 +21,56 @@ export default class StepFactory {
     tools: InjectedReference<Tool[]>;
 
     createStep(driverInstance: driver.Driver, step: ToolDriveStep): driver.DriveStep {
-        const tool: Tool | undefined = step.toolAction?.toolId ? this.#getTool(step.toolAction?.toolId) : undefined;
+        const toolAction = step.toolAction;
+        if (!toolAction || !step.popover) {
+            return step;
+        }
 
-        if (tool && step.toolAction?.onNext == "activate" && step.popover) {
+        const tool = toolAction.toolId ? this.#getTool(toolAction?.toolId) : undefined;
+        if (!tool) {
+            return step;
+        }
+
+        if (toolAction.onNext) {
             step.popover.onNextClick = () => {
-                tool.set("active", true);
+                this.#applyToolAction(toolAction.onNext, tool);
                 driverInstance.moveNext();
             };
         }
-        if (tool && step.toolAction?.onNext == "deactivate" && step.popover) {
-            step.popover.onNextClick = () => {
-                tool.set("active", false);
-                driverInstance.moveNext();
-            };
-        }
-        if (tool && step.toolAction?.onPrev == "activate" && step.popover) {
+
+        if (toolAction.onPrev) {
             step.popover.onPrevClick = () => {
-                tool.set("active", true);
-                driverInstance.movePrevious();
-            };
-        }
-        if (tool && step.toolAction?.onPrev == "deactivate" && step.popover) {
-            step.popover.onPrevClick = () => {
-                tool.set("active", false);
+                this.#applyToolAction(toolAction.onPrev, tool);
                 driverInstance.movePrevious();
             };
         }
 
-        if (step.toolAction?.onNext == "click" && step.popover) {
-            step.popover.onNextClick = (element: Element | undefined) => {
-                if (element instanceof HTMLElement) {
-                    element.click();
-                }
-                driverInstance.moveNext();
-            };
-        }
-        if (step.toolAction?.onPrev == "click" && step.popover) {
-            step.popover.onPrevClick = (element: Element | undefined) => {
-                if (element instanceof HTMLElement) {
-                    element.click();
-                }
-                driverInstance.movePrevious();
-            };
-        }
         return step;
     }
 
     #getTool(toolId: string): Tool | undefined {
         return this.tools?.find(tool => tool.id == toolId);
     }
+
+    #applyToolAction(toolActionMethod: ToolMethod | undefined, tool: Tool): void {
+        switch (toolActionMethod) {
+            case "activate":
+                tool.set("active", true);
+                break;
+            case "deactivate":
+                tool.set("active", false);
+                break;
+            case "click":
+                tool.click();
+        }
+    }
 }
 
 interface Tool {
     id: string;
+
+    click(): void;
+
     set(key: "active", enable: boolean): void;
 }
 
@@ -89,10 +86,11 @@ interface ToolAction {
     /**
      * The action to be performed on the tool when the next button is clicked.
      */
-    onNext: "activate" | "deactivate" | "click";
+    onNext?: ToolMethod;
     /**
      * The action to be performed on the tool when the previous button is clicked.
      */
-    onPrev: "activate" | "deactivate" | "click";
-
+    onPrev?: ToolMethod;
 }
+
+type ToolMethod = "activate" | "deactivate" | "click";
