@@ -40,6 +40,8 @@
             ],
             "propertiesConstructor": true,
             "properties": {
+                "showProgress": true,
+                "disableActiveInteraction": true,
                 "steps": [
                     {
                         "element": ".ctTool_tocToggleTool",
