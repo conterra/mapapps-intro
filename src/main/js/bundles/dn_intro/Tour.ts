@@ -15,61 +15,170 @@
 ///
 
 import {driver} from "driver";
-import StepFactory, {ToolDriveStep} from "./StepFactory";
-import {InjectedReference} from "apprt-core/InjectedReference";
-import {Config, DriveStep, State} from "driver.js";
+import {TourEvents} from "./TourEvents";
+import {Evented} from "apprt-core/Events";
 
 export default class Tour {
     private tourConfig: TourConfig;
-    private stepFactory: InjectedReference<StepFactory>;
     private tour: driver.Driver;
-    private localStorageKeyName = "dn_intro_currentStep";
+    private eventChannel = new TourEventChannel();
+    private tools: Tool[] = [];
+    private persistingStrategy: PersistingStrategy = new LocalVariablePersistingStrategy();
 
     constructor(properties: TourConfig) {
         this.tourConfig = properties;
-
-        this.tourConfig.onNextClick = (element: Element | undefined, step: DriveStep, options: {
-            config: Config;
-            state: State
-        }) => {
-            if (this.tour.hasNextStep() && options.state.activeIndex !== undefined) {
-                this.savePosition(options.state.activeIndex + 1);
-            } else {
-                this.clearSavedStepPosition();
-            }
-            this.tour.moveNext();
-        }
-
+        this.registerNavigationEventHooks();
         this.tour = driver.driver(this.tourConfig);
     }
 
     startTour(): void {
         const tour = this.tour;
-        const stepDefinitions = this.tourConfig.steps;
-        const steps: driver.DriveStep[] = stepDefinitions.map(stepDefinition =>
-            this.stepFactory!.createStep(tour, stepDefinition));
+        const steps = this.tourConfig.steps;
+        this.enableToolActions();
         tour.setSteps(steps);
         tour.drive();
-
         this.restoreSavedStepPosition(tour);
+        this.enablePersistingTourPosition();
     }
 
-    private savePosition(index: number): void {
-        localStorage.setItem(this.localStorageKeyName, index.toString());
+    addTool(tool: Tool): void {
+        this.tools.push(tool);
     }
 
-    private restoreSavedStepPosition(tour: driver.Driver): void {
-        const currentStep = localStorage.getItem(this.localStorageKeyName);
-        if (currentStep) {
-            tour.drive(parseInt(currentStep));
+    private registerNavigationEventHooks(): void {
+        // A hook for an event can only be set once. Therefore, we emit a custom event to be able to register to this
+        // event multiple times.
+        this.tourConfig.onNextClick = (element, step, options) => {
+            this.eventChannel.emit("nextClick", {element, step, options});
+            // Wait for the tool actions on the next step to complete before moving to the next step
+            setTimeout(() => {
+                this.tour.moveNext();
+            }, 100);
+        };
+
+        this.tourConfig.onPrevClick = (element, step, options) => {
+            this.eventChannel.emit("prevClick", {element, step, options});
+            this.tour.movePrevious();
+        };
+    }
+
+    private enableToolActions(): void {
+        this.eventChannel.on("nextClick", (event) => {
+            const activeIndex = event.options.state.activeIndex === undefined ? 0 : event.options.state.activeIndex
+            const toolAction = this.getToolActionFromStep(this.tourConfig.steps, activeIndex + 1);
+
+            if (toolAction) {
+                this.performActionOnTool(toolAction.toolId, toolAction.actionName);
+            }
+        });
+    }
+
+    private getToolActionFromStep(steps: ToolDriveStep[], stepIndex: number | undefined): ToolAction | undefined {
+        if (steps && stepIndex !== undefined && stepIndex >= 0) {
+            const activeStep = <ToolDriveStep>steps[stepIndex];
+            return activeStep?.toolAction;
         }
     }
 
-    private clearSavedStepPosition(): void {
-        localStorage.removeItem(this.localStorageKeyName);
+    private performActionOnTool(toolId: string, toolActionMethod: ToolMethod | undefined): void {
+        const tool = this.getTool(toolId);
+        if (!tool) {
+            return;
+        }
+        switch (toolActionMethod) {
+            case "activate":
+                tool.set("active", true);
+                break;
+            case "deactivate":
+                tool.set("active", false);
+                break;
+            case "click":
+                tool.click();
+        }
+    }
+
+    private getTool(toolId: string): Tool | undefined {
+        return this.tools?.find(tool => tool.id == toolId);
+    }
+
+    private enablePersistingTourPosition(): void {
+        this.eventChannel.on("nextClick", (event) => {
+            if (this.tour.hasNextStep() && event.options.state.activeIndex !== undefined) {
+                this.persistingStrategy.save(event.options.state.activeIndex + 1);
+            } else {
+                this.persistingStrategy.clear();
+            }
+        });
+        this.eventChannel.on("prevClick", (event) => {
+            const activeIndex = event.options.state.activeIndex;
+            if (activeIndex !== undefined && activeIndex > 0) {
+                this.persistingStrategy.save(activeIndex);
+            } else {
+                this.persistingStrategy.clear();
+            }
+        });
+    }
+
+    private restoreSavedStepPosition(tour: driver.Driver): void {
+        const currentStep = this.persistingStrategy.restore();
+        if (currentStep > -1) {
+            tour.drive(currentStep);
+        }
     }
 }
 
-interface TourConfig extends Config {
+interface TourConfig extends driver.Config {
     steps: ToolDriveStep[];
-};
+}
+
+class TourEventChannel extends Evented<TourEvents> {
+}
+
+interface Tool {
+    id: string;
+    click(): void;
+    set(key: "active", enable: boolean): void;
+}
+
+export interface ToolDriveStep extends driver.DriveStep {
+    toolAction?: ToolAction;
+}
+
+interface ToolAction {
+    /**
+     * The id of the tool to be activated/deactivated or clicked.
+     */
+    toolId: string,
+    /**
+     * The action to be performed on the tool when the next button is clicked.
+     */
+    actionName?: ToolMethod;
+}
+
+type ToolMethod = "activate" | "deactivate" | "click";
+
+/**
+ * This interface abstracts the strategy for persisting the current step of the tour.
+ * This might be saving to a local variable, a cookie, session storage, or local storage.
+ */
+interface PersistingStrategy {
+    save(index: number): void;
+    restore(): number;
+    clear(): void;
+}
+
+class LocalVariablePersistingStrategy implements PersistingStrategy {
+    private value: number = -1;
+
+    save(index: number): void {
+        this.value = index;
+    }
+
+    restore(): number {
+        return this.value;
+    }
+
+    clear(): void {
+        this.value = -1;
+    }
+}

@@ -45,10 +45,6 @@
                 "steps": [
                     {
                         "element": ".ctTool_tocToggleTool",
-                        "toolAction": {
-                            "toolId": "tocToggleTool",
-                            "onNext": "activate"
-                        },
                         "popover": {
                             "title": "Table of content toggle tool",
                             "description": "This opens a widget that shows you the layer of the map"
@@ -58,7 +54,7 @@
                         "element": ".toc-window",
                         "toolAction": {
                             "toolId": "tocToggleTool",
-                            "onPrev": "deactivate"
+                            "actionName": "activate"
                         },
                         "popover": {
                             "title": "Table of content",
@@ -81,16 +77,6 @@
                     }
                 ]
             },
-            "references": [
-                {
-                    "name": "stepFactory",
-                    "providing": "dn_intro.StepFactory"
-                }
-            ]
-        },
-        {
-            "name": "StepFactory",
-            "provides": "dn_intro.StepFactory",
             "references": [
                 {
                     "name": "tools",
