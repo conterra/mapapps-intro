@@ -85,15 +85,14 @@ export default class Tour {
         if (!tool) {
             return;
         }
-        switch (toolActionMethod) {
-            case "activate":
+        if (toolActionMethod === "activate") {
+            if (tool.togglable) {
                 tool.set("active", true);
-                break;
-            case "deactivate":
-                tool.set("active", false);
-                break;
-            case "click":
+            } else {
                 tool.click();
+            }
+        } else if (toolActionMethod === "deactivate" && tool.togglable) {
+            tool.set("active", false);
         }
     }
 
@@ -136,7 +135,11 @@ class TourEventChannel extends Evented<TourEvents> {
 
 interface Tool {
     id: string;
+    togglable: boolean;
+    active: boolean;
+
     click(): void;
+
     set(key: "active", enable: boolean): void;
 }
 
@@ -155,7 +158,7 @@ interface ToolAction {
     actionName?: ToolMethod;
 }
 
-type ToolMethod = "activate" | "deactivate" | "click";
+type ToolMethod = "activate" | "deactivate";
 
 /**
  * This interface abstracts the strategy for persisting the current step of the tour.
@@ -163,7 +166,9 @@ type ToolMethod = "activate" | "deactivate" | "click";
  */
 interface PersistingStrategy {
     save(index: number): void;
+
     restore(): number;
+
     clear(): void;
 }
 
