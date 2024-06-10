@@ -66,7 +66,7 @@ export default class Tour {
                     return customDelay;
                 }
             }
-            return 0;
+            return 100;
         }
 
         this.tourConfig.onPrevClick = (element, step, options) => {
