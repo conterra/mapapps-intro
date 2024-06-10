@@ -1,18 +1,18 @@
 # dn_intro
 
-Allows you to create a custom tour using driver.js.
+Allows you to create a custom tour using the [driver.js](https://driverjs.com/) library.
+A tour is an introduction to your app for new users. Its aim is to show the users how to start doing things with your app, or to introduce them to new features.
 
-A tour is an introduction to your app for new users. Its aim is to show the users how to start doing things with your app, or to show them new features.
+An example app with a tour can be found on the con terra demos site: **TODO**
 
-An example for a tour can be found on the con terra demos site: **TODO**
-
-The `dn_intro` bundle is based on the [driver.js](https://driverjs.com/) library and all features of driver.js can be used in the `dn_intro` bundle as well.
+Since the `dn_intro` bundle is based on the driver.js library, all the features of driver.js can be used in the `dn_intro` bundle as well.
 
 ## Configuration
 
-Configuration is done on the bundle's `Tour` component. All the configuration settings you specify here are passed as `Config` object ([see API documentation](https://driverjs.com/docs/configuration)) to the driver.js library.
+Configuration is done on the bundle's `Tour` component.
+All the configuration settings you specify here are passed as `Config` object to the driver.js library, so you can use the exact same configuration options as in driver.js. The available options are documented [here](https://driverjs.com/docs/configuration).
 
-Example
+Example from the `app.json` file:
 
 ````json
 {
@@ -58,3 +58,23 @@ Example
     }
 }
 ````
+This example shows a tour with 4 steps. Each step has an `element` property that specifies the element on the page that the step is about.
+The `popover` property specifies the content of the popover that is shown to the user.
+
+Almost all the properties in the example above originate in the driver.js library.
+The only exception is the `toolAction` property defined inside a step configuration.
+This property is used to activate or deactivate a certain tool in a map.apps app when the user arrives at that step
+In the example the tool with the ID `tocToggleTool` is activated when the user arrived at the second step and the window containing the table of content is opened.
+
+### Configuration reference
+
+#### toolAction
+
+The `toolAction` property can be added to a [DriveStep](https://driverjs.com/docs/configuration) item in the `steps` array  and is used to activate or deactivate a certain tool in a map.apps app when the user reaches that step.
+
+A `ToolAction` is an object with the following properties:
+
+| Property name | Mandatory | Type   | Description                                                                                                                                                                                                                                                                                                                                       |
+|--------------|-----------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `toolId`     | yes       | String | The ID of the tool on which to perform an action. The action is specified with `actionName`.                                                                                                                                                                                                                                                      |
+| `actionName` | yes       | String | The action to perform when the corresponding step is reached. Must be either `activate` or `deactivate`. <br/>For tools whose `togglable` property is `true`, `activate` activates the tool and `deactivate` deactivates it. <br/>When the tool's `togglable` property is `false`, `activate` calls the tool's `click` method and `deactivate` has no effect. |
