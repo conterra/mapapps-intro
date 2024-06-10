@@ -29,8 +29,8 @@
                     {
                         "element": ".ctTool_tocToggleTool",
                         "popover": {
-                            "title": "Table of content toggle tool",
-                            "description": "This opens a widget that shows you the layer of the map"
+                            "title": "Table of content",
+                            "description": "This opens a widget that allows you control the layers of the map"
                         }
                     },
                     {
