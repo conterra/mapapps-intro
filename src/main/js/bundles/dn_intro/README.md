@@ -18,8 +18,6 @@ Example from the `app.json` file:
 {
     "dn_intro": {
         "Tour": {
-            "showProgress": false,
-            "disableActiveInteraction": true,
             "steps": [
                 {
                     "element": ".ctTool_tocToggleTool",
@@ -75,6 +73,8 @@ The `toolAction` property can be added to a [DriveStep](https://driverjs.com/doc
 A `ToolAction` is an object with the following properties:
 
 | Property name | Mandatory | Type   | Description                                                                                                                                                                                                                                                                                                                                       |
-|--------------|-----------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `toolId`     | yes       | String | The ID of the tool on which to perform an action. The action is specified with `actionName`.                                                                                                                                                                                                                                                      |
-| `actionName` | yes       | String | The action to perform when the corresponding step is reached. Must be either `activate` or `deactivate`. <br/>For tools whose `togglable` property is `true`, `activate` activates the tool and `deactivate` deactivates it. <br/>When the tool's `togglable` property is `false`, `activate` calls the tool's `click` method and `deactivate` has no effect. |
+|---------------|-----------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `toolId`      | yes       | String | The ID of the tool on which to perform an action. The action is specified with `actionName`.                                                                                                                                                                                                                                                      |
+| `actionName`  | yes       | String | The action to perform when the corresponding step is reached. Must be either `activate` or `deactivate`. <br/>For tools whose `togglable` property is `true`, `activate` activates the tool and `deactivate` deactivates it. <br/>When the tool's `togglable` property is `false`, `activate` calls the tool's `click` method and `deactivate` has no effect. |
+| `delay`        | no        | Number | The delay in milliseconds before moving to the next step. This is useful when it takes some time until the step's element becomes visible after executing the tool action. The default value is `100` milliseconds.                                                                                                                                                                                                                                                                                                                                                              |
+
