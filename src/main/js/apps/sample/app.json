@@ -23,6 +23,44 @@
         ]
     },
     "bundles": {
+        "dn_intro": {
+            "Tour": {
+                "steps": [
+                    {
+                        "element": ".ctTool_tocToggleTool",
+                        "popover": {
+                            "title": "Table of content toggle tool",
+                            "description": "This opens a widget that shows you the layer of the map"
+                        }
+                    },
+                    {
+                        "element": ".toc-window",
+                        "toolAction": {
+                            "toolId": "tocToggleTool",
+                            "actionName": "activate"
+                        },
+                        "popover": {
+                            "title": "Table of content",
+                            "description": "It shows the layers of the map"
+                        }
+                    },
+                    {
+                        "element": ".v-list-group__expand-button",
+                        "popover": {
+                            "title": "Expand layer group",
+                            "description": "Click it to show sublayers"
+                        }
+                    },
+                    {
+                        "element": ".layer-item__menu-activator",
+                        "popover": {
+                            "title": "Options for this layer",
+                            "description": "Click it to show options"
+                        }
+                    }
+                ]
+            }
+        },
         "banner": {
             "BannerWidget": {
                 "label": "Developer Network",
