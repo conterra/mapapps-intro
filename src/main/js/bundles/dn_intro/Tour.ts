@@ -50,11 +50,24 @@ export default class Tour {
         // event multiple times.
         this.tourConfig.onNextClick = (element, step, options) => {
             this.eventChannel.emit("nextClick", {element, step, options});
+
             // Wait for the tool actions on the next step to complete before moving to the next step
             setTimeout(() => {
                 this.tour.moveNext();
-            }, 100);
+            }, getDelayFromStep(step));
         };
+
+        const getDelayFromStep = function(step: ToolDriveStep): number {
+            if (step.hasOwnProperty("toolAction")) {
+                const customDelay = (<ToolDriveStep>step).toolAction?.delay;
+                if (customDelay === undefined || customDelay <= 0) {
+                    return 100;
+                } else {
+                    return customDelay;
+                }
+            }
+            return 0;
+        }
 
         this.tourConfig.onPrevClick = (element, step, options) => {
             this.eventChannel.emit("prevClick", {element, step, options});
@@ -156,6 +169,10 @@ interface ToolAction {
      * The action to be performed on the tool when the next button is clicked.
      */
     actionName?: ToolMethod;
+    /**
+     * The delay in milliseconds before moving to the next step. This is useful when it takes some time until the step's element becomes visible after executing the tool action. The default value is 100 milliseconds.
+     */
+    delay?: number;
 }
 
 type ToolMethod = "activate" | "deactivate";
