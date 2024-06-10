@@ -88,7 +88,16 @@
                     }
                 ],
                 "map": {
-                    "layers": []
+                    "layers": [
+                        {
+                            "id": "wmsnwalkis",
+                            "url": "https://www.wms.nrw.de/geobasis/wms_nw_dvg?",
+                            "type": "WMS",
+                            "title": "WMS NW DVG",
+                            "description": "Die Digitalen Verwaltungsgrenzen beinhalten für ganz NRW die aus dem Basis-DLM abgeleiteten Verwaltungsgrenzen des Landes, der Regierungsbezirke, der Kreise und kreisfreien Städte sowie der Kommunen. Die Ableitung erfolgt einmal jährlich zum 01.10. und entspricht dann dem Fortführungsstand des Basis-DLMs. Bei wesentlichen Änderungen finden weitere Aktualisierungen statt. Die Digitalen Verwaltungsgrenzen sind besonders als räumliche Bezugsgrundlage für den Aufbau von Geo- und Fachinformationssystemen, als Hintergrundinformation für die Überlagerung mit fachspezifischen Daten sowie für die rechnergestützte Bearbeitung thematischer Karten geeignet. Der Dienst basiert auf den Grenzen des Datensatzes DVG2, der ca. 10% der Punkte des DVG1 enthält und eine Genauigkeit von 50 m hat.",
+                            "visible": true
+                        }
+                    ]
                 },
                 "view": {
                     "viewmode": "2D",
