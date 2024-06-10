@@ -1,10 +1,12 @@
 # mapapps-intro
 
 The bundle `dn_intro` allows you to create a step-by-step introductory guide for a map.apps app. It is based on the [driver.js](https://driverjs.com/) library.
+See the `dn_intro` bundle's documentation for more information.
 
 :heavy_exclamation_mark: desktop-only
 
-![Screenshot App](https://github.com/conterra/mapapps-intro/blob/master/screenshot.JPG)
+![Tour screenshot](https://github.com/conterra/mapapps-intro/blob/master/img.png)
+
 
 ## Prerequisites
 
