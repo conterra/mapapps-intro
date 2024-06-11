@@ -45,6 +45,12 @@ export default class Tour {
         this.enablePersistingTourPosition();
     }
 
+    stopTour(): void {
+        this.eventHandles.forEach(handle => handle.remove());
+        this.persistingStrategy.clear();
+        this.tour?.destroy();
+    }
+
     set actionFactory(actionFactory: ActionFactory) {
         this.#actionFactory = actionFactory;
     }
