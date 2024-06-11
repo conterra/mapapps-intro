@@ -23,15 +23,25 @@ export default class ActionFactory {
     private tools: Tool[] = [];
 
     createAction(config: ActionConfig<any>, elementSelector?: string): Action {
-        if (Object.hasOwn(config,"toolId")) {
+        if (config.action === "toolActivate" || config.action === "toolDeactivate") {
+            if (!Object.hasOwn(config,"toolId")) {
+                console.error("ToolActionConfig must have a 'toolId' property");
+                return new NoOpAction();
+            }
+
             const toolConfig = config as ToolActionConfig;
             const tool = this.getTool(toolConfig.toolId);
             if (tool) {
                 return new ToolAction(tool, toolConfig);
             } else {
                 console.error(`Tool with id '${toolConfig.toolId}' not found`);
+                return new NoOpAction();
             }
-        } else if (config.action === "elementClick" && elementSelector) {
+        } else if (config.action === "elementClick") {
+            if (!elementSelector) {
+                console.error("When using ElementActionConfig the 'element' property must be defined on the step configuration.");
+                return new NoOpAction();
+            }
             return new ElementAction(elementSelector);
         }
         return new NoOpAction();
