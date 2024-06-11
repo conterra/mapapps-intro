@@ -46,6 +46,18 @@
             },
             "references": [
                 {
+                    "name": "actionFactory",
+                    "providing": "dn_intro.ActionFactory"
+                }
+            ]
+        },
+        {
+            "name": "ActionFactory",
+            "provides": [
+                "dn_intro.ActionFactory"
+            ],
+            "references": [
+                {
                     "name": "tools",
                     "providing": "ct.tools.Tool",
                     "cardinality": "0..n"

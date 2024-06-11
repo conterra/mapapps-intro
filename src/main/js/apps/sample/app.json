@@ -28,6 +28,10 @@
                 "steps": [
                     {
                         "element": ".ctTool_tocToggleTool",
+                        "onNext": {
+                            "action": "toolActivate",
+                            "toolId": "tocToggleTool"
+                        },
                         "popover": {
                             "title": "Table of content",
                             "description": "This opens a widget that allows you control the layers of the map"
@@ -35,10 +39,6 @@
                     },
                     {
                         "element": ".toc-window",
-                        "toolAction": {
-                            "toolId": "tocToggleTool",
-                            "actionName": "activate"
-                        },
                         "popover": {
                             "title": "Table of content",
                             "description": "It shows the layers of the map"

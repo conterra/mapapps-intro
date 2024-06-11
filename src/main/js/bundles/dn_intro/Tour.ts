@@ -17,12 +17,15 @@
 import {driver} from "driver";
 import {TourEvents} from "./TourEvents";
 import {Evented} from "apprt-core/Events";
+import {ActionConfig} from "./Action";
+import ActionFactory from "./ActionFactory";
+import {InjectedReference} from "apprt-core/InjectedReference";
 
 export default class Tour {
     private tourConfig: TourConfig;
     private tour: driver.Driver;
+    #actionFactory: InjectedReference<ActionFactory>;
     private eventChannel = new TourEventChannel();
-    private tools: Tool[] = [];
     private persistingStrategy: PersistingStrategy = new LocalVariablePersistingStrategy();
 
     constructor(properties: TourConfig) {
@@ -34,15 +37,15 @@ export default class Tour {
     startTour(): void {
         const tour = this.tour;
         const steps = this.tourConfig.steps;
-        this.enableToolActions();
+        this.watchOnNextEvent();
         tour.setSteps(steps);
         tour.drive();
         this.restoreSavedStepPosition(tour);
         this.enablePersistingTourPosition();
     }
 
-    addTool(tool: Tool): void {
-        this.tools.push(tool);
+    set actionFactory(actionFactory: ActionFactory) {
+        this.#actionFactory = actionFactory;
     }
 
     private registerNavigationEventHooks(): void {
@@ -57,9 +60,9 @@ export default class Tour {
             }, getDelayFromStep(step));
         };
 
-        const getDelayFromStep = function(step: ToolDriveStep): number {
-            if (step.hasOwnProperty("toolAction")) {
-                const customDelay = (<ToolDriveStep>step).toolAction?.delay;
+        function getDelayFromStep(step: DriveStepWithSideEffect): number {
+            if (Object.hasOwn(step, "onNext")) {
+                const customDelay = step.onNext?.delay;
                 if (customDelay === undefined || customDelay <= 0) {
                     return 100;
                 } else {
@@ -75,42 +78,25 @@ export default class Tour {
         };
     }
 
-    private enableToolActions(): void {
+    private watchOnNextEvent(): void {
         this.eventChannel.on("nextClick", (event) => {
-            const activeIndex = event.options.state.activeIndex === undefined ? 0 : event.options.state.activeIndex
-            const toolAction = this.getToolActionFromStep(this.tourConfig.steps, activeIndex + 1);
-
-            if (toolAction) {
-                this.performActionOnTool(toolAction.toolId, toolAction.actionName);
+            const activeIndex = event.options.state.activeIndex === undefined ? 0 : event.options.state.activeIndex;
+            const actionConfig = this.getActionFromStep(this.tourConfig.steps, activeIndex, "onNext");
+            if (actionConfig) {
+                if (!this.#actionFactory) {
+                    throw new Error("ActionFactory is not set.");
+                }
+                const action = this.#actionFactory.createAction(actionConfig);
+                console.debug("Executing onNext action", actionConfig, action);
+                action.execute();
             }
         });
     }
 
-    private getToolActionFromStep(steps: ToolDriveStep[], stepIndex: number | undefined): ToolAction | undefined {
+    private getActionFromStep(steps: DriveStepWithSideEffect[], stepIndex: number | undefined, stepEvent: StepEvent): ActionConfig<any> | undefined {
         if (steps && stepIndex !== undefined && stepIndex >= 0) {
-            const activeStep = <ToolDriveStep>steps[stepIndex];
-            return activeStep?.toolAction;
+            return steps[stepIndex][stepEvent];
         }
-    }
-
-    private performActionOnTool(toolId: string, toolActionMethod: ToolMethod | undefined): void {
-        const tool = this.getTool(toolId);
-        if (!tool) {
-            return;
-        }
-        if (toolActionMethod === "activate") {
-            if (tool.togglable) {
-                tool.set("active", true);
-            } else {
-                tool.click();
-            }
-        } else if (toolActionMethod === "deactivate" && tool.togglable) {
-            tool.set("active", false);
-        }
-    }
-
-    private getTool(toolId: string): Tool | undefined {
-        return this.tools?.find(tool => tool.id == toolId);
     }
 
     private enablePersistingTourPosition(): void {
@@ -140,42 +126,19 @@ export default class Tour {
 }
 
 interface TourConfig extends driver.Config {
-    steps: ToolDriveStep[];
+    steps: DriveStepWithSideEffect[];
 }
 
 class TourEventChannel extends Evented<TourEvents> {
 }
 
-interface Tool {
-    id: string;
-    togglable: boolean;
-    active: boolean;
 
-    click(): void;
-
-    set(key: "active", enable: boolean): void;
+export interface DriveStepWithSideEffect extends driver.DriveStep {
+    onNext?: ActionConfig<any>;
+    onPrev?: ActionConfig<any>;
 }
 
-export interface ToolDriveStep extends driver.DriveStep {
-    toolAction?: ToolAction;
-}
-
-interface ToolAction {
-    /**
-     * The id of the tool to be activated/deactivated or clicked.
-     */
-    toolId: string,
-    /**
-     * The action to be performed on the tool when the next button is clicked.
-     */
-    actionName?: ToolMethod;
-    /**
-     * The delay in milliseconds before moving to the next step. This is useful when it takes some time until the step's element becomes visible after executing the tool action. The default value is 100 milliseconds.
-     */
-    delay?: number;
-}
-
-type ToolMethod = "activate" | "deactivate";
+type StepEvent = "onNext" | "onPrev";
 
 /**
  * This interface abstracts the strategy for persisting the current step of the tour.
@@ -183,14 +146,12 @@ type ToolMethod = "activate" | "deactivate";
  */
 interface PersistingStrategy {
     save(index: number): void;
-
     restore(): number;
-
     clear(): void;
 }
 
 class LocalVariablePersistingStrategy implements PersistingStrategy {
-    private value: number = -1;
+    private value = -1;
 
     save(index: number): void {
         this.value = index;
