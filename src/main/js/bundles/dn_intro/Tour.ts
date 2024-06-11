@@ -65,19 +65,19 @@ export default class Tour {
             setTimeout(() => {
                 this.tour?.moveNext();
             }, getDelayFromStep(step));
-        };
 
-        function getDelayFromStep(step: DriveStepWithSideEffect): number {
-            if (Object.hasOwn(step, "onNext")) {
-                const customDelay = step.onNext?.delay;
-                if (customDelay === undefined || customDelay <= 0) {
-                    return 100;
-                } else {
-                    return customDelay;
+            function getDelayFromStep(step: DriveStepWithSideEffect): number {
+                if (Object.hasOwn(step, "onNext")) {
+                    const customDelay = step.onNext?.delay;
+                    if (customDelay === undefined || customDelay <= 0) {
+                        return 100;
+                    } else {
+                        return customDelay;
+                    }
                 }
+                return 100;
             }
-            return 100;
-        }
+        };
 
         this.tourConfig.onPrevClick = (element, step, options) => {
             this.eventChannel.emit("prevClick", {element, step, options});
