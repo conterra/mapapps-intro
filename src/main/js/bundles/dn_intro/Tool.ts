@@ -50,6 +50,8 @@ export class ToolAction implements Action {
             }
         } else if (action === "toolDeactivate" && this.tool.togglable) {
             this.tool.set("active", false);
+        } else {
+            console.error(`Invalid action '${action}' for tool '${this.tool.id}'. Tool is not togglable.`);
         }
     }
 }
