@@ -30,5 +30,5 @@ export interface ToolActionConfig extends ActionConfig<"toolActivate" | "toolDea
     /**
      * The id of the tool to be activated/deactivated or clicked.
      */
-    toolId: string,
+    toolId: string;
 }
