@@ -16,26 +16,27 @@
 
 import {driver} from "driver";
 import {TourEvents} from "./TourEvents";
-import {Evented} from "apprt-core/Events";
+import {Evented, EventHandle} from "apprt-core/Events";
 import {ActionConfig} from "./Action";
 import ActionFactory from "./ActionFactory";
 import {InjectedReference} from "apprt-core/InjectedReference";
+import {LocalVariablePersistingStrategy, PersistingStrategy} from "./PersistingStrategy";
 
 export default class Tour {
     private tourConfig: TourConfig;
-    private tour: driver.Driver;
+    private tour: driver.Driver | undefined;
     #actionFactory: InjectedReference<ActionFactory>;
     private eventChannel = new TourEventChannel();
     private persistingStrategy: PersistingStrategy = new LocalVariablePersistingStrategy();
+    private eventHandles: EventHandle[] = [];
 
     constructor(properties: TourConfig) {
         this.tourConfig = properties;
         this.registerNavigationEventHooks();
-        this.tour = driver.driver(this.tourConfig);
     }
 
     startTour(): void {
-        const tour = this.tour;
+        const tour = this.tour = driver.driver(this.tourConfig);
         const steps = this.tourConfig.steps;
         this.watchOnNextEvent();
         tour.setSteps(steps);
@@ -56,7 +57,7 @@ export default class Tour {
 
             // Wait for the tool actions on the next step to complete before moving to the next step
             setTimeout(() => {
-                this.tour.moveNext();
+                this.tour?.moveNext();
             }, getDelayFromStep(step));
         };
 
@@ -74,12 +75,12 @@ export default class Tour {
 
         this.tourConfig.onPrevClick = (element, step, options) => {
             this.eventChannel.emit("prevClick", {element, step, options});
-            this.tour.movePrevious();
+            this.tour?.movePrevious();
         };
     }
 
     private watchOnNextEvent(): void {
-        this.eventChannel.on("nextClick", (event) => {
+        const handle = this.eventChannel.on("nextClick", (event) => {
             const activeIndex = event.options.state.activeIndex === undefined ? 0 : event.options.state.activeIndex;
             const actionConfig = this.getActionFromStep(this.tourConfig.steps, activeIndex, "onNext");
             if (actionConfig) {
@@ -91,6 +92,7 @@ export default class Tour {
                 action.execute();
             }
         });
+        this.eventHandles.push(handle);
     }
 
     private getActionFromStep(steps: DriveStepWithSideEffect[], stepIndex: number | undefined, stepEvent: StepEvent): ActionConfig<any> | undefined {
@@ -100,21 +102,25 @@ export default class Tour {
     }
 
     private enablePersistingTourPosition(): void {
-        this.eventChannel.on("nextClick", (event) => {
-            if (this.tour.hasNextStep() && event.options.state.activeIndex !== undefined) {
-                this.persistingStrategy.save(event.options.state.activeIndex + 1);
+        const persistingStrategy = this.persistingStrategy;
+        const nextClickHandle = this.eventChannel.on("nextClick", (event) => {
+            if (this.tour?.hasNextStep() && event.options.state.activeIndex !== undefined) {
+                persistingStrategy.save(event.options.state.activeIndex + 1);
             } else {
-                this.persistingStrategy.clear();
+                persistingStrategy.clear();
             }
         });
-        this.eventChannel.on("prevClick", (event) => {
+        this.eventHandles.push(nextClickHandle);
+
+        const prevClickHandle = this.eventChannel.on("prevClick", (event) => {
             const activeIndex = event.options.state.activeIndex;
             if (activeIndex !== undefined && activeIndex > 0) {
-                this.persistingStrategy.save(activeIndex);
+                persistingStrategy.save(activeIndex);
             } else {
-                this.persistingStrategy.clear();
+                persistingStrategy.clear();
             }
         });
+        this.eventHandles.push(prevClickHandle);
     }
 
     private restoreSavedStepPosition(tour: driver.Driver): void {
@@ -139,29 +145,3 @@ export interface DriveStepWithSideEffect extends driver.DriveStep {
 }
 
 type StepEvent = "onNext" | "onPrev";
-
-/**
- * This interface abstracts the strategy for persisting the current step of the tour.
- * This might be saving to a local variable, a cookie, session storage, or local storage.
- */
-interface PersistingStrategy {
-    save(index: number): void;
-    restore(): number;
-    clear(): void;
-}
-
-class LocalVariablePersistingStrategy implements PersistingStrategy {
-    private value = -1;
-
-    save(index: number): void {
-        this.value = index;
-    }
-
-    restore(): number {
-        return this.value;
-    }
-
-    clear(): void {
-        this.value = -1;
-    }
-}
