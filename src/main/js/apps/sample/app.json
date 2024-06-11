@@ -30,7 +30,8 @@
                         "element": ".ctTool_tocToggleTool",
                         "onNext": {
                             "action": "toolActivate",
-                            "toolId": "tocToggleTool"
+                            "toolId": "tocToggleTool",
+                            "delay": 100
                         },
                         "popover": {
                             "title": "Table of content",
@@ -55,7 +56,7 @@
                         }
                     },
                     {
-                        "element": ".layer-item__menu-activator",
+                        "element": ".v-list__tile__action.layer-item__menu-activator",
                         "onNext": {
                             "action": "elementClick"
                         },

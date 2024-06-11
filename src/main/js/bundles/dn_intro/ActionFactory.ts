@@ -15,12 +15,14 @@
 ///
 
 import {Action, ActionConfig, NoOpAction} from "./Action";
-import {Tool, ToolAction, ToolActionConfig} from "./Tool";
+import {Tool, ToolActionConfig} from "./Tool";
+import ElementAction from "./ElementAction";
+import {ToolAction} from "./ToolAction";
 
 export default class ActionFactory {
     private tools: Tool[] = [];
 
-    createAction(config: ActionConfig<any>): Action {
+    createAction(config: ActionConfig<any>, elementSelector?: string): Action {
         if (Object.hasOwn(config,"toolId")) {
             const toolConfig = config as ToolActionConfig;
             const tool = this.getTool(toolConfig.toolId);
@@ -29,6 +31,8 @@ export default class ActionFactory {
             } else {
                 console.error(`Tool with id '${toolConfig.toolId}' not found`);
             }
+        } else if (config.action === "elementClick" && elementSelector) {
+            return new ElementAction(elementSelector);
         }
         return new NoOpAction();
     }

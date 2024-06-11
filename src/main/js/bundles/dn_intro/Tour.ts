@@ -88,22 +88,20 @@ export default class Tour {
     private watchOnNextEvent(): void {
         const handle = this.eventChannel.on("nextClick", (event) => {
             const activeIndex = event.options.state.activeIndex === undefined ? 0 : event.options.state.activeIndex;
-            const actionConfig = this.getActionFromStep(this.tourConfig.steps, activeIndex, "onNext");
-            if (actionConfig) {
+            const step = this.getStep(this.tourConfig.steps, activeIndex);
+            if (step && step.onNext) {
                 if (!this.#actionFactory) {
                     throw new Error("ActionFactory is not set.");
                 }
-                const action = this.#actionFactory.createAction(actionConfig);
-                console.debug("Executing onNext action", actionConfig, action);
-                action.execute();
+                this.#actionFactory.createAction(step.onNext, step.element as string).execute();
             }
         });
         this.eventHandles.push(handle);
     }
 
-    private getActionFromStep(steps: DriveStepWithSideEffect[], stepIndex: number | undefined, stepEvent: StepEvent): ActionConfig<any> | undefined {
+    private getStep(steps: DriveStepWithSideEffect[], stepIndex: number | undefined): DriveStepWithSideEffect | undefined {
         if (steps && stepIndex !== undefined && stepIndex >= 0) {
-            return steps[stepIndex][stepEvent];
+            return steps[stepIndex];
         }
     }
 
