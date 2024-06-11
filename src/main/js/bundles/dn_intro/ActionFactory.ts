@@ -21,10 +21,13 @@ export default class ActionFactory {
     private tools: Tool[] = [];
 
     createAction(config: ActionConfig<any>): Action {
-        if (config.hasOwnProperty("toolId")) {
-            const tool = this.getTool((config as ToolActionConfig).toolId);
+        if (Object.hasOwn(config,"toolId")) {
+            const toolConfig = config as ToolActionConfig;
+            const tool = this.getTool(toolConfig.toolId);
             if (tool) {
-                return new ToolAction(tool, config as ToolActionConfig);
+                return new ToolAction(tool, toolConfig);
+            } else {
+                console.error(`Tool with id '${toolConfig.toolId}' not found`);
             }
         }
         return new NoOpAction();
