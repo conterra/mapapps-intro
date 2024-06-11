@@ -46,6 +46,9 @@
                     },
                     {
                         "element": ".v-list-group__expand-button",
+                        "onNext": {
+                            "action": "elementClick"
+                        },
                         "popover": {
                             "title": "Expand layer group",
                             "description": "Click it to show sublayers"
@@ -53,6 +56,9 @@
                     },
                     {
                         "element": ".layer-item__menu-activator",
+                        "onNext": {
+                            "action": "elementClick"
+                        },
                         "popover": {
                             "title": "Options for this layer",
                             "description": "Click it to show options"
