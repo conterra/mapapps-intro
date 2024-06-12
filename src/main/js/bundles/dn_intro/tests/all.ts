@@ -15,3 +15,4 @@
 ///
 
 import "./ToolActionTest";
+import "./ElementActionTest";

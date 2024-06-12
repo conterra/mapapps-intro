@@ -19,11 +19,12 @@ import {ActionConfig} from "./Action";
 export type ElementActionConfig = ActionConfig<"elementClick">;
 
 export default class ElementAction {
-    constructor(private elementSelector: string) {
+    constructor(private elementSelector: string, private parentNode?: HTMLElement) {
     }
 
     execute(): void {
-        const element = document.querySelector(this.elementSelector);
+        const baseElem = this.parentNode || document;
+        const element = baseElem.querySelector(this.elementSelector);
         element instanceof HTMLElement && element.click();
     }
 }
