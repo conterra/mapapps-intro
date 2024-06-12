@@ -17,7 +17,7 @@
 import {Action, ActionConfig, NoOpAction} from "./Action";
 import {Tool} from "./Tool";
 import ElementAction, {ElementActionConfig} from "./ElementAction";
-import {ToolAction, ToolActionConfig} from "./ToolAction";
+import ToolAction, {ToolActionConfig} from "./ToolAction";
 
 export default class ActionFactory {
     private tools: Tool[] = [];

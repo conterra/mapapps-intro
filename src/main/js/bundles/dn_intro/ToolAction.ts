@@ -25,7 +25,7 @@ export interface ToolActionConfig extends ActionConfig<"toolActivate" | "toolDea
 }
 
 
-export class ToolAction implements Action {
+export default class ToolAction implements Action {
     constructor(private tool: Tool, private actionConfig: ToolActionConfig) {
     }
 

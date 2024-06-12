@@ -16,7 +16,7 @@
 
 import module from "module";
 import {assert} from "chai";
-import {ToolAction} from "../ToolAction";
+import ToolAction from "../ToolAction";
 import {Tool} from "../Tool";
 
 
