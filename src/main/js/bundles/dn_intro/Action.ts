@@ -17,7 +17,9 @@
 export interface ActionConfig<ActionName> {
     action: ActionName;
     /**
-     * The delay in milliseconds before moving to the next step. This is useful when it takes some time until the step's element becomes visible after executing the tool action. The default value is 100 milliseconds.
+     * The delay in milliseconds before moving to the next step. This is useful
+     * when it takes some time until the step's element becomes visible after
+     * executing the tool action. The default value is 100 milliseconds.
      */
     delay?: number;
 }
