@@ -14,6 +14,12 @@
 /// limitations under the License.
 ///
 
-import "./ToolActionTest";
-import "./ElementActionTest";
-import "./PersistingStrategyTest";
+import module from "module";
+import {assert} from "chai";
+
+describe(module.id, function () {
+
+    it("", function () {
+
+    });
+});
