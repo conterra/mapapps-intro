@@ -397,7 +397,7 @@
                         <configuration>
                             <!-- don't list not shipped bundles in the
                             META-INF\js-registry-packs.properties file -->
-                            <scanPackagesExcludes>apps/**,bundles/sample_tests</scanPackagesExcludes>
+                            <scanPackagesExcludes>apps/**,bundles/dn_tests</scanPackagesExcludes>
                         </configuration>
                     </execution>
                 </executions>
