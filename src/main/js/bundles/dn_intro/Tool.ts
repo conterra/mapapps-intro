@@ -25,10 +25,3 @@ export interface Tool {
 
     set(key: "active", enable: boolean): void;
 }
-
-export interface ToolActionConfig extends ActionConfig<"toolActivate" | "toolDeactivate"> {
-    /**
-     * The id of the tool to be activated/deactivated or clicked.
-     */
-    toolId: string;
-}

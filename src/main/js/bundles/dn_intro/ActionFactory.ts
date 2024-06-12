@@ -15,15 +15,15 @@
 ///
 
 import {Action, ActionConfig, NoOpAction} from "./Action";
-import {Tool, ToolActionConfig} from "./Tool";
-import ElementAction from "./ElementAction";
-import {ToolAction} from "./ToolAction";
+import {Tool} from "./Tool";
+import ElementAction, {ElementActionConfig} from "./ElementAction";
+import {ToolAction, ToolActionConfig} from "./ToolAction";
 
 export default class ActionFactory {
     private tools: Tool[] = [];
 
     createAction(config: ActionConfig<any>, elementSelector?: string): Action {
-        if (config.action === "toolActivate" || config.action === "toolDeactivate") {
+        if ((config as ToolActionConfig).action === "toolActivate" || (config as ToolActionConfig).action === "toolDeactivate") {
             if (!Object.hasOwn(config,"toolId")) {
                 console.error("ToolActionConfig must have a 'toolId' property");
                 return new NoOpAction();
@@ -37,7 +37,7 @@ export default class ActionFactory {
                 console.error(`Tool with id '${toolConfig.toolId}' not found`);
                 return new NoOpAction();
             }
-        } else if (config.action === "elementClick") {
+        } else if ((config as ElementActionConfig).action === "elementClick") {
             if (!elementSelector) {
                 console.error("When using ElementActionConfig the 'element' property must be defined on the step configuration.");
                 return new NoOpAction();

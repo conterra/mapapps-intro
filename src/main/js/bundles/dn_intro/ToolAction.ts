@@ -1,5 +1,13 @@
-import {Action} from "./Action";
-import {Tool, ToolActionConfig} from "./Tool";
+import {Action, ActionConfig} from "./Action";
+import {Tool} from "./Tool";
+
+export interface ToolActionConfig extends ActionConfig<"toolActivate" | "toolDeactivate"> {
+    /**
+     * The id of the tool to be activated/deactivated or clicked.
+     */
+    toolId: string;
+}
+
 
 export class ToolAction implements Action {
     constructor(private tool: Tool, private actionConfig: ToolActionConfig) {

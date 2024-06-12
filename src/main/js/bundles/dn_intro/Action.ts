@@ -22,8 +22,6 @@ export interface ActionConfig<ActionName> {
     delay?: number;
 }
 
-export type ElementActionConfig = ActionConfig<"click">;
-
 export interface Action {
     execute(): void;
 }

@@ -1,3 +1,7 @@
+import {ActionConfig} from "./Action";
+
+export type ElementActionConfig = ActionConfig<"elementClick">;
+
 export default class ElementAction {
     constructor(private elementSelector: string) {
     }
