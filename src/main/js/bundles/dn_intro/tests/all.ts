@@ -16,4 +16,4 @@
 
 import "./ToolActionTest";
 import "./ElementActionTest";
-import "./PersistingStrategyTest";
+import "./LocalVariableNavIndexStorageTest";
