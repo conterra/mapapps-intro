@@ -99,7 +99,10 @@ export default class Tour {
         this.eventHandles.push(handle);
     }
 
-    private getStep(steps: DriveStepWithSideEffect[], stepIndex: number | undefined): DriveStepWithSideEffect | undefined {
+    private getStep(
+        steps: DriveStepWithSideEffect[],
+        stepIndex: number | undefined
+    ): DriveStepWithSideEffect | undefined {
         if (steps && stepIndex !== undefined && stepIndex >= 0) {
             return steps[stepIndex];
         }
@@ -142,10 +145,7 @@ interface TourConfig extends driver.Config {
 class TourEventChannel extends Evented<TourEvents> {
 }
 
-
 export interface DriveStepWithSideEffect extends driver.DriveStep {
     onNext?: ActionConfig<any>;
     onPrev?: ActionConfig<any>;
 }
-
-type StepEvent = "onNext" | "onPrev";

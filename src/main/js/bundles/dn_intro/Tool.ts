@@ -14,8 +14,6 @@
 /// limitations under the License.
 ///
 
-import {Action, ActionConfig} from "./Action";
-
 export interface Tool {
     id: string;
     togglable: boolean;

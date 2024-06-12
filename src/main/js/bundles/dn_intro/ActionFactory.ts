@@ -24,7 +24,7 @@ export default class ActionFactory {
 
     createAction(config: ActionConfig<any>, elementSelector?: string): Action {
         if ((config as ToolActionConfig).action === "toolActivate" || (config as ToolActionConfig).action === "toolDeactivate") {
-            if (!Object.hasOwn(config,"toolId")) {
+            if (!Object.hasOwn(config, "toolId")) {
                 console.error("ToolActionConfig must have a 'toolId' property");
                 return new NoOpAction();
             }
