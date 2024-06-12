@@ -25,6 +25,10 @@ export default class ElementAction {
     execute(): void {
         const baseElem = this.parentNode || document;
         const element = baseElem.querySelector(this.elementSelector);
+        if (element === null) {
+            console.error(`Element with selector '${this.elementSelector}' not found`);
+            return;
+        }
         element instanceof HTMLElement && element.click();
     }
 }

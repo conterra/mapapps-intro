@@ -14,6 +14,7 @@
 /// limitations under the License.
 ///
 
-import "./ToolActionTest";
+import "./ActionFactoryTest";
 import "./ElementActionTest";
 import "./LocalVariableNavIndexStorageTest";
+import "./ToolActionTest";

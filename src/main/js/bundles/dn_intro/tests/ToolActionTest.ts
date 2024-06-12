@@ -17,7 +17,7 @@
 import module from "module";
 import {assert} from "chai";
 import ToolAction from "../ToolAction";
-import {Tool} from "../Tool";
+import TestTool from "./TestTool";
 
 
 describe(module.id, function () {
@@ -59,21 +59,4 @@ describe(module.id, function () {
 
         assert.isFalse(tool.clicked);
     });
-
-    class TestTool implements Tool {
-        active = false;
-        id = "testTool";
-        togglable = true;
-        clicked = false;
-
-        click(): void {
-            if (!this.togglable) {
-                this.clicked = true;
-            }
-        }
-
-        set(key: keyof Pick<TestTool, "active" | "togglable">, value: boolean): void {
-            this[key] = value;
-        }
-    }
 });
