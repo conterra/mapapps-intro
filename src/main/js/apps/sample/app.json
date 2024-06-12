@@ -27,7 +27,7 @@
             "Tour": {
                 "steps": [
                     {
-                        "element": ".ctTool_tocToggleTool",
+                        "element": ".ctToolIcon_tocToggleTool, .ctTool_tocToggleTool",
                         "onNext": {
                             "action": "toolActivate",
                             "toolId": "tocToggleTool",
