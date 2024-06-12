@@ -20,14 +20,14 @@ import {Evented, EventHandle} from "apprt-core/Events";
 import {ActionConfig} from "./Action";
 import ActionFactory from "./ActionFactory";
 import {InjectedReference} from "apprt-core/InjectedReference";
-import {LocalVariablePersistingStrategy, PersistingStrategy} from "./PersistingStrategy";
+import {LocalVariableNavIndexStorage, NavIndexStorage} from "./NavIndexStorage";
 
 export default class Tour {
     private tourConfig: TourConfig;
     private tour: driver.Driver | undefined;
     #actionFactory: InjectedReference<ActionFactory>;
     private eventChannel = new TourEventChannel();
-    private persistingStrategy: PersistingStrategy = new LocalVariablePersistingStrategy();
+    private navIndexStorage: NavIndexStorage = new LocalVariableNavIndexStorage();
     private eventHandles: EventHandle[] = [];
 
     constructor(properties: TourConfig) {
@@ -47,7 +47,7 @@ export default class Tour {
 
     stopTour(): void {
         this.eventHandles.forEach(handle => handle.remove());
-        this.persistingStrategy.clear();
+        this.navIndexStorage.clear();
         this.tour?.destroy();
     }
 
@@ -109,7 +109,7 @@ export default class Tour {
     }
 
     private enablePersistingTourPosition(): void {
-        const persistingStrategy = this.persistingStrategy;
+        const persistingStrategy = this.navIndexStorage;
         const nextClickHandle = this.eventChannel.on("nextClick", (event) => {
             if (this.tour?.hasNextStep() && event.options.state.activeIndex !== undefined) {
                 persistingStrategy.save(event.options.state.activeIndex + 1);
@@ -131,7 +131,7 @@ export default class Tour {
     }
 
     private restoreSavedStepPosition(tour: driver.Driver): void {
-        const currentStep = this.persistingStrategy.restore();
+        const currentStep = this.navIndexStorage.get();
         if (currentStep > -1) {
             tour.drive(currentStep);
         }

@@ -18,20 +18,20 @@
  * This interface abstracts the strategy for persisting the current step of the tour.
  * This might be saving to a local variable, a cookie, session storage, or local storage.
  */
-export interface PersistingStrategy {
+export interface NavIndexStorage {
     save(index: number): void;
-    restore(): number;
+    get(): number;
     clear(): void;
 }
 
-export class LocalVariablePersistingStrategy implements PersistingStrategy {
+export class LocalVariableNavIndexStorage implements NavIndexStorage {
     private value = -1;
 
     save(index: number): void {
         this.value = index;
     }
 
-    restore(): number {
+    get(): number {
         return this.value;
     }
 
