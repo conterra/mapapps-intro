@@ -23,12 +23,12 @@ import {InjectedReference} from "apprt-core/InjectedReference";
 import {LocalVariableNavIndexStorage, NavIndexStorage} from "./NavIndexStorage";
 
 export default class Tour {
-    private tourConfig: TourConfig;
+    private readonly tourConfig: TourConfig;
     private tour: driver.Driver | undefined;
     #actionFactory: InjectedReference<ActionFactory>;
-    private eventChannel = new TourEventChannel();
-    private navIndexStorage: NavIndexStorage = new LocalVariableNavIndexStorage();
-    private eventHandles: EventHandle[] = [];
+    private readonly eventChannel = new TourEventChannel();
+    private readonly navIndexStorage: NavIndexStorage = new LocalVariableNavIndexStorage();
+    private readonly eventHandles: EventHandle[] = [];
 
     constructor(properties: TourConfig) {
         this.tourConfig = properties;
@@ -36,6 +36,7 @@ export default class Tour {
     }
 
     startTour(): void {
+        this.stopTour();
         const tour = this.tour = driver.driver(this.tourConfig);
         const steps = this.tourConfig.steps;
         this.watchOnNextEvent();
