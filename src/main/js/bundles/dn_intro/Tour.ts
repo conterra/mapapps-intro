@@ -48,7 +48,6 @@ export default class Tour {
 
     stopTour(): void {
         this.eventHandles.forEach(handle => handle.remove());
-        this.navIndexStorage.clear();
         this.tour?.destroy();
     }
 
@@ -110,12 +109,12 @@ export default class Tour {
     }
 
     private enablePersistingTourPosition(): void {
-        const persistingStrategy = this.navIndexStorage;
+        const indexStorage = this.navIndexStorage;
         const nextClickHandle = this.eventChannel.on("nextClick", (event) => {
             if (this.tour?.hasNextStep() && event.options.state.activeIndex !== undefined) {
-                persistingStrategy.save(event.options.state.activeIndex + 1);
+                indexStorage.save(event.options.state.activeIndex + 1);
             } else {
-                persistingStrategy.clear();
+                indexStorage.clear();
             }
         });
         this.eventHandles.push(nextClickHandle);
@@ -123,9 +122,9 @@ export default class Tour {
         const prevClickHandle = this.eventChannel.on("prevClick", (event) => {
             const activeIndex = event.options.state.activeIndex;
             if (activeIndex !== undefined && activeIndex > 0) {
-                persistingStrategy.save(activeIndex);
+                indexStorage.save(activeIndex);
             } else {
-                persistingStrategy.clear();
+                indexStorage.clear();
             }
         });
         this.eventHandles.push(prevClickHandle);
