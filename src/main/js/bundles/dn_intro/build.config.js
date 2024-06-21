@@ -13,7 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-    bundleName: "DN Intro",
-    bundleDescription: "Erlaubt die Konfiguration von Einführungstouren für eine App."
+const glob = require("fast-glob");
+const allFiles = glob.sync(['**/*.js', '**/*.ts', '**/*.vue', '!build.config.js', '!**/nls/**', '!tests/**'], {
+    cwd: __dirname
+});
+module.exports = {
+    type: "bundle",
+    entryPoints: allFiles,
+    ignoreDependencyErrors: true
 };

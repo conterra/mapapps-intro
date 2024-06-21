@@ -13,28 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-module.exports = {
+export default {
     root: {
-        bundleName: "Intro Bundle",
-        bundleDescription: "This bundle allows you to create your own step-by-step guide in map.apps based on the hopscotch framework.",
-        ui: {
-            windowTitle: "Welcome to map.apps!",
-            start: "Start Intro",
-            hint: "Don't show the intro again on next start-up",
-            next: "next",
-            back: "back",
-            done: "done",
-            skip: "skip",
-            closeTooltip: "close intro"
-        },
-        introTool: {
-            title: "Start Intro",
-            tooltip: "Start Intro"
-        },
-        introImmediateTool: {
-            title: "Start Intro",
-            tooltip: "Start Intro"
-        }
+        bundleName: "DN Intro",
+        bundleDescription: "Can be used to create an introductory tour for apps"
     },
     de: true
 };

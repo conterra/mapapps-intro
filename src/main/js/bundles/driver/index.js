@@ -13,7 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default {
-    bundleName: "DN Intro",
-    bundleDescription: "Erlaubt die Konfiguration von Einführungstouren für eine App."
-};
+import "driver.js/dist/driver.css";
+export * as driver from "driver.js";
