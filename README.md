@@ -1,16 +1,16 @@
-# mapapps-intro
+[![devnet-bundle-snapshot](https://github.com/conterra/mapapps-intro/actions/workflows/devnet-bundle-snapshot.yml/badge.svg)](https://github.com/conterra/mapapps-intro/actions/workflows/devnet-bundle-snapshot.yml)
+![Static Badge](https://img.shields.io/badge/requires_map.apps-4.15.0-e5e5e5?labelColor=%233E464F&logoColor=%23e5e5e5)
+![Static Badge](https://img.shields.io/badge/tested_for_map.apps-4.18.1-%20?labelColor=%233E464F&color=%232FC050)
+# Intro
 
 The bundle `dn_intro` allows you to create a step-by-step introductory guide for a map.apps app. It is based on the [driver.js](https://driverjs.com/) library.
 See the `dn_intro` bundle's documentation for more information.
-
-:heavy_exclamation_mark: desktop-only
 
 ![Tour screenshot](https://github.com/conterra/mapapps-intro/blob/master/img.png)
 
 
 ## Prerequisites
 
-- map.apps greater than version 4.15.0
 - To be able to build the project with Maven, all files from `map.apps-VERSION/sdk/m2-repository` (path inside the map.apps distribution package) need to be copied manually to your local Maven repository (e.g. `%UserProfile%/.m2/repository` for Windows, `~/.m2/repository` for MacOS).
 
 ## Start a local development server
