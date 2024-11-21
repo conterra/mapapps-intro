@@ -28,6 +28,9 @@
         ],
         "i18n": [
             "bundle"
+        ],
+        "styles": [
+            "${app}:app.css"
         ]
     },
     "bundles": {

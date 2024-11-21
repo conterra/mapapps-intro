@@ -1,0 +1,7 @@
+.ctAppRoot .driver-popover {
+    max-width: unset;
+}
+
+.ctAppRoot .driver-popover .driver-popover-progress-text {
+    margin-right: 15px;
+}
