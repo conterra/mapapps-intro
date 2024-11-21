@@ -1,4 +1,7 @@
 {
+    "properties": {
+        "title": "${apptitle}"
+    },
     "load": {
         "bundleLocations": [
             "localbundles",
@@ -8,6 +11,7 @@
             "banner",
             "dn_intro",
             "map-init",
+            "mapnavigation",
             "map-preload-2D",
             "notifier",
             "splashscreen",
@@ -21,6 +25,9 @@
             "toc",
             "toolset",
             "toolrules"
+        ],
+        "i18n": [
+            "bundle"
         ]
     },
     "bundles": {
@@ -35,15 +42,15 @@
                             "delay": 100
                         },
                         "popover": {
-                            "title": "Table of content",
-                            "description": "This opens a widget that allows you control the layers of the map"
+                            "title": "${tour.steps.step1.title}",
+                            "description": "${tour.steps.step1.content}"
                         }
                     },
                     {
                         "element": ".toc-window",
                         "popover": {
-                            "title": "Table of content",
-                            "description": "It shows the layers of the map"
+                            "title": "${tour.steps.step2.title}",
+                            "description": "${tour.steps.step2.content}"
                         }
                     },
                     {
@@ -52,8 +59,8 @@
                             "action": "elementClick"
                         },
                         "popover": {
-                            "title": "Expand layer group",
-                            "description": "Click it to show sublayers"
+                           "title": "${tour.steps.step3.title}",
+                            "description": "${tour.steps.step3.content}"
                         }
                     },
                     {
@@ -62,11 +69,14 @@
                             "action": "elementClick"
                         },
                         "popover": {
-                            "title": "Options for this layer",
-                            "description": "Click it to show options"
+                            "title": "${tour.steps.step4.title}",
+                            "description": "${tour.steps.step4.content}"
                         }
                     }
-                ]
+                ],
+                "nextBtnText": "${tour.buttons.next}",
+                "prevBtnText": "${tour.buttons.prev}",
+                "doneBtnText": "${tour.buttons.done}"
             }
         },
         "banner": {
@@ -138,13 +148,12 @@
                     {
                         "id": "mapview_tools",
                         "tools": [
-                            "tocTourTool",
+                            "tourClickTool",
                             "locateMeTool",
                             "zoomInTool",
                             "zoomOutTool",
                             "compassTool",
-                            "restoreInitialViewTool",
-                            "viewmodeSwitcherTool"
+                            "restoreInitialViewTool"
                         ],
                         "registerWidget": {
                             "widgetRole": "mapview_tools"
@@ -165,7 +174,7 @@
         "toolrules": {
             "ToolActiveStateManager": {
                 "activateOnStartToolIds": [
-                    "basemapFaderToggleTool"
+                    "tourClickTool"
                 ]
             }
         }
