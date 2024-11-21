@@ -15,5 +15,8 @@
  */
 export default {
     bundleName: "DN Intro",
-    bundleDescription: "Erlaubt die Konfiguration von Einführungstouren für eine App."
+    bundleDescription: "Erlaubt die Konfiguration von Einführungstouren für eine App.",
+    tool: {
+        tooltip: "Einführungstour starten"
+    }
 };

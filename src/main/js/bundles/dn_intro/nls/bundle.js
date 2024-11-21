@@ -16,7 +16,10 @@
 export default {
     root: {
         bundleName: "DN Intro",
-        bundleDescription: "Can be used to create an introductory tour for apps"
+        bundleDescription: "Can be used to create an introductory tour for apps",
+        tool: {
+            tooltip: "Start Tour"
+        }
     },
     de: true
 };

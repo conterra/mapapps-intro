@@ -14,15 +14,17 @@
     },
     "components": [
         {
-            "name": "TocTourTool",
+            "name": "TourClickTool",
             "impl": "ct/tools/Tool",
             "provides": [
                 "ct.tools.Tool"
             ],
             "propertiesConstructor": true,
             "properties": {
-                "id": "tocTourTool",
-                "title": "Start driver.js tour for TOC",
+                "id": "tourClickTool",
+                "title": "Start driver.js tour",
+                "tooltip": "${tool.tooltip}",
+                "iconClass": "icon-help",
                 "toolRole": "toolset",
                 "clickHandler": "startTour"
             },
