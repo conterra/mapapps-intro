@@ -8,6 +8,8 @@ See the `dn_intro` bundle's documentation for more information.
 
 ![Tour screenshot](https://github.com/conterra/mapapps-intro/blob/master/img.png)
 
+[dn_intro Documentation](https://github.com/conterra/mapapps-intro/tree/master/src/main/js/bundles/dn_intro)
+
 ## Sample App
 https://demos.conterra.de/mapapps/resources/apps/downloads_intro_31/index.html?autorefresh=5000&lang=de
 

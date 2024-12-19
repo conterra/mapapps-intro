@@ -9,6 +9,16 @@ An example app with a tour can be found on the con terra demos site: **TODO**
 Since the `dn_intro` bundle is based on the driver.js library, all the features of driver.js can be used in
 the `dn_intro` bundle as well.
 
+## Usage
+1. First you need to add the bundle dn_intro to your app.
+2. Then you can configure it.
+
+To make the functions of this bundle available to the user, the following tool can be added to a toolset:
+
+| Tool ID       | Component     | Description              |
+|---------------|---------------|--------------------------|
+| tourClickTool | TourClickTool | Show or hide the widget. |
+
 ## Configuration
 
 Configuration is done on the bundle's `Tour` component.
@@ -97,20 +107,20 @@ It must be a `ToolActionConfig` or an `ElementActionConfig` object.
 `ActionConfig` contains the general properties that are supported by all its subtypes.
 Both `ToolActionConfig` and `ElementActionConfig` are subtypes of `ActionConfig` and inherit the properties from `ActionConfig`.
 
-| Property name | Mandatory | Type   | Description                                                                                                                                                                                                           |
-|---------------|-----------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `action`  | yes       | String | The action to perform. See `ToolActionConfig` or `ElementActionConfig` for details.                                                                                             |
-| `delay`        | no        | Number | The delay in milliseconds before moving to the next step. This is useful when it takes some time until the custom action has an actual effect on the document's element tree. The default value is `100` milliseconds. |
+| Property name | Mandatory | Type   | Description                                                                                                                                                                                                            |
+|---------------|-----------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `action`      | yes       | String | The action to perform. See `ToolActionConfig` or `ElementActionConfig` for details.                                                                                                                                    |
+| `delay`       | no        | Number | The delay in milliseconds before moving to the next step. This is useful when it takes some time until the custom action has an actual effect on the document's element tree. The default value is `100` milliseconds. |
 
 #### ToolActionConfig
 
 `ToolActionConfig` is used to interact with a concrete map.apps tool. It has all the properties of `ActionConfig` and
 additionally the following properties:
 
-| Property name | Mandatory | Type   | Description                                                                                                                                                                                                                                                                                                                                                                           |
-|---------------|-----------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `action`  | yes       | String | The action to perform. Must be either `toolActivate` or `toolDeactivate`. <br/>For tools whose `togglable` property is `true`, `toolActivate` activates the tool and `toolDeactivate` deactivates it. <br/>When the tool's `togglable` property is `false`, `toolActivate` calls the tool's `click` method and `toolDeactivate` has no effect. |
-| `toolId`      | yes       | String | The ID of the tool on which to perform an action. The action is specified with `actionName`.                                                                                                                                                                                                                                                                                          |
+| Property name | Mandatory | Type   | Description                                                                                                                                                                                                                                                                                                                                    |
+|---------------|-----------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `action`      | yes       | String | The action to perform. Must be either `toolActivate` or `toolDeactivate`. <br/>For tools whose `togglable` property is `true`, `toolActivate` activates the tool and `toolDeactivate` deactivates it. <br/>When the tool's `togglable` property is `false`, `toolActivate` calls the tool's `click` method and `toolDeactivate` has no effect. |
+| `toolId`      | yes       | String | The ID of the tool on which to perform an action. The action is specified with `actionName`.                                                                                                                                                                                                                                                   |
 
 #### ElementActionConfig
 
@@ -120,4 +130,4 @@ You only need to define the `action` property inherited from `ActionConfig`:
 
 | Property name | Mandatory | Type   | Description                                                                                                                                             |
 |---------------|-----------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `action`  | yes       | String | The action to perform. Must be `elementClick`. A synthetic click event will be triggered on the element selected with the property `DriveStep.element`. |
+| `action`      | yes       | String | The action to perform. Must be `elementClick`. A synthetic click event will be triggered on the element selected with the property `DriveStep.element`. |
