@@ -13,7 +13,7 @@
             "detail": "Run map.apps for Developers development server",
             "type": "shell",
             "command": "mvn",
-            "args": ["compile", "-Denv=dev", "'-Dlocal.configfile=./build.properties'", "-Pinclude-mapapps-deps"],
+            "args": ["clean", "compile", "-Denv=dev", "'-Dlocal.configfile=./build.properties'", "-Pinclude-mapapps-deps"],
             "group": "build",
             "isBackground": true
         },
@@ -22,7 +22,7 @@
             "detail": "Run map.apps for Developers development server in 'remote project' mode",
             "type": "shell",
             "command": "mvn",
-            "args": ["compile", "-Denv=dev", "'-Dlocal.configfile=./build.properties'"],
+            "args": ["clean", "compile", "-Denv=dev", "'-Dlocal.configfile=./build.properties'"],
             "group": "build",
             "isBackground": true
         },
@@ -31,7 +31,7 @@
             "detail": "Prepare bundles and apps for deployment on a map.apps instance",
             "type": "shell",
             "command": "mvn",
-            "args": ["install", "-Pcompress"],
+            "args": ["clean", "install", "-Pcompress"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -43,6 +43,14 @@
             "type": "shell",
             "command": "mvn clean",
             "group": "build"
+        },
+        {
+            "label": "Watch types",
+            "detail": "Start TypeScript compiler in watch mode",
+            "type": "npm",
+            "script": "watch-types",
+            "group": "build",
+            "problemMatcher": [],
         }
     ]
 }
