@@ -22,6 +22,8 @@ import ActionFactory from "./ActionFactory";
 import {InjectedReference} from "apprt-core/InjectedReference";
 import {LocalVariableNavIndexStorage, NavIndexStorage} from "./NavIndexStorage";
 
+import type { MapWidgetModel } from "map-widget/api";
+
 export default class Tour {
     private readonly tourConfig: TourConfig;
     private tour: driver.Driver | undefined;
@@ -29,10 +31,22 @@ export default class Tour {
     private readonly eventChannel = new TourEventChannel();
     private readonly navIndexStorage: NavIndexStorage = new LocalVariableNavIndexStorage();
     private readonly eventHandles: EventHandle[] = [];
+    private _mapWidgetModel: InjectedReference<MapWidgetModel>;
+    private _properties!: Record<string, any>;
 
     constructor(properties: TourConfig) {
         this.tourConfig = properties;
         this.registerNavigationEventHooks();
+    }
+
+    activate(): void {
+        const props = this._properties;
+
+        if (props.startIntroOnStartup) {
+            this.getView().then(() => {
+                this.startTour();
+            });
+        }
     }
 
     startTour(): void {
@@ -135,6 +149,20 @@ export default class Tour {
         if (currentStep > -1) {
             tour.drive(currentStep);
         }
+    }
+
+    private getView(): Promise< __esri.MapView | __esri.SceneView> {
+        const mapWidgetModel = this._mapWidgetModel;
+        return new Promise((resolve) => {
+            if (mapWidgetModel.view) {
+                resolve(mapWidgetModel.view);
+            } else {
+                const watcher = mapWidgetModel.watch("view", ({ value: view }) => {
+                    watcher.remove();
+                    resolve(view);
+                });
+            }
+        });
     }
 }
 

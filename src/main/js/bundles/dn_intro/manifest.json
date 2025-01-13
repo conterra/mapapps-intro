@@ -42,6 +42,7 @@
             ],
             "propertiesConstructor": true,
             "properties": {
+                "startIntroOnStartup": false,
                 "showProgress": true,
                 "disableActiveInteraction": true,
                 "steps": []
@@ -50,7 +51,11 @@
                 {
                     "name": "actionFactory",
                     "providing": "dn_intro.ActionFactory"
-                }
+                },
+                {
+					"name": "_mapWidgetModel",
+					"providing": "map-widget.MapWidgetModel"
+				}
             ]
         },
         {
