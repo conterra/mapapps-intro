@@ -43,9 +43,22 @@ export default class Tour {
         const props = this._properties;
 
         if (props.startIntroOnStartup) {
-            this.getView().then(() => {
-                this.startTour();
-            });
+            if (props.showIntroOnlyOnce) {
+                const introState = window.localStorage.getItem("ct_introState");
+                if (introState && introState === "shown") {
+                    return;
+                } else {
+                    this.getView().then(() => {
+                        this.startTour();
+                        window.localStorage.setItem("ct_introState", "shown");
+                    });
+                }
+            }
+            else {
+                this.getView().then(() => {
+                    this.startTour();
+                });
+            }
         }
     }
 

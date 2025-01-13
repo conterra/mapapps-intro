@@ -22,7 +22,7 @@
             "propertiesConstructor": true,
             "properties": {
                 "id": "tourClickTool",
-                "title": "Start driver.js tour",
+                "title": "${tool.title}",
                 "tooltip": "${tool.tooltip}",
                 "iconClass": "icon-help",
                 "toolRole": "toolset",
@@ -42,10 +42,11 @@
             ],
             "propertiesConstructor": true,
             "properties": {
-                "startIntroOnStartup": false,
+                "steps": [],
                 "showProgress": true,
-                "disableActiveInteraction": true,
-                "steps": []
+                "showIntroOnlyOnce": true,
+                "startIntroOnStartup": true,
+                "disableActiveInteraction": true
             },
             "references": [
                 {
