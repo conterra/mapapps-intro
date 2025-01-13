@@ -22,7 +22,7 @@
             "propertiesConstructor": true,
             "properties": {
                 "id": "tourClickTool",
-                "title": "Start driver.js tour",
+                "title": "${tool.title}",
                 "tooltip": "${tool.tooltip}",
                 "iconClass": "icon-help",
                 "toolRole": "toolset",
@@ -42,15 +42,21 @@
             ],
             "propertiesConstructor": true,
             "properties": {
+                "steps": [],
                 "showProgress": true,
-                "disableActiveInteraction": true,
-                "steps": []
+                "showIntroOnlyOnce": true,
+                "startIntroOnStartup": true,
+                "disableActiveInteraction": true
             },
             "references": [
                 {
                     "name": "actionFactory",
                     "providing": "dn_intro.ActionFactory"
-                }
+                },
+                {
+					"name": "_mapWidgetModel",
+					"providing": "map-widget.MapWidgetModel"
+				}
             ]
         },
         {
