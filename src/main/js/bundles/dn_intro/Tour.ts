@@ -14,13 +14,13 @@
 /// limitations under the License.
 ///
 
-import {driver} from "driver";
-import {TourEvents} from "./TourEvents";
-import {Evented, EventHandle} from "apprt-core/Events";
-import {ActionConfig} from "./Action";
+import { driver } from "driver";
+import { TourEvents } from "./TourEvents";
+import { Evented, EventHandle } from "apprt-core/Events";
+import { ActionConfig } from "./Action";
 import ActionFactory from "./ActionFactory";
-import {InjectedReference} from "apprt-core/InjectedReference";
-import {LocalVariableNavIndexStorage, NavIndexStorage} from "./NavIndexStorage";
+import { InjectedReference } from "apprt-core/InjectedReference";
+import { LocalVariableNavIndexStorage, NavIndexStorage } from "./NavIndexStorage";
 
 import type { MapWidgetModel } from "map-widget/api";
 
@@ -67,6 +67,7 @@ export default class Tour {
         const tour = this.tour = driver.driver(this.tourConfig);
         const steps = this.tourConfig.steps;
         this.watchOnNextEvent();
+        this.watchOnPrevEvent();
         tour.setSteps(steps);
         tour.drive();
         this.restoreSavedStepPosition(tour);
@@ -86,7 +87,7 @@ export default class Tour {
         // A hook for an event can only be set once. Therefore, we emit a custom event to be able to register to this
         // event multiple times.
         this.tourConfig.onNextClick = (element, step, options) => {
-            this.eventChannel.emit("nextClick", {element, step, options});
+            this.eventChannel.emit("nextClick", { element, step, options });
 
             // Wait for the tool actions on the next step to complete before moving to the next step
             setTimeout(() => {
@@ -107,8 +108,24 @@ export default class Tour {
         };
 
         this.tourConfig.onPrevClick = (element, step, options) => {
-            this.eventChannel.emit("prevClick", {element, step, options});
-            this.tour?.movePrevious();
+            this.eventChannel.emit("prevClick", { element, step, options });
+
+            // Wait for the tool actions on the previous step to complete before moving to the previous step
+            setTimeout(() => {
+                this.tour?.movePrevious();
+            }, getDelayFromStep(step));
+
+            function getDelayFromStep(step: DriveStepWithSideEffect): number {
+                if (Object.hasOwn(step, "onPrev")) {
+                    const customDelay = step.onPrev?.delay;
+                    if (customDelay === undefined || customDelay <= 0) {
+                        return 100;
+                    } else {
+                        return customDelay;
+                    }
+                }
+                return 100;
+            }
         };
     }
 
@@ -121,6 +138,20 @@ export default class Tour {
                     throw new Error("ActionFactory is not set.");
                 }
                 this.#actionFactory.createAction(step.onNext, step.element as string).execute();
+            }
+        });
+        this.eventHandles.push(handle);
+    }
+
+    private watchOnPrevEvent(): void {
+        const handle = this.eventChannel.on("prevClick", (event) => {
+            const activeIndex = event.options.state.activeIndex === undefined ? 0 : event.options.state.activeIndex;
+            const step = this.getStep(this.tourConfig.steps, activeIndex);
+            if (step && step.onPrev) {
+                if (!this.#actionFactory) {
+                    throw new Error("ActionFactory is not set.");
+                }
+                this.#actionFactory.createAction(step.onPrev, step.element as string).execute();
             }
         });
         this.eventHandles.push(handle);
@@ -164,7 +195,7 @@ export default class Tour {
         }
     }
 
-    private getView(): Promise< __esri.MapView | __esri.SceneView> {
+    private getView(): Promise<__esri.MapView | __esri.SceneView> {
         const mapWidgetModel = this._mapWidgetModel;
         return new Promise((resolve) => {
             if (mapWidgetModel.view) {
