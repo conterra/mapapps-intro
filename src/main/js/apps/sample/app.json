@@ -54,6 +54,11 @@
                         "popover": {
                             "title": "${tour.steps.step2.title}",
                             "description": "${tour.steps.step2.content}"
+                        },
+                        "onPrev": {
+                            "action": "toolDeactivate",
+                            "toolId": "tocToggleTool",
+                            "delay": 100
                         }
                     },
                     {
