@@ -35,6 +35,8 @@
     },
     "bundles": {
         "dn_intro": {
+            "showIntroOnlyOnce": false,
+            "startIntroOnStartup": true,
             "Tour": {
                 "steps": [
                     {

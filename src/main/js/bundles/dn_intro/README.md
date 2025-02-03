@@ -4,8 +4,6 @@ Allows you to create a custom tour using the [driver.js](https://driverjs.com/) 
 A tour is an introduction to your app for new users. Its aim is to show the users how to start doing things with your
 app, or to introduce them to new features.
 
-An example app with a tour can be found on the con terra demos site: **TODO**
-
 Since the `dn_intro` bundle is based on the driver.js library, all the features of driver.js can be used in
 the `dn_intro` bundle as well.
 
@@ -32,24 +30,31 @@ Example from the `app.json` file:
 {
     "dn_intro": {
         "Tour": {
+            "showIntroOnlyOnce": true,
+            "startIntroOnStartup": true,
             "steps": [
                 {
-                    "element": ".ctTool_tocToggleTool",
+                    "element": ".ctToolIcon_tocToggleTool, .ctTool_tocToggleTool",
                     "onNext": {
                         "action": "toolActivate",
                         "toolId": "tocToggleTool",
-                        "delay": 150
+                        "delay": 100
                     },
                     "popover": {
-                        "title": "Table of content",
-                        "description": "This opens a widget that allows you control the layers of the map"
+                        "title": "${tour.steps.step1.title}",
+                        "description": "${tour.steps.step1.content}"
                     }
                 },
                 {
                     "element": ".toc-window",
                     "popover": {
-                        "title": "Table of content",
-                        "description": "It shows the layers of the map"
+                        "title": "${tour.steps.step2.title}",
+                        "description": "${tour.steps.step2.content}"
+                    },
+                    "onPrev": {
+                        "action": "toolDeactivate",
+                        "toolId": "tocToggleTool",
+                        "delay": 100
                     }
                 },
                 {
@@ -58,8 +63,8 @@ Example from the `app.json` file:
                         "action": "elementClick"
                     },
                     "popover": {
-                        "title": "Expand layer group",
-                        "description": "Click it to show sublayers"
+                        "title": "${tour.steps.step3.title}",
+                        "description": "${tour.steps.step3.content}"
                     }
                 },
                 {
@@ -68,13 +73,16 @@ Example from the `app.json` file:
                         "action": "elementClick"
                     },
                     "popover": {
-                        "title": "Options for this layer",
-                        "description": "Click it to show options"
+                        "title": "${tour.steps.step4.title}",
+                        "description": "${tour.steps.step4.content}"
                     }
                 }
-            ]
+            ],
+            "nextBtnText": "${tour.buttons.next}",
+            "prevBtnText": "${tour.buttons.prev}",
+            "doneBtnText": "${tour.buttons.done}"
         }
-    }
+    },
 }
 ````
 
@@ -83,24 +91,31 @@ the step is about. This is the element
 The `popover` property specifies the content of the popover that is shown to the user.
 
 Almost all the properties in the example above originate in the driver.js library.
-The only exception is the `onNext` property defined inside a step configuration.
-This property is used to define a custom action that is executed when the user navigates to the next step.
+The only exceptions are the `onNext` and `onPrev` properties defined inside a step configuration.
+These properties are used to define a custom action that is executed when the user navigates to the next/previous step.
 In the example in step 1 the tool with the ID `tocToggleTool` is activated when the navigates to the second step and the
 window containing the table of content is opened.
 
 ### Configuration reference
 
+| Property            | Type    | Possible Values           | Default | Description                                                                                                |
+|---------------------|---------|---------------------------|---------|------------------------------------------------------------------------------------------------------------|
+| showIntroOnlyOnce   | boolean | ```true``` or ```false``` | false   | TEMPORARY. This configuration allows to show the intro on startup only once. This config will be replaced. |
+| startIntroOnStartup | boolean | ```true``` or ```false``` | true    | This config determines whether the intro is shown automatically on app start.                              |
+
+
 #### driver.DriveStep
 
-The `onNext` property can be added to a [DriveStep](https://driverjs.com/docs/configuration) item in the `steps` array
-and is used to perform a custom action, e.g. activate or deactivate a certain tool in a map.apps app, when the user
-navigates to the next step.
+The `onNext` and `onPrev` properties can be added to a [DriveStep](https://driverjs.com/docs/configuration) item in the `steps` array
+and are used to perform a custom action, e.g. activate or deactivate a certain tool in a map.apps app, when the user
+navigates to the next/previous step.
 It must be a `ToolActionConfig` or an `ElementActionConfig` object.
 
 
 | Property name | Mandatory | Type                                                                | Description
-|---------------|-----------|---------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|`onNext`       | no        | `ActionConfig` (can be `ToolActionConfig` or `ElementActionConfig`) | The action to perform when the user navigates to the next step.                                                                                                                                                                                                                                                      |
+|---------------|-----------|---------------------------------------------------------------------|---------------------------------------------------------------------|
+|`onNext`       | no        | `ActionConfig` (can be `ToolActionConfig` or `ElementActionConfig`) | The action to perform when the user navigates to the next step.     |
+|`onPrev`       | no        | `ActionConfig` (can be `ToolActionConfig` or `ElementActionConfig`) | The action to perform when the user navigates to the previous step. |
 
 #### ActionConfig
 
