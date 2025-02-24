@@ -44,7 +44,6 @@
             "properties": {
                 "steps": [],
                 "showProgress": true,
-                "showIntroOnlyOnce": true,
                 "startIntroOnStartup": true,
                 "disableActiveInteraction": true
             },
@@ -54,9 +53,9 @@
                     "providing": "dn_intro.ActionFactory"
                 },
                 {
-					"name": "_mapWidgetModel",
-					"providing": "map-widget.MapWidgetModel"
-				}
+                    "name": "_mapWidgetModel",
+                    "providing": "map-widget.MapWidgetModel"
+                }
             ]
         },
         {

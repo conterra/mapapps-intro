@@ -20,7 +20,8 @@ export default {
         tool: {
             title: "Introduction",
             tooltip: "Start Tour"
-        }
+        },
+        doNotShowIntroAgain: "Do not show this introduction again"
     },
     de: true
 };

@@ -14,15 +14,16 @@
 /// limitations under the License.
 ///
 
-import { driver } from "driver";
-import { TourEvents } from "./TourEvents";
-import { Evented, EventHandle } from "apprt-core/Events";
-import { ActionConfig } from "./Action";
+import {driver} from "driver";
+import {TourEvents} from "./TourEvents";
+import {Evented, EventHandle} from "apprt-core/Events";
+import {ActionConfig} from "./Action";
 import ActionFactory from "./ActionFactory";
-import { InjectedReference } from "apprt-core/InjectedReference";
-import { LocalVariableNavIndexStorage, NavIndexStorage } from "./NavIndexStorage";
+import {InjectedReference} from "apprt-core/InjectedReference";
+import {LocalVariableNavIndexStorage, NavIndexStorage} from "./NavIndexStorage";
+import DoNotShowTourAgain from "./DoNotShowTourAgain";
 
-import type { MapWidgetModel } from "map-widget/api";
+import type {MapWidgetModel} from "map-widget/api";
 
 export default class Tour {
     private readonly tourConfig: TourConfig;
@@ -33,6 +34,11 @@ export default class Tour {
     private readonly eventHandles: EventHandle[] = [];
     private _mapWidgetModel: InjectedReference<MapWidgetModel>;
     private _properties!: Record<string, any>;
+    _i18n: {get: () => {doNotShowIntroAgain: string}} = {
+        get() {
+            return {doNotShowIntroAgain: "Do not show this introduction again"}
+        }
+    };
 
     constructor(properties: TourConfig) {
         this.tourConfig = properties;
@@ -41,24 +47,14 @@ export default class Tour {
 
     activate(): void {
         const props = this._properties;
+        if (DoNotShowTourAgain.isTourHidden()) {
+            return;
+        }
 
         if (props.startIntroOnStartup) {
-            if (props.showIntroOnlyOnce) {
-                const introState = window.localStorage.getItem("ct_introState");
-                if (introState && introState === "shown") {
-                    return;
-                } else {
-                    this.getView().then(() => {
-                        this.startTour();
-                        window.localStorage.setItem("ct_introState", "shown");
-                    });
-                }
-            }
-            else {
-                this.getView().then(() => {
-                    this.startTour();
-                });
-            }
+            this.getView().then(() => {
+                this.startTour();
+            });
         }
     }
 
@@ -68,6 +64,9 @@ export default class Tour {
         const steps = this.tourConfig.steps;
         this.watchOnNextEvent();
         this.watchOnPrevEvent();
+        DoNotShowTourAgain.addDoNotShowAgainCheckboxToStep(steps[0], {
+            labelText: this._i18n.get().doNotShowIntroAgain
+        });
         tour.setSteps(steps);
         tour.drive();
         this.restoreSavedStepPosition(tour);
@@ -87,7 +86,7 @@ export default class Tour {
         // A hook for an event can only be set once. Therefore, we emit a custom event to be able to register to this
         // event multiple times.
         this.tourConfig.onNextClick = (element, step, options) => {
-            this.eventChannel.emit("nextClick", { element, step, options });
+            this.eventChannel.emit("nextClick", {element, step, options});
 
             // Wait for the tool actions on the next step to complete before moving to the next step
             setTimeout(() => {
@@ -108,7 +107,7 @@ export default class Tour {
         };
 
         this.tourConfig.onPrevClick = (element, step, options) => {
-            this.eventChannel.emit("prevClick", { element, step, options });
+            this.eventChannel.emit("prevClick", {element, step, options});
 
             // Wait for the tool actions on the previous step to complete before moving to the previous step
             setTimeout(() => {
