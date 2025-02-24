@@ -100,7 +100,6 @@ window containing the table of content is opened.
 
 | Property            | Type    | Possible Values           | Default | Description                                                                                                |
 |---------------------|---------|---------------------------|---------|------------------------------------------------------------------------------------------------------------|
-| showIntroOnlyOnce   | boolean | ```true``` or ```false``` | false   | TEMPORARY. This configuration allows to show the intro on startup only once. This config will be replaced. |
 | startIntroOnStartup | boolean | ```true``` or ```false``` | true    | This config determines whether the intro is shown automatically on app start.                              |
 
 
