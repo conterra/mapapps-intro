@@ -194,13 +194,16 @@ export default class Tour {
         }
     }
 
-    private getView(): Promise<__esri.MapView | __esri.SceneView> {
+    private getView(): Promise<__esri.MapView | __esri.SceneView | undefined> {
         const mapWidgetModel = this._mapWidgetModel;
+        if (!mapWidgetModel) {
+            return Promise.reject("MapWidgetModel is not set.");
+        }
         return new Promise((resolve) => {
             if (mapWidgetModel.view) {
                 resolve(mapWidgetModel.view);
             } else {
-                const watcher = mapWidgetModel.watch("view", ({ value: view }) => {
+                const watcher = mapWidgetModel.watch("view", ({value: view}) => {
                     watcher.remove();
                     resolve(view);
                 });
