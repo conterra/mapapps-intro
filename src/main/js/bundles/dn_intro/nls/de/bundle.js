@@ -19,5 +19,6 @@ export default {
     tool: {
         title: "Einführung",
         tooltip: "Einführungstour starten"
-    }
+    },
+    doNotShowIntroAgain: "Diese Einführung nicht mehr anzeigen"
 };

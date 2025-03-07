@@ -30,7 +30,6 @@ Example from the `app.json` file:
 {
     "dn_intro": {
         "Tour": {
-            "showIntroOnlyOnce": true,
             "startIntroOnStartup": true,
             "steps": [
                 {
@@ -87,20 +86,19 @@ Example from the `app.json` file:
 ````
 
 This example shows a tour with 4 steps. Each step has an `element` property that specifies the element on the page that
-the step is about. This is the element
+the step is about.
 The `popover` property specifies the content of the popover that is shown to the user.
 
 Almost all the properties in the example above originate in the driver.js library.
 The only exceptions are the `onNext` and `onPrev` properties defined inside a step configuration.
 These properties are used to define a custom action that is executed when the user navigates to the next/previous step.
-In the example in step 1 the tool with the ID `tocToggleTool` is activated when the navigates to the second step and the
+In the example in step 1 the tool with the ID `tocToggleTool` is activated when the user navigates to the second step and the
 window containing the table of content is opened.
 
 ### Configuration reference
 
 | Property            | Type    | Possible Values           | Default | Description                                                                                                |
 |---------------------|---------|---------------------------|---------|------------------------------------------------------------------------------------------------------------|
-| showIntroOnlyOnce   | boolean | ```true``` or ```false``` | false   | TEMPORARY. This configuration allows to show the intro on startup only once. This config will be replaced. |
 | startIntroOnStartup | boolean | ```true``` or ```false``` | true    | This config determines whether the intro is shown automatically on app start.                              |
 
 
