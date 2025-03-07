@@ -30,7 +30,6 @@ Example from the `app.json` file:
 {
     "dn_intro": {
         "Tour": {
-            "showIntroOnlyOnce": true,
             "startIntroOnStartup": true,
             "steps": [
                 {
