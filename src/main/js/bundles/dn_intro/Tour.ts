@@ -36,7 +36,7 @@ export default class Tour {
     private _properties!: Record<string, any>;
     _i18n: {get: () => {doNotShowIntroAgain: string}} = {
         get() {
-            return {doNotShowIntroAgain: "Do not show this introduction again"}
+            return {doNotShowIntroAgain: "Do not show this introduction again"};
         }
     };
 
