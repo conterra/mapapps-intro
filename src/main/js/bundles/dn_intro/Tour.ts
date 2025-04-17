@@ -51,10 +51,12 @@ export default class Tour {
             return;
         }
 
-        if (props.startIntroOnStartup) {
+        if (props.startIntroOnStartup && this._mapWidgetModel) {
             this.getView().then(() => {
                 this.startTour();
             });
+        } else if (props.startIntroOnStartup) {
+            this.startTour();
         }
     }
 
