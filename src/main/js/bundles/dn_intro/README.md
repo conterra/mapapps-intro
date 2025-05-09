@@ -79,7 +79,8 @@ Example from the `app.json` file:
             ],
             "nextBtnText": "${tour.buttons.next}",
             "prevBtnText": "${tour.buttons.prev}",
-            "doneBtnText": "${tour.buttons.done}"
+            "doneBtnText": "${tour.buttons.done}",
+            "progressText": "${tour.progressText}"
         }
     },
 }

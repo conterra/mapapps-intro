@@ -38,6 +38,7 @@ export default {
             next: "Nächster Schritt",
             prev: "Vorheriger Schritt",
             done: "Fertig"
-        }
+        },
+        progressText: "{{current}} von {{total}}"
     }
 };
