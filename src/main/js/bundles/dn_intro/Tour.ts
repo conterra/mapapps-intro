@@ -22,6 +22,7 @@ import ActionFactory from "./ActionFactory";
 import {InjectedReference} from "apprt-core/InjectedReference";
 import {LocalVariableNavIndexStorage, NavIndexStorage} from "./NavIndexStorage";
 import DoNotShowTourAgain from "./DoNotShowTourAgain";
+import PopoverModification from "./PopoverModification";
 
 import type {MapWidgetModel} from "map-widget/api";
 
@@ -34,9 +35,12 @@ export default class Tour {
     private readonly eventHandles: EventHandle[] = [];
     private _mapWidgetModel: InjectedReference<MapWidgetModel>;
     private _properties!: Record<string, any>;
-    _i18n: {get: () => {doNotShowIntroAgain: string}} = {
+    _i18n: {get: () => I18n} = {
         get() {
-            return {doNotShowIntroAgain: "Do not show this introduction again"};
+            return {
+                doNotShowIntroAgain: "Do not show this introduction again",
+                popoverCloseButtonAriaLabel: "Close"
+            };
         }
     };
 
@@ -64,8 +68,12 @@ export default class Tour {
         this.stopTour();
         const tour = this.tour = driver.driver(this.tourConfig);
         const steps = this.tourConfig.steps;
+
         this.watchOnNextEvent();
         this.watchOnPrevEvent();
+
+        PopoverModification.enclosePopoverTitleInHtmlElement(steps, this._properties.popoverTitleHtmlElement);
+        PopoverModification.replaceAriaLabelOnCloseButton(steps, this._i18n.get().popoverCloseButtonAriaLabel);
         DoNotShowTourAgain.addDoNotShowAgainCheckboxToStep(steps[0], {
             labelText: this._i18n.get().doNotShowIntroAgain
         });
@@ -224,4 +232,9 @@ class TourEventChannel extends Evented<TourEvents> {
 export interface DriveStepWithSideEffect extends driver.DriveStep {
     onNext?: ActionConfig<any>;
     onPrev?: ActionConfig<any>;
+}
+
+interface I18n {
+    doNotShowIntroAgain: string;
+    popoverCloseButtonAriaLabel: string;
 }

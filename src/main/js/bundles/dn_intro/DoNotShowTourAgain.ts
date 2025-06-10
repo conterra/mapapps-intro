@@ -33,7 +33,9 @@ export default class DoNotShowTourAgain {
         }
 
         // Add a checkbox to the bottom of the popover
-        popover.onPopoverRender = (element: driver.PopoverDOM) => {
+        const originalFn = popover.onPopoverRender;
+
+        popover.onPopoverRender = (element: driver.PopoverDOM, opts) => {
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.id = "ct_introDontShowAgain";
@@ -63,6 +65,10 @@ export default class DoNotShowTourAgain {
             checkbox.addEventListener("change", () => {
                 saveCheckboxState(checkbox);
             });
+
+            if (originalFn) {
+                originalFn(element, opts);
+            }
         };
     }
 }

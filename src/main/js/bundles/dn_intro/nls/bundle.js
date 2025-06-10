@@ -21,7 +21,8 @@ export default {
             title: "Introduction",
             tooltip: "Start Tour"
         },
-        doNotShowIntroAgain: "Do not show this introduction again"
+        doNotShowIntroAgain: "Do not show this introduction again",
+        popoverCloseButtonAriaLabel: "Close"
     },
     de: true
 };

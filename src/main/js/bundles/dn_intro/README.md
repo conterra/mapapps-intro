@@ -15,7 +15,7 @@ To make the functions of this bundle available to the user, the following tool c
 
 | Tool ID       | Component     | Description              |
 |---------------|---------------|--------------------------|
-| tourClickTool | TourClickTool | Show or hide the widget. |
+| `tourClickTool` | TourClickTool | Show or hide the widget. |
 
 ## Configuration
 
@@ -98,9 +98,12 @@ window containing the table of content is opened.
 
 ### Configuration reference
 
-| Property            | Type    | Possible Values           | Default | Description                                                                                                |
-|---------------------|---------|---------------------------|---------|------------------------------------------------------------------------------------------------------------|
-| startIntroOnStartup | boolean | ```true``` or ```false``` | true    | This config determines whether the intro is shown automatically on app start.                              |
+### Tour
+
+| Property                  | Type    | Possible Values   | Default | Description                                                                                                                                                                                                     |
+|---------------------------|---------|-------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `startIntroOnStartup`     | Boolean | `true` or `false` | `true`  | Determines whether the intro is shown automatically on app start.                                                                                                                                               |
+| `popoverTitleHtmlElement` | String  |                   | "h3"    | By default, driver.js renders the popover title inside a `header` element. For the sake of accessibility, the title is additionally enclosed in an HTML tag, e.g. `h3`. You can specify the HTML tag name here. |
 
 
 #### driver.DriveStep
