@@ -22,7 +22,8 @@ export default class DoNotShowTourAgain {
     private static readonly LOCAL_STORAGE_VALUE = "shown";
 
     static isTourHidden(): boolean {
-        return window.localStorage.getItem(DoNotShowTourAgain.LOCAL_STORAGE_KEY) === DoNotShowTourAgain.LOCAL_STORAGE_VALUE;
+        const item = window.localStorage.getItem(DoNotShowTourAgain.LOCAL_STORAGE_KEY);
+        return item === DoNotShowTourAgain.LOCAL_STORAGE_VALUE;
     }
 
     static addDoNotShowAgainCheckboxToStep(step: DriveStepWithSideEffect, options?: CheckboxOptions): void {
@@ -35,7 +36,8 @@ export default class DoNotShowTourAgain {
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.id = "ct_introDontShowAgain";
-            checkbox.checked = window.localStorage.getItem(DoNotShowTourAgain.LOCAL_STORAGE_KEY) === DoNotShowTourAgain.LOCAL_STORAGE_VALUE;
+            const item = window.localStorage.getItem(DoNotShowTourAgain.LOCAL_STORAGE_KEY);
+            checkbox.checked = item === DoNotShowTourAgain.LOCAL_STORAGE_VALUE;
 
             const label = document.createElement("label");
             label.htmlFor = "ct_introDontShowAgain";
