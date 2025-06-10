@@ -35,8 +35,8 @@
     },
     "bundles": {
         "dn_intro": {
-            "startIntroOnStartup": true,
             "Tour": {
+                "startIntroOnStartup": true,
                 "steps": [
                     {
                         "element": ".ctToolIcon_tocToggleTool, .ctTool_tocToggleTool",
