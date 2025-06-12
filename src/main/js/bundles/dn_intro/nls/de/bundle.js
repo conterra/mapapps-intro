@@ -20,5 +20,6 @@ export default {
         title: "Einführung",
         tooltip: "Einführungstour starten"
     },
-    doNotShowIntroAgain: "Diese Einführung nicht mehr anzeigen"
+    doNotShowIntroAgain: "Diese Einführung nicht mehr anzeigen",
+    popoverCloseButtonAriaLabel: "Schließen"
 };

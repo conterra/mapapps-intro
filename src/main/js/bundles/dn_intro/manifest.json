@@ -45,7 +45,8 @@
                 "steps": [],
                 "showProgress": true,
                 "startIntroOnStartup": true,
-                "disableActiveInteraction": true
+                "disableActiveInteraction": true,
+                "popoverTitleHtmlElement": "h3"
             },
             "references": [
                 {
