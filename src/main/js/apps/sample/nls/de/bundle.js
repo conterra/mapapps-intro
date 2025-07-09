@@ -33,12 +33,6 @@ export default {
                 title: "Toc Actions",
                 content: "In diesem Menü befinden sich die Toc Actions. Hier können Sie Aktionen für den Layer ausführen wie 'Zoomen auf' und 'Weitere Infos anzeigen'."
             }
-        },
-        buttons: {
-            next: "Nächster Schritt",
-            prev: "Vorheriger Schritt",
-            done: "Fertig"
-        },
-        progressText: "{{current}} von {{total}}"
+        }
     }
 };

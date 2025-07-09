@@ -75,7 +75,7 @@ export default class Tour {
         PopoverModification.enclosePopoverTitleInHtmlElement(steps, this._properties.popoverTitleHtmlElement);
         PopoverModification.replaceAriaLabelOnCloseButton(steps, this._i18n.get().popoverCloseButtonAriaLabel);
         DoNotShowTourAgain.addDoNotShowAgainCheckboxToStep(steps[0], {
-            labelText: this._i18n.get().doNotShowIntroAgain
+            labelText: this._i18n.get().ui.doNotShowIntroAgain
         });
         tour.setSteps(steps);
         tour.drive();

@@ -20,6 +20,14 @@ export default {
         title: "Einführung",
         tooltip: "Einführungstour starten"
     },
-    doNotShowIntroAgain: "Diese Einführung nicht mehr anzeigen",
-    popoverCloseButtonAriaLabel: "Schließen"
+    ui: {
+        doNotShowIntroAgain: "Diese Einführung nicht mehr anzeigen",
+        popoverCloseButtonAriaLabel: "Schließen",
+        buttons: {
+            next: "Nächster Schritt",
+            prev: "Vorheriger Schritt",
+            done: "Fertig"
+        },
+        progressText: "{{current}} von {{total}}"
+    }
 };

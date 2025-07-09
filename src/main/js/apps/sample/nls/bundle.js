@@ -34,13 +34,7 @@ export default {
                     title: "Toc Actions",
                     content: "In this menu the toc actions are bundled. Here you can trigger actions for the specific layer such as 'Zoom to' or 'Show description' where applicable."
                 }
-            },
-            buttons: {
-                next: "Next",
-                prev: "Previous",
-                done: "Done"
-            },
-            progressText: "{{current}} of {{total}}"
+            }
         }
     },
     de: true

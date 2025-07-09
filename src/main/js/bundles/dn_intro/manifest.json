@@ -46,7 +46,11 @@
                 "showProgress": true,
                 "startIntroOnStartup": true,
                 "disableActiveInteraction": true,
-                "popoverTitleHtmlElement": "h3"
+                "popoverTitleHtmlElement": "h3",
+                "nextBtnText": "${ui.buttons.next}",
+                "prevBtnText": "${ui.buttons.prev}",
+                "doneBtnText": "${ui.buttons.done}",
+                "progressText": "${ui.progressText}"
             },
             "references": [
                 {
