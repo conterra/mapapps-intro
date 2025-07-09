@@ -26,6 +26,11 @@ export default class DoNotShowTourAgain {
         return item === DoNotShowTourAgain.LOCAL_STORAGE_VALUE;
     }
 
+    static checkBoxExists(): boolean {
+        const checkbox = document.getElementById("ct_introDontShowAgain");
+        return checkbox !== null;
+    }
+
     static addDoNotShowAgainCheckboxToStep(step: DriveStepWithSideEffect, options?: CheckboxOptions): void {
         const popover = step?.popover;
         if (!popover) {
@@ -36,6 +41,8 @@ export default class DoNotShowTourAgain {
         const originalFn = popover.onPopoverRender;
 
         popover.onPopoverRender = (element: driver.PopoverDOM, opts) => {
+            if (DoNotShowTourAgain.checkBoxExists()) return;
+
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.id = "ct_introDontShowAgain";
