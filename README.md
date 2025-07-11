@@ -6,7 +6,7 @@
 The bundle `dn_intro` allows you to create a step-by-step introductory guide for a map.apps app. It is based on the [driver.js](https://driverjs.com/) library.
 See the `dn_intro` bundle's documentation for more information.
 
-![Tour screenshot](https://github.com/conterra/mapapps-intro/blob/main/img.png)
+![Tour screenshot](https://github.com/conterra/mapapps-intro/blob/main/screenshot.png)
 
 [dn_intro Documentation](https://github.com/conterra/mapapps-intro/tree/master/src/main/js/bundles/dn_intro)
 
