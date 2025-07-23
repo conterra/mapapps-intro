@@ -11,7 +11,7 @@ See the `dn_intro` bundle's documentation for more information.
 [dn_intro Documentation](https://github.com/conterra/mapapps-intro/tree/master/src/main/js/bundles/dn_intro)
 
 ## Sample App
-https://demos.conterra.de/mapapps/resources/apps/downloads_intro_31
+https://demos.conterra.de/mapapps/resources/apps/public_demo_intro/index.html
 
 ## Prerequisites
 
