@@ -10,7 +10,9 @@
     ],
     "icon": {},
     "dependencies": {
-        "driver": "1.3.1"
+        "driver": "1.3.1",
+        "apprt-core": "^4.20.0",
+        "map-widget": "^4.20.0"
     },
     "components": [
         {
