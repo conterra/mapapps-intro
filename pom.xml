@@ -116,6 +116,14 @@
                         <!-- Keep this in sync with the package manager version in package.json -->
                         <pnpmVersion>10.18.3</pnpmVersion>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <id>run-webpack</id>
+                            <goals>
+                                <goal>webpack</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
