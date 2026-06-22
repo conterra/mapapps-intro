@@ -78,8 +78,16 @@ export default class Tour {
             labelText: this._i18n.get().ui.doNotShowIntroAgain
         });
         tour.setSteps(steps);
-        tour.drive();
-        this.restoreSavedStepPosition(tour);
+
+        const startIndex = Math.max(this.navIndexStorage.get(), 0);
+        const startStep = steps[startIndex];
+        waitForElement(startStep?.element).then(() => {
+            // Abort if the tour was stopped or restarted while we were waiting.
+            if (this.tour !== tour) {
+                return;
+            }
+            tour.drive(startIndex);
+        });
         this.enablePersistingTourPosition();
     }
 
@@ -197,13 +205,6 @@ export default class Tour {
         this.eventHandles.push(prevClickHandle);
     }
 
-    private restoreSavedStepPosition(tour: driver.Driver): void {
-        const currentStep = this.navIndexStorage.get();
-        if (currentStep > -1) {
-            tour.drive(currentStep);
-        }
-    }
-
     private getView(): Promise<__esri.MapView | __esri.SceneView | undefined> {
         const mapWidgetModel = this._mapWidgetModel;
         if (!mapWidgetModel) {
@@ -238,3 +239,25 @@ interface I18n {
     doNotShowIntroAgain: string;
     popoverCloseButtonAriaLabel: string;
 }
+
+/**
+ * Waits for an element to be available to be selected
+ */
+function waitForElement(selector: string | Element | (() => Element) | undefined, timeout = 5000): Promise<void> {
+    if (!selector || typeof selector !== "string") {
+        return Promise.resolve();
+    }
+    if (document.querySelector(selector)) {
+        return Promise.resolve();
+    }
+    return new Promise((resolve) => {
+        const start = Date.now();
+        const intervalId = setInterval(() => {
+            if (document.querySelector(selector) || Date.now() - start >= timeout) {
+                clearInterval(intervalId);
+                resolve();
+            }
+        }, 50);
+    });
+}
+
