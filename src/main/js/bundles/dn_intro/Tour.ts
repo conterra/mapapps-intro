@@ -14,7 +14,7 @@
 /// limitations under the License.
 ///
 
-import {driver} from "driver";
+import {driver, type Config, type Driver, type DriveStep} from "driver.js";
 import {TourEvents} from "./TourEvents";
 import {Evented, EventHandle} from "apprt-core/Events";
 import {ActionConfig} from "./Action";
@@ -28,7 +28,7 @@ import type {MapWidgetModel} from "map-widget/api";
 
 export default class Tour {
     private readonly tourConfig: TourConfig;
-    private tour: driver.Driver | undefined;
+    private tour: Driver | undefined;
     #actionFactory: InjectedReference<ActionFactory>;
     private readonly eventChannel = new TourEventChannel();
     private readonly navIndexStorage: NavIndexStorage = new LocalVariableNavIndexStorage();
@@ -66,7 +66,7 @@ export default class Tour {
 
     startTour(): void {
         this.stopTour();
-        const tour = this.tour = driver.driver(this.tourConfig);
+        const tour = this.tour = driver(this.tourConfig);
         const steps = this.tourConfig.steps;
 
         this.watchOnNextEvent();
@@ -223,14 +223,14 @@ export default class Tour {
     }
 }
 
-interface TourConfig extends driver.Config {
+interface TourConfig extends Config {
     steps: DriveStepWithSideEffect[];
 }
 
 class TourEventChannel extends Evented<TourEvents> {
 }
 
-export interface DriveStepWithSideEffect extends driver.DriveStep {
+export interface DriveStepWithSideEffect extends DriveStep {
     onNext?: ActionConfig<any>;
     onPrev?: ActionConfig<any>;
 }

@@ -15,8 +15,7 @@
 ///
 
 import {DriveStepWithSideEffect} from "dn_intro/Tour";
-import {driver} from "driver";
-import {Config, Driver, State} from "driver.js";
+import type {Config, Driver, PopoverDOM, State} from "driver.js";
 
 export default class PopoverModification {
     /**
@@ -50,7 +49,7 @@ export default class PopoverModification {
  */
 function iterateSteps(
     steps: DriveStepWithSideEffect[],
-    callback: (element: driver.PopoverDOM, options?: { config: Config; state: State, driver: Driver }) => void
+    callback: (element: PopoverDOM, options?: { config: Config; state: State, driver: Driver }) => void
 ) {
     steps.forEach(step => {
         const popover = step?.popover;
@@ -60,7 +59,7 @@ function iterateSteps(
 
         const originalFn = popover.onPopoverRender;
 
-        popover.onPopoverRender = (element: driver.PopoverDOM, opts) => {
+        popover.onPopoverRender = (element: PopoverDOM, opts) => {
             callback(element, opts);
 
             if (originalFn) {
