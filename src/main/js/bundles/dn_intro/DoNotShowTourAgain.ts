@@ -15,7 +15,7 @@
 ///
 
 import {DriveStepWithSideEffect} from "dn_intro/Tour";
-import {driver} from "driver";
+import type {PopoverDOM} from "driver.js";
 
 export default class DoNotShowTourAgain {
     private static readonly LOCAL_STORAGE_KEY = "ct_introState";
@@ -40,7 +40,7 @@ export default class DoNotShowTourAgain {
         // Add a checkbox to the bottom of the popover
         const originalFn = popover.onPopoverRender;
 
-        popover.onPopoverRender = (element: driver.PopoverDOM, opts) => {
+        popover.onPopoverRender = (element: PopoverDOM, opts) => {
             if (DoNotShowTourAgain.checkBoxExists()) return;
 
             const checkbox = document.createElement("input");

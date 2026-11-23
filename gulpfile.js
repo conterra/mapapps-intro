@@ -132,6 +132,32 @@ mapappsBrowserSync.registerTask({
     },
 }, gulp);
 
+// Assets of npm dependencies bundled via "npmDependencies" in a build.config.js.
+// - CSS: the rollup build does not process CSS imports, so the stylesheets are copied
+//   from node_modules into the bundle output and loaded via "cssThemesExtension"
+//   in the bundle's manifest.json.
+// - License: the dependency's code is shipped inside the bundle, so its license text
+//   is shipped as well (licenses/<dependency>/).
+// npm dependency -> bundles using it
+const npmBundleDeps = {
+    "driver.js": ["dn_intro"]
+};
+
+gulp.task("copy-npm-bundle-assets", gulp.parallel(
+    ...Object.entries(npmBundleDeps).flatMap(([dep, bundles]) =>
+        bundles.flatMap((bundle) => [
+            function copyNpmCss() {
+                return gulp.src(`node_modules/${dep}/dist/*.css`)
+                    .pipe(gulp.dest(`target/webapp/js/bundles/${bundle}`));
+            },
+            function copyNpmLicense() {
+                return gulp.src(`node_modules/${dep}/{LICENSE,license,LICENSE.*,license.*}`, {allowEmpty: true})
+                    .pipe(gulp.dest(`target/webapp/js/bundles/${bundle}/licenses/${dep}`));
+            }
+        ])
+    )
+));
+
 gulp.task("build",
     gulp.series(
         "copy-resources",
@@ -141,7 +167,8 @@ gulp.task("build",
             "rollup-build",
             "themes-compile",
             "css-compress"
-        )
+        ),
+        "copy-npm-bundle-assets"
     )
 );
 

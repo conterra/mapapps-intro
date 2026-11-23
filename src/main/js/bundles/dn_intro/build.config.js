@@ -20,5 +20,6 @@ const allFiles = glob.sync(['**/*.js', '**/*.ts', '**/*.vue', '!build.config.js'
 module.exports = {
     type: "bundle",
     entryPoints: allFiles,
+    npmDependencies: ["driver.js"],
     ignoreDependencyErrors: true
 };

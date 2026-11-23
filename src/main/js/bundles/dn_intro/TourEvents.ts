@@ -14,7 +14,7 @@
 /// limitations under the License.
 ///
 
-import {driver} from "driver";
+import type {Config, DriveStep, State} from "driver.js";
 
 export interface TourEvents {
     nextClick: NextClickEvent;
@@ -23,18 +23,18 @@ export interface TourEvents {
 
 interface NextClickEvent {
     element?: Element,
-    step: driver.DriveStep,
+    step: DriveStep,
     options: {
-        config: driver.Config;
-        state: driver.State
+        config: Config;
+        state: State
     }
 }
 
 interface PrevClickEvent {
     element?: Element,
-    step: driver.DriveStep,
+    step: DriveStep,
     options: {
-        config: driver.Config;
-        state: driver.State
+        config: Config;
+        state: State
     }
 }
