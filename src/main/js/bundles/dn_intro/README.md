@@ -7,6 +7,9 @@ app, or to introduce them to new features.
 Since the `dn_intro` bundle is based on the driver.js library, all the features of driver.js can be used in
 the `dn_intro` bundle as well.
 
+driver.js (MIT License, Copyright (c) Kamran Ahmed) is compiled into this bundle. Its license text is shipped
+with the bundle in `licenses/driver.js/`.
+
 ## Usage
 1. First you need to add the bundle dn_intro to your app.
 2. Then you can configure it.

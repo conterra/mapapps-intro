@@ -23,6 +23,20 @@ https://demos.conterra.de/mapapps/resources/apps/public_demo_intro/index.html
 
 `mvn compile -P include-mapapps-deps,env-dev`
 
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
+### Third-party software
+
+The following third-party software is compiled into the bundles of this project and distributed with them:
+
+| Component | Used in bundle | License |
+|---|---|---|
+| [driver.js](https://driverjs.com/) | `dn_intro` | MIT, Copyright (c) Kamran Ahmed |
+
+The license texts are shipped with the bundles in `licenses/<component>/`.
+
 ## More information
 
 The project is based on the latest version of the [mapapps-4-developers Project](https://github.com/conterra/mapapps-4-developers).
